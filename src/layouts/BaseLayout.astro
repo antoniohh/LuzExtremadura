@@ -13,6 +13,7 @@ import {
   absoluteUrl,
   withBase,
 } from "../lib/site";
+import { FAQS_SEO } from "../data/faqs";
 
 interface Props {
   title?: string;
@@ -32,7 +33,7 @@ const canonical = absoluteUrl(canonicalPath);
 const ogImage = absoluteUrl("assets/og-image.png");
 const logoUrl = absoluteUrl("assets/logo.svg");
 
-// Schema.org Structured Data
+// Schema.org Structured Data Avanzado (Grafo Completo: WebSite, WebPage, Dataset y FAQPage)
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
@@ -67,6 +68,72 @@ const jsonLd = {
         width: 1200,
         height: 630,
       },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Precio de la Luz Hoy en Extremadura",
+            item: SITE,
+          },
+        ],
+      },
+    },
+    {
+      "@type": "Dataset",
+      "@id": `${SITE}/#dataset`,
+      name: "Precios Horarios Oficiales del PVPC (Tarifa Regulada 2.0TD) en España y Extremadura",
+      description: "Registro de precios horarios de la energía eléctrica (PVPC) publicados por Red Eléctrica de España para el mercado peninsular.",
+      url: canonical,
+      sameAs: "https://api.esios.ree.es/archives/70/download_json?locale=es",
+      keywords: SITE_KEYWORDS,
+      creator: {
+        "@type": "Person",
+        name: AUTHOR_NAME,
+        url: AUTHOR_URL,
+      },
+      isAccessibleForFree: true,
+      license: "https://opensource.org/licenses/MIT",
+      spatialCoverage: [
+        {
+          "@type": "Place",
+          name: "Extremadura, España",
+          geo: {
+            "@type": "GeoCoordinates",
+            latitude: "39.1667",
+            longitude: "-6.1667",
+          },
+        },
+        {
+          "@type": "Place",
+          name: "Provincia de Badajoz, España",
+        },
+        {
+          "@type": "Place",
+          name: "Provincia de Cáceres, España",
+        },
+      ],
+      distribution: [
+        {
+          "@type": "DataDownload",
+          encodingFormat: "application/json",
+          contentUrl: absoluteUrl("datos/precios_luz_hoy.json"),
+          name: "Precios horarios de hoy y mañana en Extremadura (JSON)",
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${SITE}/#faq`,
+      mainEntity: FAQS_SEO.map((faq) => ({
+        "@type": "Question",
+        name: faq.pregunta,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.respuesta,
+        },
+      })),
     },
   ],
 };
@@ -139,7 +206,9 @@ const jsonLd = {
     <meta name="author" content={AUTHOR_NAME} />
 
     <link rel="canonical" href={canonical} />
+    <link rel="sitemap" type="application/xml" href={withBase("sitemap.xml")} />
     <link rel="icon" type="image/svg+xml" href={withBase("assets/favicon.svg")} />
+    <link rel="apple-touch-icon" sizes="180x180" href={withBase("assets/apple-touch-icon.png")} />
 
     <!-- Open Graph -->
     <meta property="og:type" content={ogType} />
@@ -149,16 +218,22 @@ const jsonLd = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Precio de la Luz Hoy en Extremadura (Badajoz y Cáceres)" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content="Precio de la Luz Hoy en Extremadura (Badajoz y Cáceres)" />
 
     <!-- Geo Tags Extremadura -->
     <meta name="geo.region" content="ES-EX" />
     <meta name="geo.placename" content="Extremadura, Badajoz, Cáceres, Mérida" />
+    <meta name="geo.position" content="39.1667;-6.1667" />
+    <meta name="ICBM" content="39.1667, -6.1667" />
 
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>

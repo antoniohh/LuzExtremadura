@@ -1,9 +1,9 @@
 {
-  "generadoEl": "2026-11-02T21:29:40.576Z",
+  "generadoEl": "2026-11-02T21:31:57.576Z",
   "fuente": "Red Eléctrica de España (REE / e·sios)",
   "hoy": {
     "fecha": "2026-11-02",
-    "actualizado": "2026-11-02T21:29:40.122Z",
+    "actualizado": "2026-11-02T21:31:57.558Z",
     "estadisticas": {
       "precioMinimo": {
         "kwh": -0.0173,
@@ -243,7 +243,7 @@
   },
   "manana": {
     "fecha": "2026-11-03",
-    "actualizado": "2026-11-02T21:29:40.576Z",
+    "actualizado": "2026-11-02T21:31:57.576Z",
     "estadisticas": {
       "precioMinimo": {
         "kwh": 0.04596,
