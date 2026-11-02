@@ -2,6 +2,32 @@
 
 Todas las versiones relevantes de **Luz Extremadura**. El proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 
+## [1.0.3] — 2026-11-03
+
+Versión centrada en la experiencia de usuario móvil, dinamización en tiempo real del tramo horario, compatibilidad completa como Progressive Web App (PWA) en Google Chrome y ampliación del intervalo de actualización automática.
+
+### Añadido
+
+- **Instalabilidad PWA Completa y Service Worker** ([`public/sw.js`](public/sw.js), [`public/site.webmanifest`](public/site.webmanifest), [`src/layouts/BaseLayout.astro`](src/layouts/BaseLayout.astro)):
+  - Incorporación de Service Worker con gestión de ciclo de vida (`install`, `activate`, `fetch`) con estrategia network-first para datos de precios y caché offline para activos de interfaz.
+  - Vinculación del manifiesto web `<link rel="manifest" href="/site.webmanifest">` con identificador único (`id: "/"`), `scope: "/"` y soporte para iconos adaptativos (`any maskable`).
+  - Habilitación oficial de la insignia de «Instalar aplicación» en la barra de direcciones de Google Chrome (Android y Escritorio).
+- **Dinamización en Tiempo Real del Tramo Actual («AHORA»)** ([`src/pages/index.astro`](src/pages/index.astro)):
+  - Detección precisa de la hora oficial en España (`Europe/Madrid`) mediante JavaScript cliente.
+  - Sincronización instantánea y periódica (cada 60 segundos y al reactivar la pestaña con `visibilitychange`) del tramo horario actual, precio en €/kWh, precio mayorista de referencia, semáforo y tramo regulado en el bloque Hero.
+  - Desplazamiento reactivo de la insignia `AHORA` sobre la rejilla de 24 horas sin depender de la hora estática de compilación.
+  - Detección automática de cambio de jornada para actualizar datos tras la medianoche.
+
+### Modificado y Corregido
+
+- **Eliminación Total del Scroll Horizontal en Móvil** ([`src/styles/base.css`](src/styles/base.css), [`src/components/Header.astro`](src/components/Header.astro), [`src/pages/index.astro`](src/pages/index.astro)):
+  - Restricción estricta `overflow-x: hidden; max-width: 100%; width: 100%;` en `html`, `body` y `main`.
+  - Contracción fluida de la cabecera en pantallas menores a 390px ocultando el subtítulo largo y protegiendo el badge `PVPC REE` y el botón de menú con `min-w-0`.
+  - Reemplazo de `scale-[1.03]` en tarjetas horarias por resaltado con `ring-3 ring-slate-900 shadow-lg` para evitar desbordamientos de columnas en cuadrículas móviles de dos columnas.
+  - Flexibilización con `flex-wrap` de las insignias de precios máximos y mínimos de mañana.
+- **Ajuste del Horario de Actualización Nocturna** ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml)):
+  - Horario de captura diaria de tarifas del día siguiente aplazado a las **21:30 CET** (20:30 UTC en invierno: cron `'30 20 * * *'`) para garantizar que Red Eléctrica haya finalizado la publicación del archivo 70 de e·sios (~20:20 CET), manteniendo el refresco matinal a las **06:00 CET**.
+
 ## [1.0.2] — 2026-11-02
 
 Versión que integra la infraestructura formal de releases, licencia legal MIT, directrices de ingeniería `AGENTS.md` y paquetes precompilados de distribución (`v1.0.0`, `v1.0.1` y `v1.0.2`).
