@@ -42,7 +42,7 @@ Aplicación web estática (SPA) para la consulta diaria y en tiempo real del **p
 ## 🛠️ Comandos de Desarrollo y Scripts de Datos
 
 ```bash
-# Instalar dependencias (requiere Node.js >= 22.23.4)
+# Instalar dependencias (requiere Node.js >= 22.0.0)
 npm install
 
 # Actualizar los precios de hoy y mañana desde la API de Red Eléctrica
@@ -69,8 +69,7 @@ npm run preview
 LuzExtremadura/
 ├── .github/
 │   └── workflows/
-│       ├── deploy.yml                             # Build diario a las 20:30 h y 06:00 h y deploy en Pages
-│       └── release.yml                            # Empaquetado ZIP y publicación de release en tags v*
+│       └── deploy.yml                             # Build diario a las 20:30 h y 06:00 h y deploy en Pages
 ├── docs/
 │   ├── guia-api-esios-ree.md                      # Documentación técnica de la API oficial de Red Eléctrica
 │   └── sesion-desarrollo.md                       # Registro técnico del desarrollo y arquitectura
@@ -90,11 +89,6 @@ LuzExtremadura/
 │   ├── robots.txt
 │   ├── site.webmanifest                           # PWA Webmanifest
 │   └── sitemap.xml
-├── release/
-│   ├── RELEASE_NOTES_v1.0.0.md
-│   ├── RELEASE_NOTES_v1.0.1.md                    # Notas de la release v1.0.1
-│   ├── luz-extremadura-v1.0.1.zip                 # Paquete precompilado de distribución
-│   └── luz-extremadura-v1.0.1.zip.sha256
 ├── scripts/
 │   └── actualizar_precios_luz.mjs                 # Extracción y cálculo horario del PVPC desde e·sios
 ├── src/
@@ -115,7 +109,6 @@ LuzExtremadura/
 │       ├── base.css
 │       └── global.css
 ├── .gitignore
-├── .nvmrc
 ├── AGENTS.md
 ├── CHANGELOG.md
 ├── LICENSE
@@ -146,10 +139,8 @@ Versión actual: **1.0.1** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
 
 | Versión | Fecha | Cambios principales |
 |---|---|---|
-| **1.0.1** | 2026-11-02 | Navegación global multiruta (`/#`), menú móvil desplegable, unificación tipográfica responsiva de encabezados `<h2>`, protección de badge `PVPC REE` en móvil, workflow de GitHub Releases y `AGENTS.md` |
+| **1.0.1** | 2026-11-02 | Navegación global multiruta (`/#`), menú móvil desplegable, unificación tipográfica responsiva de encabezados `<h2>`, protección de badge `PVPC REE` en móvil y `AGENTS.md` |
 | 1.0.0 | 2026-11-02 | Lanzamiento inicial en `luz.antoniohorrillo.com`: precios diarios y de mañana desde Red Eléctrica (e·sios archive 70), semáforo 24h, tramos valle/llano/punta, calculadora de consumo extremeño, dossier solar y Consent Mode v2 |
-
-El workflow `.github/workflows/release.yml` compila el sitio y adjunta automáticamente `luz-extremadura-v1.0.1.zip` al publicar una etiqueta `v*` en GitHub. Además, el paquete precompilado local se encuentra disponible en `release/luz-extremadura-v1.0.1.zip`.
 
 ---
 
