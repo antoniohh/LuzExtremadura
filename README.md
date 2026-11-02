@@ -1,6 +1,6 @@
 # Luz Extremadura
 
-[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.0.1-047857?style=for-the-badge)](CHANGELOG.md)
+[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.0.2-047857?style=for-the-badge)](CHANGELOG.md)
 [![Astro](https://img.shields.io/badge/Astro-7.4.2-BC52EE?style=for-the-badge&logo=astro&logoColor=white)](https://astro.build)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.3.3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -69,7 +69,8 @@ npm run preview
 LuzExtremadura/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml                             # Build diario a las 20:30 h y 06:00 h y deploy en Pages
+│       ├── deploy.yml                             # Build diario a las 20:30 h y 06:00 h y deploy en Pages
+│       └── release.yml                            # Empaquetado ZIP y publicación de release en tags v*
 ├── docs/
 │   ├── guia-api-esios-ree.md                      # Documentación técnica de la API oficial de Red Eléctrica
 │   └── sesion-desarrollo.md                       # Registro técnico del desarrollo y arquitectura
@@ -89,6 +90,16 @@ LuzExtremadura/
 │   ├── robots.txt
 │   ├── site.webmanifest                           # PWA Webmanifest
 │   └── sitemap.xml
+├── release/
+│   ├── RELEASE_NOTES_v1.0.0.md                    # Notas y detalles de la versión 1.0.0
+│   ├── RELEASE_NOTES_v1.0.1.md                    # Notas y detalles de la versión 1.0.1
+│   ├── RELEASE_NOTES_v1.0.2.md                    # Notas y detalles de la versión 1.0.2
+│   ├── luz-extremadura-v1.0.0.zip                 # Paquete precompilado de producción v1.0.0
+│   ├── luz-extremadura-v1.0.0.zip.sha256          # Checksum SHA-256 v1.0.0
+│   ├── luz-extremadura-v1.0.1.zip                 # Paquete precompilado de producción v1.0.1
+│   ├── luz-extremadura-v1.0.1.zip.sha256          # Checksum SHA-256 v1.0.1
+│   ├── luz-extremadura-v1.0.2.zip                 # Paquete precompilado de producción v1.0.2
+│   └── luz-extremadura-v1.0.2.zip.sha256          # Checksum SHA-256 v1.0.2
 ├── scripts/
 │   └── actualizar_precios_luz.mjs                 # Extracción y cálculo horario del PVPC desde e·sios
 ├── src/
@@ -109,6 +120,7 @@ LuzExtremadura/
 │       ├── base.css
 │       └── global.css
 ├── .gitignore
+├── .nvmrc                                         # Versión LTS fijada de Node.js (22.23.4)
 ├── AGENTS.md
 ├── CHANGELOG.md
 ├── LICENSE
@@ -135,12 +147,15 @@ Si necesitas cambiar el dominio en el futuro, actualiza `src/lib/site.ts`, `astr
 
 ## 📦 Control de Versiones
 
-Versión actual: **1.0.1** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
+Versión actual: **1.0.2** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
 
 | Versión | Fecha | Cambios principales |
 |---|---|---|
-| **1.0.1** | 2026-11-02 | Navegación global multiruta (`/#`), menú móvil desplegable, unificación tipográfica responsiva de encabezados `<h2>`, protección de badge `PVPC REE` en móvil y `AGENTS.md` |
+| **1.0.2** | 2026-11-02 | Consolidación del directorio `release/` (v1.0.0, v1.0.1 y v1.0.2), workflow automático de releases `.github/workflows/release.yml`, licencia formal MIT, `.nvmrc` y `AGENTS.md` |
+| 1.0.1 | 2026-11-02 | Navegación global multiruta (`/#`), menú móvil desplegable, unificación tipográfica responsiva de encabezados `<h2>` y protección de badge `PVPC REE` en móvil |
 | 1.0.0 | 2026-11-02 | Lanzamiento inicial en `luz.antoniohorrillo.com`: precios diarios y de mañana desde Red Eléctrica (e·sios archive 70), semáforo 24h, tramos valle/llano/punta, calculadora de consumo extremeño, dossier solar y Consent Mode v2 |
+
+El workflow `.github/workflows/release.yml` compila el sitio y adjunta automáticamente `luz-extremadura-v1.0.2.zip` al publicar una etiqueta `v*` en GitHub. Además, los paquetes precompilados locales se encuentran disponibles en la carpeta `release/`.
 
 ---
 

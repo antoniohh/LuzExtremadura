@@ -37,3 +37,8 @@ El proyecto nace con el propósito de trasladar el modelo de éxito, rendimiento
 - Cron diario a las **20:30 CET** (19:30 UTC en invierno) para capturar los precios del día siguiente recién emitidos por REE.
 - Cron diario de respaldo a las **06:00 CET** (05:00 UTC en invierno).
 - Despliegue automático en GitHub Pages bajo el dominio personalizado `luz.antoniohorrillo.com`.
+
+### 2.5. Ciclo de Releases y Control de Distribución
+- Flujo de empaquetado y publicación automática mediante `.github/workflows/release.yml` en etiquetas `v*`.
+- Consolidación de paquetes locales precompilados y sumas SHA-256 en la carpeta `release/` (`v1.0.0`, `v1.0.1` y `v1.0.2`).
+- Licencia formal MIT y directrices operativas documentadas en `AGENTS.md`.

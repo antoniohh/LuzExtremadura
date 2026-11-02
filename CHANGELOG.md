@@ -2,6 +2,23 @@
 
 Todas las versiones relevantes de **Luz Extremadura**. El proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 
+## [1.0.2] — 2026-11-02
+
+Versión que integra la infraestructura formal de releases, licencia legal MIT, directrices de ingeniería `AGENTS.md` y paquetes precompilados de distribución (`v1.0.0`, `v1.0.1` y `v1.0.2`).
+
+### Añadido
+
+- **Directorio de Releases Integrado (`release/`):**
+  - Incorporación de paquetes ZIP precompilados y notas de versión detalladas para `v1.0.0`, `v1.0.1` y `v1.0.2` junto con sus sumas de verificación SHA-256.
+- **Workflow de Publicación Automatizada (`.github/workflows/release.yml`):**
+  - Acción de GitHub Actions disparada por etiquetas `v*` que genera el archivo comprimido `luz-extremadura-${GITHUB_REF_NAME}.zip` y publica la release automáticamente en GitHub Releases.
+- **Licencia Legal de Código Abierto ([`LICENSE`](LICENSE)):**
+  - Publicación formal bajo licencia **MIT** y atribución a [Antonio Horrillo](https://antoniohorrillo.com).
+- **Directrices Operativas del Repositorio ([`AGENTS.md`](AGENTS.md)):**
+  - Normas de arquitectura de software, accesibilidad WCAG AA/AAA, privacidad estricta y protocolo para agentes y contribuidores.
+- **Configuración de Entorno ([`.nvmrc`](.nvmrc)):**
+  - Fijación de Node.js a versión LTS `22.23.4`.
+
 ## [1.0.1] — 2026-11-02
 
 Versión de consolidación de diseño responsive, accesibilidad tipográfica, navegación global y optimización de activos PWA.
