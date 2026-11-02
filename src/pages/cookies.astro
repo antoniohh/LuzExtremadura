@@ -1,0 +1,71 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Zap, Shield, ArrowLeft } from "@lucide/astro";
+import { withBase } from "../lib/site";
+---
+
+<BaseLayout
+  title="Política de Cookies y Privacidad | Luz Extremadura"
+  description="Información detallada sobre el uso de cookies analíticas, almacenamiento local y privacidad en Luz Extremadura."
+  canonicalPath="cookies/"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+    <a href={withBase()} class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-600 hover:text-amber-600 mb-8 transition-colors">
+      <ArrowLeft size={16} />
+      <span>Volver a la portada</span>
+    </a>
+
+    <header class="mb-10 pb-6 border-b border-slate-200">
+      <div class="flex items-center gap-3 text-amber-600 font-bold text-sm uppercase tracking-wider mb-2">
+        <Shield size={20} />
+        <span>Transparencia y Privacidad</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        Política de Cookies y Privacidad
+      </h1>
+      <p class="mt-3 text-base sm:text-lg text-slate-600">
+        En Luz Extremadura apostamos por una experiencia limpia: sin publicidad, sin perfiles comerciales y con control total sobre tus datos.
+      </p>
+    </header>
+
+    <div class="prose prose-slate max-w-none text-slate-700 space-y-8 text-sm sm:text-base leading-relaxed">
+      <section>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">1. ¿Qué son las cookies y qué utilizamos?</h2>
+        <p>
+          Las cookies son pequeños ficheros de texto que los sitios web almacenan en tu dispositivo para recordar tus preferencias o recopilar información estadística.
+        </p>
+        <p class="mt-2">
+          En <strong>Luz Extremadura</strong> no utilizamos cookies publicitarias, cookies de seguimiento entre sitios ni vendemos tus datos a terceros. Únicamente empleamos:
+        </p>
+        <ul class="list-disc pl-5 mt-2 space-y-1">
+          <li><strong>Cookies técnicas necesarias:</strong> Almacenan en tu navegador si has aceptado o rechazado la medición analítica para no volver a preguntarte en cada visita.</li>
+          <li><strong>Cookies analíticas opcionales (Google Analytics 4):</strong> Nos permiten conocer de forma anónima y agregada qué horas se consultan con mayor frecuencia o qué calculadoras resultan más útiles para optimizar el servicio.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">2. Google Consent Mode v2</h2>
+        <p>
+          Cumplimos rigurosamente con el Reglamento General de Protección de Datos (RGPD) y las directrices de la Agencia Española de Protección de Datos (AEPD). Por defecto, para todos los visitantes procedentes de España y el Espacio Económico Europeo, todas las señales analíticas nacen estrictamente bloqueadas (<code>denied</code>) hasta que interactúes con el banner y decidas si deseas colaborar con la estadística anónima.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">3. Modificar o retirar tu consentimiento</h2>
+        <p>
+          Puedes cambiar de opinión en cualquier momento pulsando el siguiente botón:
+        </p>
+        <div class="mt-4">
+          <button
+            type="button"
+            data-cookie-open-modal
+            class="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-400 font-bold text-sm inline-flex items-center gap-2 cursor-pointer transition-colors shadow-sm"
+          >
+            <Zap size={16} />
+            <span>Configurar preferencias de cookies</span>
+          </button>
+        </div>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <!-- Fondo redondeado suave -->
+  <rect width="64" height="64" rx="16" fill="#0f172a" />
+  <!-- Rayo de electricidad amarillo solar -->
+  <path d="M36 6L14 36H32L28 58L50 28H32L36 6Z" fill="#eab308" stroke="#ca8a04" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Detalle verde Extremadura en la base del rayo -->
+  <circle cx="28" cy="58" r="3" fill="#047857" />
+</svg>

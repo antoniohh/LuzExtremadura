@@ -1,0 +1,38 @@
+{
+  "name": "luz-extremadura",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "actualizar:hoy": "node scripts/actualizar_precios_luz.mjs",
+    "build": "node scripts/actualizar_precios_luz.mjs && astro build",
+    "build:fast": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@lucide/astro": "^1.62.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "astro": "^7.4.2",
+    "chart.js": "^4.5.1",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.5",
+    "typescript": "^5.9.3"
+  },
+  "author": "Antonio Horrillo (https://github.com/antoniohh)",
+  "license": "MIT",
+  "homepage": "https://luz.antoniohorrillo.com/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoniohh/LuzExtremadura.git"
+  },
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=10.0.0"
+  }
+}

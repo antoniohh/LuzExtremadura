@@ -1,0 +1,559 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import {
+  Zap,
+  Clock,
+  TrendingDown,
+  TrendingUp,
+  BarChart3,
+  SunMedium,
+  Wind,
+  ShieldCheck,
+  CheckCircle2,
+  Calendar,
+  AlertCircle,
+  HelpCircle,
+  Flame,
+  Snowflake,
+  Tv,
+  Car
+} from "@lucide/astro";
+
+import datosLuz from "../../public/datos/precios_luz_hoy.json";
+
+const hoy = datosLuz.hoy;
+const manana = datosLuz.manana;
+
+// Determinar hora actual de España
+const ahora = new Date();
+const formatterHora = new Intl.DateTimeFormat("es-ES", {
+  timeZone: "Europe/Madrid",
+  hour: "numeric",
+  hour12: false,
+});
+const horaActualInt = parseInt(formatterHora.format(ahora), 10);
+
+// Buscar el registro de la hora actual
+const horaActualData = hoy?.horas?.find((h: any) => h.hora === horaActualInt) || hoy?.horas?.[0];
+
+function formatFecha(fechaISO: string) {
+  if (!fechaISO) return "";
+  const [y, m, d] = fechaISO.split("-");
+  const meses = [
+    "enero", "febrero", "marzo", "abril", "mayo", "junio",
+    "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+  ];
+  return `${parseInt(d, 10)} de ${meses[parseInt(m, 10) - 1]} de ${y}`;
+}
+
+const fechaHoyLegible = formatFecha(hoy?.fecha || "");
+const fechaMananaLegible = formatFecha(manana?.fecha || "");
+---
+
+<BaseLayout
+  title={`Precio de la Luz Hoy en Extremadura (${fechaHoyLegible}) | Hora a Hora PVPC`}
+  description={`Consulta el precio de la luz hoy en Badajoz y Cáceres (${fechaHoyLegible}): precio actual ${horaActualData?.precioCentimos || '0'} c€/kWh, hora más barata (${hoy?.estadisticas?.precioMinimo?.rango} a ${hoy?.estadisticas?.precioMinimo?.centimos} c€) y tramos valle, llano y punta.`}
+>
+  <!-- Hero Section con Termómetro en Vivo -->
+  <section class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-white pt-10 pb-16 sm:pb-24 border-b border-slate-700/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Encabezado Editorial -->
+      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/10 border border-amber-400/30 text-amber-300 text-xs sm:text-sm font-semibold mb-4">
+          <Zap size={15} class="fill-current" />
+          <span>Tarifa regulada PVPC 2.0TD · Badajoz y Cáceres</span>
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
+          Precio de la luz hoy en <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300">Extremadura</span>
+        </h1>
+        <p class="mt-3 text-sm sm:text-base text-slate-300">
+          Valores oficiales de Red Eléctrica actualizados para hoy <strong class="text-white font-semibold">{fechaHoyLegible}</strong>. Consulta cuándo poner la lavadora o el aire y ahorra en tu factura.
+        </p>
+      </div>
+
+      <!-- Tarjeta Principal: Precio AHORA MISMO y Selector Hoy / Mañana -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch max-w-5xl mx-auto">
+        
+        <!-- Bloque Hora Actual -->
+        <div class="lg:col-span-7 bg-slate-950/80 border border-slate-700 rounded-3xl p-6 sm:p-8 backdrop-blur-md shadow-2xl flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute -right-8 -top-8 w-40 h-40 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+          <div>
+            <div class="flex items-center justify-between gap-4 mb-4">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-800 text-slate-300 border border-slate-700">
+                <Clock size={13} class="text-amber-400" />
+                <span>Ahora mismo ({horaActualData?.rango} h)</span>
+              </span>
+
+              {horaActualData?.nivel === 'barato' && (
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">
+                  <CheckCircle2 size={13} />
+                  <span>Hora favorable</span>
+                </span>
+              )}
+              {horaActualData?.nivel === 'medio' && (
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">
+                  Precio moderado
+                </span>
+              )}
+              {horaActualData?.nivel === 'caro' && (
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 flex items-center gap-1">
+                  <AlertCircle size={13} />
+                  <span>Hora cara (evitar)</span>
+                </span>
+              )}
+            </div>
+
+            <!-- Gran Cifra de Precio -->
+            <div class="flex items-baseline gap-2 my-2">
+              <span class="text-5xl sm:text-6xl font-black tracking-tight text-white font-tabular">
+                {horaActualData?.precioCentimos}
+              </span>
+              <span class="text-xl sm:text-2xl font-bold text-amber-400">
+                c€ / kWh
+              </span>
+            </div>
+            <p class="text-xs text-slate-400 mt-1 font-mono">
+              Equivalente a {horaActualData?.precioKwh} €/kWh ({horaActualData?.precioMwh} €/MWh en mercado mayorista)
+            </p>
+          </div>
+
+          <!-- Resumen de tramo regulado -->
+          <div class="mt-6 pt-5 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-300">
+            <div>
+              <span class="text-slate-400 block">Tramo regulado:</span>
+              <strong class="text-white uppercase font-bold text-sm tracking-wide">
+                Tramo {horaActualData?.tramo}
+              </strong>
+            </div>
+            <div class="text-right">
+              <span class="text-slate-400 block">Media del día:</span>
+              <strong class="text-amber-300 font-bold text-sm font-tabular">
+                {hoy?.estadisticas?.precioMedio?.centimos} c€/kWh
+              </strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloque Mínimo y Máximo de Hoy -->
+        <div class="lg:col-span-5 flex flex-col gap-4">
+          <!-- Más barata -->
+          <div class="flex-1 bg-emerald-950/40 border border-emerald-800/70 rounded-2xl p-5 flex items-center justify-between">
+            <div class="flex items-center gap-3.5">
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shrink-0">
+                <TrendingDown size={24} />
+              </div>
+              <div>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-400 block">
+                  Hora más barata hoy
+                </span>
+                <span class="text-sm font-extrabold text-white">
+                  De {hoy?.estadisticas?.precioMinimo?.rango} h
+                </span>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-2xl font-black text-emerald-300 font-tabular">
+                {hoy?.estadisticas?.precioMinimo?.centimos}
+              </span>
+              <span class="text-xs text-emerald-400/80 block">c€/kWh</span>
+            </div>
+          </div>
+
+          <!-- Más cara -->
+          <div class="flex-1 bg-rose-950/40 border border-rose-800/70 rounded-2xl p-5 flex items-center justify-between">
+            <div class="flex items-center gap-3.5">
+              <div class="w-12 h-12 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-400 flex items-center justify-center shrink-0">
+                <TrendingUp size={24} />
+              </div>
+              <div>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-rose-400 block">
+                  Hora más cara hoy
+                </span>
+                <span class="text-sm font-extrabold text-white">
+                  De {hoy?.estadisticas?.precioMaximo?.rango} h
+                </span>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-2xl font-black text-rose-300 font-tabular">
+                {hoy?.estadisticas?.precioMaximo?.centimos}
+              </span>
+              <span class="text-xs text-rose-400/80 block">c€/kWh</span>
+            </div>
+          </div>
+
+          <!-- Alerta de precios de mañana si existen -->
+          {manana ? (
+            <div class="bg-slate-900 border border-amber-500/40 rounded-2xl p-4 text-xs text-slate-300 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <Calendar size={16} class="text-amber-400 shrink-0" />
+                <span>Precios de <strong>mañana ({fechaMananaLegible})</strong> ya disponibles</span>
+              </div>
+              <a href="#manana-seccion" class="font-bold text-amber-400 hover:underline">
+                Ver mañana ↓
+              </a>
+            </div>
+          ) : (
+            <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-4 text-xs text-slate-400 flex items-center gap-2">
+              <Clock size={16} class="text-slate-500 shrink-0" />
+              <span>Precios de mañana disponibles a partir de las <strong>20:20 h</strong></span>
+            </div>
+          )}
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Curva Horaria de las 24 Horas de Hoy -->
+  <section id="horas-hoy" class="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+      <div>
+        <div class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-700 uppercase tracking-wider mb-1">
+          <BarChart3 size={15} />
+          <span>Curva horaria completa</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+          Precio de la luz hora a hora hoy ({fechaHoyLegible})
+        </h2>
+        <p class="text-slate-600 text-xs sm:text-sm mt-1">
+          Verde: horas más económicas · Amarillo: tramo medio · Rojo: horas de mayor demanda y coste
+        </p>
+      </div>
+
+      <!-- Leyenda de colores -->
+      <div class="flex items-center gap-3 text-xs font-semibold">
+        <span class="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+          <span>Favorable (&lt; {((hoy?.estadisticas?.precioMinimo?.centimos || 0) + 5).toFixed(1)} c€)</span>
+        </span>
+        <span class="inline-flex items-center gap-1.5 text-rose-700 bg-rose-50 px-2.5 py-1 rounded-md border border-rose-200">
+          <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+          <span>Evitar</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- Tabla / Rejilla interactiva de las 24 Horas -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
+      {hoy?.horas?.map((h: any) => {
+        const esHoraActual = h.hora === horaActualInt;
+        let badgeColor = "bg-white border-slate-200 text-slate-800 hover:border-slate-300";
+        let dotColor = "bg-amber-400";
+        let textColor = "text-slate-900";
+
+        if (h.nivel === "barato") {
+          badgeColor = "bg-emerald-50/60 border-emerald-200/80 hover:border-emerald-400";
+          dotColor = "bg-emerald-500";
+          textColor = "text-emerald-900";
+        } else if (h.nivel === "caro") {
+          badgeColor = "bg-rose-50/60 border-rose-200/80 hover:border-rose-400";
+          dotColor = "bg-rose-500";
+          textColor = "text-rose-900";
+        }
+
+        return (
+          <div
+            class={`relative rounded-2xl p-4 border transition-all text-center flex flex-col justify-between ${badgeColor} ${
+              esHoraActual ? "ring-2 ring-amber-500 shadow-md scale-[1.02]" : "shadow-xs"
+            }`}
+          >
+            {esHoraActual && (
+              <span class="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-amber-500 text-slate-950 text-[9px] font-black uppercase px-2 py-0.5 rounded-full tracking-wider shadow-xs">
+                Ahora
+              </span>
+            )}
+
+            <div>
+              <span class="font-mono text-xs font-bold text-slate-600 block">
+                {h.rango} h
+              </span>
+              <div class="mt-2">
+                <span class={`text-xl sm:text-2xl font-black font-tabular tracking-tight ${textColor}`}>
+                  {h.precioCentimos}
+                </span>
+                <span class="text-[10px] text-slate-600 block font-semibold">c€/kWh</span>
+              </div>
+            </div>
+
+            <div class="mt-3 pt-2 border-t border-slate-200/60 flex items-center justify-between text-[10px] font-semibold text-slate-600 uppercase">
+              <span class="flex items-center gap-1">
+                <span class={`w-1.5 h-1.5 rounded-full ${dotColor}`}></span>
+                <span>{h.tramo}</span>
+              </span>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- Precios de Mañana si están disponibles -->
+  {manana && (
+    <section id="manana-seccion" class="py-12 bg-slate-100 border-y border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+          <div>
+            <div class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-700 uppercase tracking-wider mb-1">
+              <Calendar size={15} />
+              <span>Avance de mañana</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+              Precios para mañana ({fechaMananaLegible})
+            </h2>
+            <p class="text-slate-600 text-xs sm:text-sm mt-1">
+              Planifica tus consumos para mañana antes de salir de casa o irte a dormir.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-4 text-xs">
+            <span class="font-bold text-slate-700">
+              Mín: <strong class="text-emerald-700 font-tabular">{manana.estadisticas.precioMinimo.centimos} c€</strong> ({manana.estadisticas.precioMinimo.rango} h)
+            </span>
+            <span class="font-bold text-slate-700">
+              Máx: <strong class="text-rose-700 font-tabular">{manana.estadisticas.precioMaximo.centimos} c€</strong> ({manana.estadisticas.precioMaximo.rango} h)
+            </span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
+          {manana.horas?.map((h: any) => {
+            let badge = "bg-white border-slate-200 text-slate-800";
+            if (h.nivel === "barato") badge = "bg-emerald-50/70 border-emerald-300 text-emerald-900";
+            if (h.nivel === "caro") badge = "bg-rose-50/70 border-rose-300 text-rose-900";
+
+            return (
+              <div class={`rounded-2xl p-4 border text-center flex flex-col justify-between ${badge}`}>
+                <span class="font-mono text-xs font-bold text-slate-600 block">{h.rango} h</span>
+                <div class="my-2">
+                  <span class="text-xl font-black font-tabular tracking-tight">{h.precioCentimos}</span>
+                  <span class="text-[10px] text-slate-600 block font-semibold">c€/kWh</span>
+                </div>
+                <span class="text-[10px] font-semibold text-slate-600 uppercase tracking-wider">{h.tramo}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Calculadora Extremeña de Consumos Reales -->
+  <section id="calculadora" class="py-16 sm:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl mb-12">
+      <div class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 uppercase tracking-wider mb-2">
+        <Zap size={15} />
+        <span>Calculadora adaptada a Extremadura</span>
+      </div>
+      <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
+        ¿Cuánto cuesta poner cada aparato en tu casa hoy?
+      </h2>
+      <p class="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
+        Calculamos el coste real por ciclo o por hora con los precios de hoy para los hábitos de climatización y electrodomésticos más comunes en Badajoz y Cáceres.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- 1. Aire Acondicionado (Verano Extremeño) -->
+      <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-700 flex items-center justify-center mb-4">
+          <Snowflake size={24} />
+        </div>
+        <h3 class="text-lg font-bold text-slate-900">Aire Acondicionado</h3>
+        <p class="text-xs text-slate-500 mt-1 mb-4">Split Inverter estándar (~1,2 kW)</p>
+        
+        <div class="space-y-3 pt-4 border-t border-slate-100 text-xs">
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">1 hora en hora barata:</span>
+            <strong class="text-emerald-700 font-bold font-tabular text-sm">
+              {(((hoy?.estadisticas?.precioMinimo?.kwh || 0.10) * 1.2)).toFixed(2)} €
+            </strong>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">1 hora en hora cara:</span>
+            <strong class="text-rose-700 font-bold font-tabular text-sm">
+              {(((hoy?.estadisticas?.precioMaximo?.kwh || 0.30) * 1.2)).toFixed(2)} €
+            </strong>
+          </div>
+          <p class="text-[11px] text-slate-500 italic mt-2">
+            *Diferencia de hasta {(0.8).toFixed(2)} € por tarde según tramo.
+          </p>
+        </div>
+      </div>
+
+      <!-- 2. Termo Eléctrico (Pueblos sin gas natural) -->
+      <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center mb-4">
+          <Flame size={24} />
+        </div>
+        <h3 class="text-lg font-bold text-slate-900">Termo Eléctrico (80L)</h3>
+        <p class="text-xs text-slate-500 mt-1 mb-4">Calentamiento diario (~2,5 kWh)</p>
+        
+        <div class="space-y-3 pt-4 border-t border-slate-100 text-xs">
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">Programado de noche/valle:</span>
+            <strong class="text-emerald-700 font-bold font-tabular text-sm">
+              {(((hoy?.estadisticas?.precioMinimo?.kwh || 0.10) * 2.5)).toFixed(2)} €
+            </strong>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">Encendido en hora punta:</span>
+            <strong class="text-rose-700 font-bold font-tabular text-sm">
+              {(((hoy?.estadisticas?.precioMaximo?.kwh || 0.30) * 2.5)).toFixed(2)} €
+            </strong>
+          </div>
+          <p class="text-[11px] text-slate-500 italic mt-2">
+            Ahorro de más de 12 €/mes usando un simple reloj temporizador.
+          </p>
+        </div>
+      </div>
+
+      <!-- 3. Lavadora (Ciclo Completo) -->
+      <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-12 h-12 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center mb-4">
+          <Tv size={24} />
+        </div>
+        <h3 class="text-lg font-bold text-slate-900">Lavadora (60 °C / Eco)</h3>
+        <p class="text-xs text-slate-500 mt-1 mb-4">Ciclo de lavado estándar (~1,4 kWh)</p>
+        
+        <div class="space-y-3 pt-4 border-t border-slate-100 text-xs">
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">Ponerla en hora barata:</span>
+            <strong class="text-emerald-700 font-bold font-tabular text-sm">
+              {(((hoy?.estadisticas?.precioMinimo?.kwh || 0.10) * 1.4)).toFixed(2)} €
+            </strong>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">Ponerla en hora punta:</span>
+            <strong class="text-rose-700 font-bold font-tabular text-sm">
+              {(((hoy?.estadisticas?.precioMaximo?.kwh || 0.30) * 1.4)).toFixed(2)} €
+            </strong>
+          </div>
+          <p class="text-[11px] text-slate-500 italic mt-2">
+            Mover 4 lavadoras a la semana a tramo valle supone un ahorro perceptible.
+          </p>
+        </div>
+      </div>
+
+      <!-- 4. Vehículo Eléctrico / Híbrido Enchufable -->
+      <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-4">
+          <Car size={24} />
+        </div>
+        <h3 class="text-lg font-bold text-slate-900">Coche Eléctrico (100 km)</h3>
+        <p class="text-xs text-slate-500 mt-1 mb-4">Consumo de 15 kWh para 100 km</p>
+        
+        <div class="space-y-3 pt-4 border-t border-slate-100 text-xs">
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">Carga nocturna (hora valle):</span>
+            <strong class="text-emerald-700 font-bold font-tabular text-sm">
+              {(((hoy?.estadisticas?.precioMinimo?.kwh || 0.10) * 15)).toFixed(2)} €
+            </strong>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-600">Carga diurna descontrolada:</span>
+            <strong class="text-rose-700 font-bold font-tabular text-sm">
+              {(((hoy?.estadisticas?.precioMaximo?.kwh || 0.30) * 15)).toFixed(2)} €
+            </strong>
+          </div>
+          <p class="text-[11px] text-slate-500 italic mt-2">
+            Frente a los ~9 € de diésel o gasolina por cada 100 km.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección Especial: El Papel Energético de Extremadura -->
+  <section id="extremadura-energia" class="py-16 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-6">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold uppercase tracking-wider mb-4 border border-emerald-500/30">
+            <SunMedium size={14} />
+            <span>Extremadura, potencia limpia</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-black tracking-tight text-white leading-tight">
+            ¿Sabías que Extremadura genera más de 4 veces la electricidad que consume?
+          </h2>
+          <p class="mt-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+            Nuestra comunidad autónoma es uno de los principales motores energéticos de España. Con los embalses hidroeléctricos del Tajo y el Guadiana (Alcántara, Cedillo, Valdecañas), la central nuclear de Almaraz y gigantes fotovoltaicos como Núñez de Balboa (Usagre) o Talayuela, Extremadura exporta la inmensa mayoría de su energía limpia a las grandes urbes peninsulares.
+          </p>
+          <div class="grid grid-cols-2 gap-4 mt-8">
+            <div class="p-4 rounded-2xl bg-slate-800/80 border border-slate-700">
+              <span class="text-3xl font-black text-amber-400 block">+400 %</span>
+              <span class="text-xs text-slate-400">Balance de generación frente a la demanda regional</span>
+            </div>
+            <div class="p-4 rounded-2xl bg-slate-800/80 border border-slate-700">
+              <span class="text-3xl font-black text-emerald-400 block">Líder Solar</span>
+              <span class="text-xs text-slate-400">Comunidad con mayor potencia fotovoltaica instalada</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:col-span-6 bg-slate-950 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl">
+          <h3 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
+            <ShieldCheck size={20} class="text-emerald-400" />
+            <span>¿Por qué pagamos el mismo precio si producimos más?</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed space-y-3">
+            El sistema eléctrico español opera mediante un <strong>mercado marginalista único peninsular</strong> (OMIE / REE). Toda la electricidad generada entra en una red común y el precio del kWh se fija para todos los consumidores de la Península por igual mediante casación horaria.
+          </p>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mt-3">
+            Por eso, la mejor forma de aprovechar la abundancia solar en el campo extremeño es conocer los tramos valle del mediodía y programar tus electrodomésticos en esas ventanas de bajo coste.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dudas Frecuentes (FAQS) -->
+  <section id="faqs" class="py-16 sm:py-24 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-1.5 text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
+        <HelpCircle size={15} />
+        <span>Preguntas Frecuentes</span>
+      </div>
+      <h2 class="text-3xl font-black text-slate-900 tracking-tight">
+        Todo lo que necesitas saber sobre el precio de la luz
+      </h2>
+    </div>
+
+    <div class="space-y-4">
+      <details class="group bg-white border border-slate-200 rounded-2xl p-5 open:ring-2 open:ring-amber-500/20 transition-all">
+        <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm sm:text-base">
+          <span>¿A qué hora se publican los precios de mañana?</span>
+          <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
+          Red Eléctrica de España (REE) publica los precios definitivos para el día siguiente todos los días entre las <strong>20:15 y las 20:30 horas</strong>. Nuestra plataforma actualiza los datos automáticamente en cuanto se emiten.
+        </p>
+      </details>
+
+      <details class="group bg-white border border-slate-200 rounded-2xl p-5 open:ring-2 open:ring-amber-500/20 transition-all">
+        <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm sm:text-base">
+          <span>¿Qué diferencia hay entre la tarifa PVPC y el mercado libre?</span>
+          <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
+          El <strong>PVPC (Precio Voluntario para el Pequeño Consumidor)</strong> es la tarifa regulada por el Gobierno de España, donde el precio del kWh cambia cada hora según el coste real de la energía en el mercado mayorista. En el mercado libre, pactas un precio fijo o indexado con una comercializadora privada mediante contrato anual.
+        </p>
+      </details>
+
+      <details class="group bg-white border border-slate-200 rounded-2xl p-5 open:ring-2 open:ring-amber-500/20 transition-all">
+        <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm sm:text-base">
+          <span>¿Cuáles son los tramos horarios oficiales (Valle, Llano y Punta)?</span>
+          <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <div class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed space-y-1">
+          <p><strong>Valle (más barato):</strong> De 00:00 a 08:00 h todos los días de diario, y las 24 horas durante fines de semana y festivos nacionales.</p>
+          <p><strong>Llano (medio):</strong> De 08:00 a 10:00 h, de 14:00 a 18:00 h y de 22:00 a 24:00 h.</p>
+          <p><strong>Punta (más caro):</strong> De 10:00 a 14:00 h y de 18:00 a 22:00 h de lunes a viernes.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+</BaseLayout>

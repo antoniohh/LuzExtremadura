@@ -1,0 +1,179 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CookieBanner from "../components/CookieBanner.astro";
+import {
+  SITE,
+  SITE_NAME,
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  AUTHOR_NAME,
+  AUTHOR_URL,
+  absoluteUrl,
+  withBase,
+} from "../lib/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalPath?: string;
+  ogType?: "website" | "article";
+}
+
+const {
+  title = "Precio de la Luz Hoy en Extremadura (Badajoz y Cáceres) | Horas y PVPC 2.0TD",
+  description = SITE_DESCRIPTION,
+  canonicalPath = "",
+  ogType = "website",
+} = Astro.props;
+
+const canonical = absoluteUrl(canonicalPath);
+const ogImage = absoluteUrl("assets/og-image.png");
+const logoUrl = absoluteUrl("assets/logo.svg");
+
+// Schema.org Structured Data
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      url: SITE,
+      name: SITE_NAME,
+      alternateName: "Precio Luz Hoy Extremadura",
+      description: SITE_DESCRIPTION,
+      inLanguage: "es-ES",
+      publisher: {
+        "@type": "Person",
+        name: AUTHOR_NAME,
+        url: AUTHOR_URL,
+        image: logoUrl,
+      },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      url: canonical,
+      name: title,
+      description: description,
+      datePublished: "2026-11-02T20:00:00+01:00",
+      dateModified: new Date().toISOString(),
+      isPartOf: { "@id": `${SITE}/#website` },
+      inLanguage: "es-ES",
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: ogImage,
+        width: 1200,
+        height: 630,
+      },
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <!-- Google Consent Mode v2 & Google tag (gtag.js) -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      var savedConsent = null;
+      try {
+        savedConsent = localStorage.getItem("cookie_consent_choice");
+      } catch (e) {}
+
+      // 1. Regla específica para EEE + Reino Unido + Suiza (bloqueo previo RGPD)
+      gtag("consent", "default", {
+        analytics_storage: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        wait_for_update: 500,
+        region: [
+          "AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR",
+          "DE", "GR", "HU", "IS", "IE", "IT", "LV", "LI", "LT", "LU",
+          "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "ES", "SE",
+          "GB", "CH",
+        ],
+      });
+
+      // 2. Regla global para el resto del mundo
+      gtag("consent", "default", {
+        analytics_storage: "granted",
+        ad_storage: "granted",
+        ad_user_data: "granted",
+        ad_personalization: "granted",
+      });
+
+      // 3. Si el usuario ya decidió en visitas anteriores, lanzar update
+      if (savedConsent === "all") {
+        gtag("consent", "update", {
+          analytics_storage: "granted",
+          ad_storage: "granted",
+          ad_user_data: "granted",
+          ad_personalization: "granted",
+        });
+      } else if (savedConsent === "necessary") {
+        gtag("consent", "update", {
+          analytics_storage: "denied",
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+        });
+      }
+
+      gtag("js", new Date());
+      gtag("config", "G-YSZC0MQCHF", {
+        anonymize_ip: true,
+      });
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YSZC0MQCHF"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={SITE_KEYWORDS.join(", ")} />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="author" content={AUTHOR_NAME} />
+
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href={withBase("assets/favicon.svg")} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Geo Tags Extremadura -->
+    <meta name="geo.region" content="ES-EX" />
+    <meta name="geo.placename" content="Extremadura, Badajoz, Cáceres, Mérida" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+
+  <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+    <CookieBanner />
+  </body>
+</html>
