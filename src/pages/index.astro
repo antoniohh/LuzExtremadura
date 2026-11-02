@@ -605,6 +605,26 @@ function fmtKwh(val: number | undefined) {
           <p><strong>Punta (más caro):</strong> De 10:00 a 14:00 h y de 18:00 a 22:00 h de lunes a viernes.</p>
         </div>
       </details>
+
+      <details class="group bg-white border border-slate-200 rounded-2xl p-5 open:ring-2 open:ring-amber-500/20 transition-all">
+        <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm sm:text-base">
+          <span>¿Por qué hay horas con precios negativos o cercanos a cero?</span>
+          <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
+          Ocurre habitualmente en las horas centrales del día (entre las 11:00 y las 16:00 h) cuando la generación renovable (especialmente la energía solar fotovoltaica en regiones como Extremadura o la eólica) supera con creces la demanda eléctrica de la Península. La energía en el mercado mayorista llega a cotizar a 0 € o en negativo, haciendo que el consumidor solo pague la parte proporcional de peajes y cargos.
+        </p>
+      </details>
+
+      <details class="group bg-white border border-slate-200 rounded-2xl p-5 open:ring-2 open:ring-amber-500/20 transition-all">
+        <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between text-sm sm:text-base">
+          <span>¿El precio mostrado incluye impuestos (IVA e Impuesto Eléctrico)?</span>
+          <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+        </summary>
+        <p class="mt-3 text-xs sm:text-sm text-slate-600 leading-relaxed">
+          El PVPC publicado por Red Eléctrica de España refleja el <strong>término de energía activo completo</strong> (coste mayorista + peajes de acceso regulados + margen de comercialización). En la factura mensual se añaden el término de potencia contratada (kW fijos), el alquiler del contador y los impuestos vigentes (IVA general y el Impuesto Especial sobre la Electricidad).
+        </p>
+      </details>
     </div>
   </section>
 </BaseLayout>
