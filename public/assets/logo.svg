@@ -1,9 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" fill="none">
-  <!-- Icono Rayo -->
-  <rect x="4" y="4" width="56" height="56" rx="14" fill="#0f172a" />
-  <path d="M35 10L17 35H32L28 54L47 29H32L35 10Z" fill="#eab308" stroke="#ca8a04" stroke-width="1.5" stroke-linejoin="round"/>
-  <!-- Texto Luz Extremadura -->
-  <text x="72" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="800" fill="#0f172a">LUZ</text>
-  <text x="124" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="800" fill="#047857">EXTREMADURA</text>
-  <text x="73" y="48" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" fill="#64748b" letter-spacing="1.5">PRECIO PVPC HOY · BADAJOZ Y CÁCERES</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 64" fill="none" role="img" aria-label="Luz Extremadura">
+  <defs>
+    <radialGradient id="logoBgGlow" cx="50%" cy="48%" r="58%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="65%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </radialGradient>
+    <linearGradient id="logoBoltGrad" x1="18" y1="8" x2="48" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fde047" />
+      <stop offset="50%" stop-color="#eab308" />
+      <stop offset="100%" stop-color="#ca8a04" />
+    </linearGradient>
+  </defs>
+
+  <!-- Icon Mark Rayo -->
+  <g transform="translate(4, 4)">
+    <rect width="56" height="56" rx="14" fill="url(#logoBgGlow)" />
+    <rect x="0.75" y="0.75" width="54.5" height="54.5" rx="13.25" stroke="#eab308" stroke-opacity="0.35" stroke-width="1.5" />
+    <!-- Rayo electrico centrado -->
+    <path
+      d="M32 8L16 32H29L25 48L42 24H29L32 8Z"
+      fill="url(#logoBoltGrad)"
+      stroke="#ca8a04"
+      stroke-width="1.5"
+      stroke-linejoin="round"
+      stroke-linecap="round"
+    />
+    <!-- Detalle verde Extremadura -->
+    <circle cx="25" cy="48" r="2.5" fill="#047857" />
+  </g>
+
+  <!-- Wordmark con espacio holgado sin cortes -->
+  <text x="74" y="32" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#0f172a" letter-spacing="-0.5">Luz</text>
+  <text x="118" y="32" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#047857" letter-spacing="1">EXTREMADURA</text>
+  <text x="75" y="49" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#64748b" letter-spacing="1.2">PRECIO PVPC HOY · BADAJOZ Y CÁCERES</text>
+  <circle cx="270" cy="26" r="3.2" fill="#eab308" />
 </svg>
