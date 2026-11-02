@@ -13,7 +13,7 @@ import { withBase } from "../lib/site";
   <div class="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 sm:gap-6">
     <div class="flex items-start gap-3.5 min-w-0 flex-1">
       <div
-        class="w-11 h-11 rounded-xl bg-amber-950 border border-amber-700/70 text-amber-400 flex items-center justify-center shrink-0 mt-0.5"
+        class="w-11 h-11 rounded-xl bg-amber-950 border border-amber-600/70 text-amber-400 flex items-center justify-center shrink-0 mt-0.5"
         aria-hidden="true"
       >
         <Cookie size={24} />
@@ -23,7 +23,7 @@ import { withBase } from "../lib/site";
           Uso de cookies en Luz Extremadura
         </p>
         <p class="text-slate-200 max-w-4xl">
-          Utilizamos únicamente cookies analíticas opcionales (Google Analytics 4) para medir de forma anónima y agregada las consultas de precios de la luz en Extremadura y mejorar la herramienta. No mostramos publicidad ni compartimos datos personales. Puedes aceptar, rechazar o configurar tu elección en cualquier momento.
+          Utilizamos únicamente cookies analíticas opcionales (Google Analytics 4) para medir de forma anónima y agregada las consultas del precio de la luz en Extremadura y mejorar la herramienta. No mostramos publicidad ni compartimos datos personales. Puedes aceptar, rechazar o configurar tu elección en cualquier momento.
           <a href={withBase("cookies/")} class="font-bold text-amber-400 hover:text-white underline ml-1">
             Política de cookies
           </a>.
@@ -35,7 +35,7 @@ import { withBase } from "../lib/site";
       <button
         type="button"
         id="cookie-btn-accept"
-        class="px-4 py-2.5 rounded-xl bg-amber-500 text-slate-950 hover:bg-amber-400 hover:bg-sky-500 text-white text-xs sm:text-sm font-bold transition-colors cursor-pointer text-center"
+        class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs sm:text-sm font-bold transition-colors cursor-pointer text-center shadow-xs"
       >
         Aceptar todas
       </button>
@@ -94,7 +94,7 @@ import { withBase } from "../lib/site";
     <div class="p-6 overflow-y-auto space-y-5 text-sm text-slate-700">
       <p class="leading-relaxed">
         En <strong>Luz Extremadura</strong> respetamos tu privacidad. A continuación puedes activar o desactivar las cookies analíticas opcionales. Tienes toda la información técnica detallada en nuestra
-        <a href={withBase("cookies/")} class="font-bold text-sky-700 hover:text-sky-900 underline">
+        <a href={withBase("cookies/")} class="font-bold text-amber-600 hover:text-amber-700 underline">
           Política de cookies
         </a>.
       </p>
@@ -111,7 +111,7 @@ import { withBase } from "../lib/site";
             </span>
           </div>
           <p class="text-xs text-slate-700 leading-relaxed">
-            Imprescindibles para el funcionamiento de la página y para recordar tu decisión sobre este aviso de privacidad en <code>localStorage</code> (<code>combustible_extremadura_cookie_consent</code>). No recopilan ningún dato personal.
+            Imprescindibles para el funcionamiento de la página y para recordar tu decisión sobre este aviso de privacidad en <code>localStorage</code> (<code>luz_extremadura_cookie_consent</code>). No recopilan ningún dato personal.
           </p>
         </div>
 
@@ -122,7 +122,7 @@ import { withBase } from "../lib/site";
               <h3 class="font-extrabold text-slate-900 text-sm">
                 Cookies analíticas (Google Analytics 4)
               </h3>
-              <span class="inline-block mt-0.5 px-2 py-0.5 text-[11px] font-bold rounded-full bg-sky-100 text-sky-900 border border-sky-200">
+              <span class="inline-block mt-0.5 px-2 py-0.5 text-[11px] font-bold rounded-full bg-amber-100 text-amber-900 border border-amber-200">
                 Opcionales
               </span>
             </div>
@@ -134,7 +134,7 @@ import { withBase } from "../lib/site";
             </label>
           </div>
           <p class="text-xs text-slate-700 leading-relaxed mt-1">
-            Nos ayudan a entender de forma anónima cuántas personas consultan el precio diario de la gasolina y el diésel en Badajoz y Cáceres mediante Google Consent Mode v2 (<code>_ga</code> y <code>_ga_YSZC0MQCHF</code> con IP anonimizada).
+            Nos ayudan a entender de forma anónima cuántas personas consultan el precio de la luz y las horas punta/valle en Badajoz y Cáceres mediante Google Consent Mode v2 (<code>_ga</code> y <code>_ga_HEKMQY6G5E</code> con IP anonimizada).
           </p>
         </div>
       </div>
@@ -145,7 +145,7 @@ import { withBase } from "../lib/site";
       <button
         type="button"
         id="cookie-modal-save"
-        class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-sky-700 hover:bg-amber-500 text-slate-950 hover:bg-amber-400 text-white text-xs sm:text-sm font-bold transition-colors cursor-pointer"
+        class="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs sm:text-sm font-bold transition-colors cursor-pointer"
       >
         <Check size={16} aria-hidden="true" />
         <span>Guardar selección</span>
@@ -160,9 +160,9 @@ import { withBase } from "../lib/site";
       <button
         type="button"
         id="cookie-modal-reject"
-        class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-200 text-slate-800 border border-slate-300 text-xs sm:text-sm font-bold transition-colors cursor-pointer"
+        class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 text-xs sm:text-sm font-bold transition-colors cursor-pointer"
       >
-        Rechazar todas
+        Rechazar no esenciales
       </button>
     </div>
   </div>
@@ -175,17 +175,18 @@ import { withBase } from "../lib/site";
     width: 48px;
     height: 26px;
     flex-shrink: 0;
-    cursor: pointer;
   }
 
   .cookie-switch input {
     opacity: 0;
     width: 0;
     height: 0;
+    position: absolute;
   }
 
   .cookie-switch__slider {
     position: absolute;
+    cursor: pointer;
     inset: 0;
     background-color: #cbd5e1;
     border-radius: 26px;
@@ -206,11 +207,11 @@ import { withBase } from "../lib/site";
   }
 
   .cookie-switch input:checked + .cookie-switch__slider {
-    background-color: #0369a1;
+    background-color: #d97706;
   }
 
   .cookie-switch input:focus-visible + .cookie-switch__slider {
-    outline: 2px solid #0284c7;
+    outline: 2px solid #eab308;
     outline-offset: 2px;
   }
 
@@ -221,7 +222,7 @@ import { withBase } from "../lib/site";
 
 <script>
   (function () {
-    const STORAGE_KEY = "combustible_extremadura_cookie_consent";
+    const STORAGE_KEY = "luz_extremadura_cookie_consent";
     const banner = document.getElementById("cookie-banner");
     const modal = document.getElementById("cookie-modal");
     const modalBox = modal?.querySelector(".cookie-modal-box") as HTMLElement | null;
@@ -236,13 +237,17 @@ import { withBase } from "../lib/site";
     };
 
     const applyConsent = (isGranted: boolean) => {
+      const state = isGranted ? "granted" : "denied";
       try {
-        localStorage.setItem(STORAGE_KEY, isGranted ? "granted" : "denied");
+        localStorage.setItem(STORAGE_KEY, state);
       } catch {}
 
       if (typeof (window as any).gtag === "function") {
         (window as any).gtag("consent", "update", {
-          analytics_storage: isGranted ? "granted" : "denied"
+          analytics_storage: state,
+          ad_storage: state,
+          ad_user_data: state,
+          ad_personalization: state,
         });
       }
 
@@ -318,7 +323,7 @@ import { withBase } from "../lib/site";
 
     document.addEventListener("click", (e) => {
       const target = e.target as HTMLElement | null;
-      const trigger = target?.closest("[data-open-cookie-preferences]");
+      const trigger = target?.closest("[data-cookie-open-modal],[data-open-cookie-preferences]");
       if (trigger) {
         e.preventDefault();
         openModal();

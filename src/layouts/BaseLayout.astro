@@ -73,7 +73,7 @@ const jsonLd = {
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
   <head>
     <!-- Google Consent Mode v2 & Google tag (gtag.js) -->
     <script is:inline>
@@ -84,12 +84,14 @@ const jsonLd = {
 
       var savedConsent = null;
       try {
-        savedConsent = localStorage.getItem("cookie_consent_choice");
+        savedConsent = localStorage.getItem("luz_extremadura_cookie_consent");
       } catch (e) {}
 
-      // 1. Regla específica para EEE + Reino Unido + Suiza (bloqueo previo RGPD)
+      var isGranted = savedConsent === "granted";
+
+      // 1. Regla regional estricta EEE + Reino Unido + Suiza (RGPD / AEPD)
       gtag("consent", "default", {
-        analytics_storage: "denied",
+        analytics_storage: isGranted ? "granted" : "denied",
         ad_storage: "denied",
         ad_user_data: "denied",
         ad_personalization: "denied",
@@ -102,7 +104,7 @@ const jsonLd = {
         ],
       });
 
-      // 2. Regla global para el resto del mundo
+      // 2. Regla global por defecto para el resto del mundo
       gtag("consent", "default", {
         analytics_storage: "granted",
         ad_storage: "granted",
@@ -110,29 +112,22 @@ const jsonLd = {
         ad_personalization: "granted",
       });
 
-      // 3. Si el usuario ya decidió en visitas anteriores, lanzar update
-      if (savedConsent === "all") {
+      // 3. Si ya existe decisión previa guardada, sincronizar con update
+      if (savedConsent === "granted" || savedConsent === "denied") {
         gtag("consent", "update", {
-          analytics_storage: "granted",
-          ad_storage: "granted",
-          ad_user_data: "granted",
-          ad_personalization: "granted",
-        });
-      } else if (savedConsent === "necessary") {
-        gtag("consent", "update", {
-          analytics_storage: "denied",
-          ad_storage: "denied",
-          ad_user_data: "denied",
-          ad_personalization: "denied",
+          analytics_storage: savedConsent,
+          ad_storage: savedConsent === "granted" ? "granted" : "denied",
+          ad_user_data: savedConsent === "granted" ? "granted" : "denied",
+          ad_personalization: savedConsent === "granted" ? "granted" : "denied",
         });
       }
 
       gtag("js", new Date());
-      gtag("config", "G-YSZC0MQCHF", {
+      gtag("config", "G-HEKMQY6G5E", {
         anonymize_ip: true,
       });
     </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YSZC0MQCHF"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HEKMQY6G5E"></script>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
