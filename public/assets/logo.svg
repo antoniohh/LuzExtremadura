@@ -1,24 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 64" fill="none" role="img" aria-label="Luz Extremadura">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100" fill="none" role="img" aria-label="Luz Extremadura">
   <defs>
     <radialGradient id="logoBgGlow" cx="50%" cy="48%" r="58%">
       <stop offset="0%" stop-color="#1e293b" />
       <stop offset="65%" stop-color="#0f172a" />
       <stop offset="100%" stop-color="#020617" />
     </radialGradient>
-    <linearGradient id="logoBoltGrad" x1="18" y1="8" x2="48" y2="56" gradientUnits="userSpaceOnUse">
+    <linearGradient id="logoBoltGrad" x1="28" y1="20" x2="66" y2="80" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#fde047" />
       <stop offset="50%" stop-color="#eab308" />
       <stop offset="100%" stop-color="#ca8a04" />
     </linearGradient>
   </defs>
 
-  <!-- Icon Mark Rayo -->
-  <g transform="translate(4, 4)">
-    <rect width="56" height="56" rx="14" fill="url(#logoBgGlow)" />
-    <rect x="0.75" y="0.75" width="54.5" height="54.5" rx="13.25" stroke="#eab308" stroke-opacity="0.35" stroke-width="1.5" />
+  <!-- Isotipo Rayo en caja 64x64 con margen de seguridad -->
+  <g transform="translate(15, 18)">
+    <rect width="64" height="64" rx="16" fill="url(#logoBgGlow)" />
+    <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="15.25" stroke="#eab308" stroke-opacity="0.4" stroke-width="1.5" />
     <!-- Rayo electrico centrado -->
     <path
-      d="M32 8L16 32H29L25 48L42 24H29L32 8Z"
+      d="M36 10L18 36H33L29 54L48 27H33L36 10Z"
       fill="url(#logoBoltGrad)"
       stroke="#ca8a04"
       stroke-width="1.5"
@@ -26,12 +26,11 @@
       stroke-linecap="round"
     />
     <!-- Detalle verde Extremadura -->
-    <circle cx="25" cy="48" r="2.5" fill="#047857" />
+    <circle cx="29" cy="54" r="3" fill="#047857" />
   </g>
 
-  <!-- Wordmark con espacio holgado sin cortes -->
-  <text x="74" y="32" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#0f172a" letter-spacing="-0.5">Luz</text>
-  <text x="118" y="32" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#047857" letter-spacing="1">EXTREMADURA</text>
-  <text x="75" y="49" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="9.5" font-weight="700" fill="#64748b" letter-spacing="1.2">PRECIO PVPC HOY · BADAJOZ Y CÁCERES</text>
-  <circle cx="270" cy="26" r="3.2" fill="#eab308" />
+  <!-- Texto con 150px de margen derecho de seguridad (el texto termina en x=375 aprox) -->
+  <text x="96" y="50" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="900" fill="#0f172a" letter-spacing="-0.5">Luz</text>
+  <text x="150" y="50" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="900" fill="#047857" letter-spacing="0.5">EXTREMADURA</text>
+  <text x="97" y="74" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#64748b" letter-spacing="1.5">PRECIO PVPC HOY · BADAJOZ Y CÁCERES</text>
 </svg>
