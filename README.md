@@ -64,7 +64,8 @@ npm run preview
 LuzExtremadura/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml               # Despliegue diario a las 20:30 h y 06:00 h en GitHub Pages
+│       ├── deploy.yml               # Despliegue diario a las 20:30 h y 06:00 h en GitHub Pages
+│       └── release.yml              # Empaquetado ZIP y publicación de release en tags v*
 ├── docs/
 │   ├── guia-api-esios-ree.md        # Documentación técnica de la API oficial de Red Eléctrica
 │   └── sesion-desarrollo.md         # Registro de decisiones y arquitectura
@@ -85,9 +86,9 @@ LuzExtremadura/
 │   ├── site.webmanifest             # PWA Manifest
 │   └── sitemap.xml
 ├── release/
-│   ├── RELEASE_NOTES_v1.0.0.md      # Notas detalladas de la release v1.0.0
-│   ├── luz-extremadura-v1.0.0.zip   # Paquete comprimido de la release
-│   └── luz-extremadura-v1.0.0.zip.sha256
+│   ├── RELEASE_NOTES_v1.0.1.md      # Notas detalladas de la release v1.0.1
+│   ├── luz-extremadura-v1.0.1.zip   # Paquete comprimido de producción
+│   └── luz-extremadura-v1.0.1.zip.sha256
 ├── scripts/
 │   └── actualizar_precios_luz.mjs   # Extractor del PVPC desde e·sios archive 70
 ├── src/
@@ -107,8 +108,42 @@ LuzExtremadura/
 │   └── styles/
 │       ├── base.css                 # Tokens semánticos de diseño
 │       └── global.css
+├── .nvmrc
 ├── astro.config.mjs
 ├── CHANGELOG.md                     # Historial de versiones del proyecto
+├── LICENSE                          # Licencia MIT
 ├── package.json
 └── tsconfig.json
 ```
+
+---
+
+## 🌐 Despliegue en GitHub Pages (`luz.antoniohorrillo.com`)
+
+El repositorio está configurado para desplegarse automáticamente bajo el dominio personalizado `https://luz.antoniohorrillo.com/`:
+
+1. Sube los cambios a la rama `main`.
+2. En GitHub, entra en **Settings → Pages** y en **Build and deployment** selecciona **GitHub Actions**.
+3. Configura un registro DNS `CNAME` para `luz.antoniohorrillo.com` apuntando a `antoniohh.github.io`.
+4. El workflow `.github/workflows/deploy.yml` se ejecuta automáticamente en cada `push` a `main` y todos los días a las **20:30 CET (19:30 UTC)** para publicar los precios del día siguiente y a las **06:00 CET** como refresco matinal.
+
+---
+
+## 📦 Control de Versiones
+
+Versión actual: **1.0.1** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
+
+| Versión | Fecha | Cambios principales |
+|---|---|---|
+| **1.0.1** | 2026-11-02 | Navegación global multiruta (`/#`), menú móvil desplegable, unificación tipográfica responsiva de encabezados `<h2>`, protección de badge `PVPC REE` en móvil y workflow de GitHub Releases |
+| 1.0.0 | 2026-11-02 | Lanzamiento inicial: precios diarios y de mañana desde Red Eléctrica (e·sios archive 70), semáforo 24h, tramos valle/llano/punta, calculadora de consumo extremeño, dossier solar y Consent Mode v2 |
+
+El workflow `.github/workflows/release.yml` compila el sitio y adjunta automáticamente el paquete `luz-extremadura-v1.0.1.zip` al publicar una etiqueta `v*` en GitHub.
+
+---
+
+## 📄 Licencia y Autoría
+
+Desarrollado por **[Antonio Horrillo](https://antoniohorrillo.com)** ([github.com/antoniohh](https://github.com/antoniohh)).
+
+Este proyecto se distribuye bajo la Licencia **MIT**. Consulta el archivo [LICENSE](LICENSE) para más detalles. Los datos de precios de la electricidad proceden del archivo oficial de datos abiertos de Red Eléctrica de España (REE / e·sios).
