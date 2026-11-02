@@ -206,6 +206,7 @@ const jsonLd = {
     <meta name="author" content={AUTHOR_NAME} />
 
     <link rel="canonical" href={canonical} />
+    <link rel="manifest" href={withBase("site.webmanifest")} />
     <link rel="sitemap" type="application/xml" href={withBase("sitemap.xml")} />
     <link rel="icon" type="image/svg+xml" href={withBase("assets/favicon.svg")} />
     <link rel="apple-touch-icon" sizes="180x180" href={withBase("assets/apple-touch-icon.png")} />
@@ -238,12 +239,35 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </head>
 
-  <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans">
+  <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans overflow-x-hidden max-w-full">
     <Header />
-    <main class="flex-1">
+    <main class="flex-1 w-full max-w-full overflow-x-hidden">
       <slot />
     </main>
     <Footer />
     <CookieBanner />
+
+    <!-- Registro de Service Worker para soporte PWA y botón de instalación en Chrome -->
+    <script is:inline>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then(function () {
+              // Service Worker registrado correctamente
+            })
+            .catch(function () {});
+        });
+      }
+
+      // Captura del evento beforeinstallprompt para permitir instalación PWA fluida
+      window.addEventListener("beforeinstallprompt", function (e) {
+        window.deferredPrompt = e;
+        var installBtn = document.getElementById("pwa-install-btn");
+        if (installBtn) {
+          installBtn.classList.remove("hidden");
+        }
+      });
+    </script>
   </body>
 </html>

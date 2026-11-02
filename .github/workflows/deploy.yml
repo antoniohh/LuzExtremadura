@@ -2,8 +2,8 @@ name: Build y Despliegue en GitHub Pages
 
 on:
   schedule:
-    # Ejecución diaria a las 20:30 CET (19:30 UTC en invierno) para recoger los precios de mañana
-    - cron: '30 19 * * *'
+    # Ejecución diaria a las 21:30 CET (20:30 UTC en invierno) para recoger los precios de mañana
+    - cron: '30 20 * * *'
     # Ejecución de seguridad diaria a las 06:00 CET (05:00 UTC) para refrescar el día en curso
     - cron: '0 5 * * *'
   push:

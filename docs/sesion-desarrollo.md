@@ -34,7 +34,7 @@ El proyecto nace con el propósito de trasladar el modelo de éxito, rendimiento
 - Etiqueta de Google Analytics 4: **`G-HEKMQY6G5E`** con anonimización de IP activa.
 
 ### 2.4. Automatización con GitHub Actions
-- Cron diario a las **20:30 CET** (19:30 UTC en invierno) para capturar los precios del día siguiente recién emitidos por REE.
+- Cron diario a las **21:30 CET** (20:30 UTC en invierno) para capturar los precios del día siguiente recién emitidos por REE.
 - Cron diario de respaldo a las **06:00 CET** (05:00 UTC en invierno).
 - Despliegue automático en GitHub Pages bajo el dominio personalizado `luz.antoniohorrillo.com`.
 

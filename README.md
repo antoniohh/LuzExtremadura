@@ -19,7 +19,7 @@ Aplicación web estática (SPA) para la consulta diaria y en tiempo real del **p
 
 1. **Termómetro en Vivo (Hora Actual) y Curva Horaria 24h:**
    - Captura diaria de los precios horarios oficiales desde el archivo de **Red Eléctrica de España (REE / e·sios archive 70)**.
-   - Compilación y publicación automática todos los días a las **20:30 CET (19:30 UTC)** mediante GitHub Actions (`.github/workflows/deploy.yml`) para publicar los precios de mañana recién emitidos por REE, con refresco de seguridad diario a las **06:00 CET**.
+   - Compilación y publicación automática todos los días a las **21:30 CET (20:30 UTC)** mediante GitHub Actions (`.github/workflows/deploy.yml`) para publicar los precios de mañana recién emitidos por REE, con refresco de seguridad diario a las **06:00 CET**.
    - Semáforo energético de 3 colores con alto contraste: **Barata** (Verde), **Media** (Amarillo) y **Cara** (Rojo).
    - Tramos regulados oficiales (**Valle**, **Llano** y **Punta**) identificados hora a hora con precios en **€/kWh**.
 2. **Precios para Mañana (Anticipación Diaria):**
@@ -69,7 +69,7 @@ npm run preview
 LuzExtremadura/
 ├── .github/
 │   └── workflows/
-│       ├── deploy.yml                             # Build diario a las 20:30 h y 06:00 h y deploy en Pages
+│       ├── deploy.yml                             # Build diario a las 21:30 h y 06:00 h y deploy en Pages
 │       └── release.yml                            # Empaquetado ZIP y publicación de release en tags v*
 ├── docs/
 │   ├── guia-api-esios-ree.md                      # Documentación técnica de la API oficial de Red Eléctrica
@@ -139,7 +139,7 @@ El repositorio está configurado para desplegarse automáticamente bajo el domin
 1. Sube los cambios a la rama `main`.
 2. En GitHub, entra en **Settings → Pages** y en **Build and deployment** selecciona **GitHub Actions**.
 3. Configura un registro DNS `CNAME` para `luz.antoniohorrillo.com` apuntando a `antoniohh.github.io`.
-4. El workflow `.github/workflows/deploy.yml` se ejecuta automáticamente en cada `push` a `main` y todos los días a las **20:30 CET (19:30 UTC)** para capturar los precios de mañana recién publicados por REE, más una ejecución de respaldo a las **06:00 CET**, publicando `dist/` con el archivo `CNAME` incluido.
+4. El workflow `.github/workflows/deploy.yml` se ejecuta automáticamente en cada `push` a `main` y todos los días a las **21:30 CET (20:30 UTC)** para capturar los precios de mañana recién publicados por REE, más una ejecución de respaldo a las **06:00 CET**, publicando `dist/` con el archivo `CNAME` incluido.
 
 Si necesitas cambiar el dominio en el futuro, actualiza `src/lib/site.ts`, `astro.config.mjs`, `public/CNAME`, `public/robots.txt` y `public/sitemap.xml`.
 

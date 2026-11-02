@@ -68,6 +68,9 @@ html {
   color: var(--text-main);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
 }
 
 body {
@@ -75,6 +78,16 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+  position: relative;
+}
+
+main {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Tipografía tabular para cifras monetarias y horarios */

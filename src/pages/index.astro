@@ -58,7 +58,7 @@ function fmtKwh(val: number | undefined) {
   description={`Consulta el precio de la luz hoy en Badajoz y Cáceres (${fechaHoyLegible}): precio actual ${fmtKwh(horaActualData?.precioKwh)} €/kWh, hora más barata (${hoy?.estadisticas?.precioMinimo?.rango} a ${fmtKwh(hoy?.estadisticas?.precioMinimo?.kwh)} €/kWh) y tramos valle, llano y punta.`}
 >
   <!-- Hero Section con Termómetro en Vivo -->
-  <section class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-white pt-10 pb-16 sm:pb-24 border-b border-slate-700/80">
+  <section id="seccion-hero" data-fecha={hoy?.fecha} class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-white pt-10 pb-16 sm:pb-24 border-b border-slate-700/80 overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Encabezado Editorial -->
@@ -86,39 +86,41 @@ function fmtKwh(val: number | undefined) {
             <div class="flex items-center justify-between gap-4 mb-4">
               <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-slate-800 text-slate-300 border border-slate-700">
                 <Clock size={13} class="text-amber-400" />
-                <span>Ahora mismo ({horaActualData?.rango} h)</span>
+                <span id="hero-ahora-rango">Ahora mismo ({horaActualData?.rango} h)</span>
               </span>
 
-              {horaActualData?.nivel === 'barato' && (
-                <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                  <span>Barata</span>
-                </span>
-              )}
-              {horaActualData?.nivel === 'medio' && (
-                <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                  <span>Media</span>
-                </span>
-              )}
-              {horaActualData?.nivel === 'caro' && (
-                <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 flex items-center gap-1.5">
-                  <span class="w-2 h-2 rounded-full bg-rose-400"></span>
-                  <span>Cara</span>
-                </span>
-              )}
+              <div id="hero-ahora-badge">
+                {horaActualData?.nivel === 'barato' && (
+                  <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    <span>Barata</span>
+                  </span>
+                )}
+                {horaActualData?.nivel === 'medio' && (
+                  <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                    <span>Media</span>
+                  </span>
+                )}
+                {horaActualData?.nivel === 'caro' && (
+                  <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+                    <span>Cara</span>
+                  </span>
+                )}
+              </div>
             </div>
 
             <!-- Gran Cifra de Precio en €/kWh -->
             <div class="flex items-baseline gap-2 my-2">
-              <span class="text-5xl sm:text-6xl font-black tracking-tight text-white font-tabular">
+              <span id="hero-ahora-kwh" class="text-5xl sm:text-6xl font-black tracking-tight text-white font-tabular">
                 {fmtKwh(horaActualData?.precioKwh)}
               </span>
               <span class="text-xl sm:text-2xl font-bold text-amber-400">
                 € / kWh
               </span>
             </div>
-            <p class="text-xs text-slate-400 mt-1 font-mono">
+            <p id="hero-ahora-mwh" class="text-xs text-slate-400 mt-1 font-mono">
               Precio mayorista de referencia: {horaActualData?.precioMwh} €/MWh
             </p>
           </div>
@@ -127,7 +129,7 @@ function fmtKwh(val: number | undefined) {
           <div class="mt-6 pt-5 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-300">
             <div>
               <span class="text-slate-400 block">Tramo regulado:</span>
-              <strong class="text-white uppercase font-bold text-sm tracking-wide">
+              <strong id="hero-ahora-tramo" class="text-white uppercase font-bold text-sm tracking-wide">
                 Tramo {horaActualData?.tramo}
               </strong>
             </div>
@@ -229,7 +231,7 @@ function fmtKwh(val: number | undefined) {
       </div>
 
       <!-- Leyenda visual de semáforo con texto limpio: Barata, Media, Cara -->
-      <div class="flex flex-wrap items-center gap-2.5 text-xs font-bold shrink-0">
+      <div class="flex flex-wrap items-center gap-2 text-xs font-bold">
         <span class="inline-flex items-center gap-1.5 text-emerald-900 bg-emerald-100 px-3 py-1.5 rounded-lg border-2 border-emerald-400 shadow-xs">
           <span class="w-3 h-3 rounded-full bg-emerald-500 border border-emerald-700"></span>
           <span>Barata</span>
@@ -273,12 +275,20 @@ function fmtKwh(val: number | undefined) {
 
         return (
           <div
-            class={`relative rounded-2xl p-4 transition-all text-center flex flex-col justify-between ${containerClass} ${
-              esHoraActual ? "ring-4 ring-slate-900 shadow-lg scale-[1.03] z-10" : ""
+            id={`hora-card-${h.hora}`}
+            data-hour-card={h.hora}
+            data-rango={h.rango}
+            data-kwh={fmtKwh(h.precioKwh)}
+            data-mwh={h.precioMwh}
+            data-centimos={h.precioCentimos}
+            data-nivel={h.nivel}
+            data-tramo={h.tramo}
+            class={`hora-card-item relative rounded-2xl p-4 transition-all text-center flex flex-col justify-between ${containerClass} ${
+              esHoraActual ? "ring-3 ring-slate-900 shadow-lg sm:scale-[1.02] z-10" : ""
             }`}
           >
             {esHoraActual && (
-              <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-950 text-amber-300 text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full tracking-wider shadow-md border border-amber-400">
+              <span class="badge-ahora-pill absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-950 text-amber-300 text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full tracking-wider shadow-md border border-amber-400">
                 AHORA
               </span>
             )}
@@ -334,7 +344,7 @@ function fmtKwh(val: number | undefined) {
             </p>
           </div>
 
-          <div class="flex items-center gap-4 text-xs font-bold shrink-0">
+          <div class="flex flex-wrap items-center gap-2 sm:gap-4 text-xs font-bold">
             <span class="text-slate-800 bg-emerald-100 border border-emerald-300 px-3 py-1.5 rounded-lg">
               Mín: <strong class="text-emerald-900 font-tabular">{fmtKwh(manana.estadisticas.precioMinimo.kwh)} €/kWh</strong> ({manana.estadisticas.precioMinimo.rango} h)
             </span>
@@ -628,3 +638,120 @@ function fmtKwh(val: number | undefined) {
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  function getMadridHour() {
+    try {
+      const formatter = new Intl.DateTimeFormat("es-ES", {
+        timeZone: "Europe/Madrid",
+        hour: "numeric",
+        hourCycle: "h23",
+      });
+      return parseInt(formatter.format(new Date()), 10);
+    } catch (e) {
+      return new Date().getHours();
+    }
+  }
+
+  function getMadridDate() {
+    try {
+      return new Intl.DateTimeFormat("en-CA", {
+        timeZone: "Europe/Madrid",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+      }).format(new Date());
+    } catch (e) {
+      return "";
+    }
+  }
+
+  function actualizarHoraActual() {
+    const currentHour = getMadridHour();
+    const currentCard = document.querySelector(`[data-hour-card="${currentHour}"]`) as HTMLElement | null;
+
+    if (!currentCard) return;
+
+    // 1. Quitar estado activo anterior de todas las tarjetas
+    document.querySelectorAll(".badge-ahora-pill").forEach((el) => el.remove());
+    document.querySelectorAll(".hora-card-item").forEach((card) => {
+      card.classList.remove("ring-3", "ring-slate-900", "shadow-lg", "sm:scale-[1.02]", "z-10");
+    });
+
+    // 2. Aplicar estado activo a la tarjeta actual
+    currentCard.classList.add("ring-3", "ring-slate-900", "shadow-lg", "sm:scale-[1.02]", "z-10");
+    const badge = document.createElement("span");
+    badge.className = "badge-ahora-pill absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-950 text-amber-300 text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full tracking-wider shadow-md border border-amber-400";
+    badge.textContent = "AHORA";
+    currentCard.prepend(badge);
+
+    // 3. Sincronizar bloque Hero
+    const rango = currentCard.dataset.rango;
+    const kwh = currentCard.dataset.kwh;
+    const mwh = currentCard.dataset.mwh;
+    const tramo = currentCard.dataset.tramo;
+    const nivel = currentCard.dataset.nivel;
+
+    const elRango = document.getElementById("hero-ahora-rango");
+    if (elRango && rango) elRango.textContent = `Ahora mismo (${rango} h)`;
+
+    const elKwh = document.getElementById("hero-ahora-kwh");
+    if (elKwh && kwh) elKwh.textContent = kwh;
+
+    const elMwh = document.getElementById("hero-ahora-mwh");
+    if (elMwh && mwh) elMwh.textContent = `Precio mayorista de referencia: ${mwh} €/MWh`;
+
+    const elTramo = document.getElementById("hero-ahora-tramo");
+    if (elTramo && tramo) elTramo.textContent = `Tramo ${tramo}`;
+
+    const elBadge = document.getElementById("hero-ahora-badge");
+    if (elBadge && nivel) {
+      let badgeHtml = "";
+      if (nivel === "barato") {
+        badgeHtml = '<span class="w-2 h-2 rounded-full bg-emerald-400"></span><span>Barata</span>';
+        elBadge.className = "px-3 py-1.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1.5";
+      } else if (nivel === "medio") {
+        badgeHtml = '<span class="w-2 h-2 rounded-full bg-amber-400"></span><span>Media</span>';
+        elBadge.className = "px-3 py-1.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 flex items-center gap-1.5";
+      } else {
+        badgeHtml = '<span class="w-2 h-2 rounded-full bg-rose-400"></span><span>Cara</span>';
+        elBadge.className = "px-3 py-1.5 rounded-full text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 flex items-center gap-1.5";
+      }
+      elBadge.innerHTML = badgeHtml;
+    }
+  }
+
+  // Comprobar si el día en curso en Madrid no coincide con la fecha compilada
+  function verificarFechaActual() {
+    const hero = document.getElementById("seccion-hero");
+    const fechaCompilada = hero?.dataset?.fecha;
+    const fechaMadrid = getMadridDate();
+
+    if (fechaCompilada && fechaMadrid && fechaCompilada !== fechaMadrid) {
+      // Intentar refrescar datos desde public/datos/precios_luz_hoy.json
+      fetch("/datos/precios_luz_hoy.json?v=" + Date.now())
+        .then((res) => res.json())
+        .then((data) => {
+          if (data?.hoy?.fecha === fechaMadrid) {
+            // Si el JSON en el servidor ya tiene el día actual, recargar suavemente
+            window.location.reload();
+          }
+        })
+        .catch(() => {});
+    }
+  }
+
+  actualizarHoraActual();
+  verificarFechaActual();
+
+  // Actualizar periódicamente cada 60s
+  setInterval(actualizarHoraActual, 60000);
+
+  // Al volver a la pestaña tras bloqueo o reposo del móvil
+  document.addEventListener("visibilitychange", () => {
+    if (!document.hidden) {
+      actualizarHoraActual();
+      verificarFechaActual();
+    }
+  });
+</script>

@@ -4,20 +4,21 @@ Este documento define las reglas operativas, de arquitectura y de publicación d
 
 ---
 
-## 1. Regla Crítica sobre Git Tags y Releases
+## 1. Regla Inviolable: NO TOCAR TAGS NUNCA
 
-> **PROHIBIDO CREAR ETIQUETAS GIT (`git tag`) LOCALMENTE.**
-> - **NUNCA** ejecutes `git tag` ni `git push --tags`.
-> - El usuario gestiona la creación de etiquetas y la publicación de releases manualmente desde su cliente de GitHub o la interfaz web de GitHub.
-> - Cuando el usuario pida preparar una nueva release (ej. `v1.0.1`), debes:
->   1. Actualizar la versión en `package.json` y `package-lock.json`.
+> **ESTRICTAMENTE PROHIBIDO TOCAR TAGS DE GIT (`git tag`).**
+> - **NUNCA** crees, borres, renombres, listes para manipular ni toques etiquetas de Git (`git tag`).
+> - **NUNCA** ejecutes `git push --tags`.
+> - Las etiquetas y releases en GitHub las gestiona exclusivamente el usuario de forma manual.
+> - Cuando el usuario pida preparar una nueva release (ej. `v1.0.2`), el agente debe:
+>   1. Actualizar la versión en `package.json`.
 >   2. Documentar la versión en `CHANGELOG.md`, `README.md` y `docs/`.
->   3. Compilar el proyecto (`npm run check` y `npm run build:fast`).
->   4. Generar en la carpeta `release/` (ignorada por Git):
->      - `release/luz-extremadura-vX.Y.Z.zip` (con el contenido de `dist/`)
+>   3. Compilar el proyecto (`npm run build`).
+>   4. Generar en la carpeta `release/`:
+>      - `release/luz-extremadura-vX.Y.Z.zip`
 >      - `release/luz-extremadura-vX.Y.Z.zip.sha256`
 >      - `release/RELEASE_NOTES_vX.Y.Z.md`
->   5. Hacer únicamente `git add` y `git commit` en la rama `main` (sin crear ningún tag).
+>   5. Hacer **únicamente** `git add` y `git commit` en la rama `main` sin tocar absolutamente ningún tag.
 
 ---
 
@@ -27,16 +28,15 @@ Este documento define las reglas operativas, de arquitectura y de publicación d
 - **Dominio de producción:** `https://luz.antoniohorrillo.com` (configurado en `public/CNAME`, `astro.config.mjs` y `src/lib/site.ts`)
 - **Repositorio:** `https://github.com/antoniohh/LuzExtremadura`
 - **Autor:** Antonio Horrillo (`https://antoniohorrillo.com`)
-- **Stack:** Astro 7 (`output: "static"`, `trailingSlash: "always"`), Tailwind CSS v4 (`@tailwindcss/vite`), Chart.js 4.5, `@lucide/astro` y TypeScript estricto sobre Node.js `>= 22.23.4` (`.nvmrc`).
+- **Stack:** Astro 7 (`output: "static"`, `trailingSlash: "always"`), Tailwind CSS v4 (`@tailwindcss/vite`), `@lucide/astro` y TypeScript estricto sobre Node.js `>= 22.23.4` (`.nvmrc`).
 
 ---
 
 ## 3. Arquitectura de Datos y Actualización Diaria
 
-- Los datos diarios provienen de la API REST oficial del MITECO (`FiltroCCAA/11` para Extremadura).
-- `scripts/actualizar_precios_hoy.mjs` (`npm run actualizar:hoy`) descarga las 422 estaciones de servicio, calcula las medias de Extremadura, Badajoz, Cáceres, las 16 localidades principales y los 179 municipios, y guarda el resultado tanto en `src/data/hoy_extremadura.json` como en `public/datos/hoy_extremadura.json`.
-- `scripts/actualizar_historico_mes.mjs` (`npm run historico:mes`) actualiza incrementalmente las series históricas 2025–2026 (`historico_extremadura_2026.json` y `historico_provincias_extremadura_2026.json`).
-- El workflow `.github/workflows/deploy.yml` se ejecuta automáticamente todos los días a las **06:00 AM (Europe/Madrid)** y en cada `push` a `main`.
+- Los datos diarios y de mañana provienen del archivo oficial `archive 70` de Red Eléctrica de España (REE / e·sios: `https://api.esios.ree.es/archives/70/download_json?locale=es`).
+- `scripts/actualizar_precios_luz.mjs` (`npm run actualizar:hoy`) descarga los precios horarios del PVPC (término de facturación `PCB`), calcula estadísticas horarias (mínimo, máximo, media), categoriza semáforos (Barata, Media, Cara) y tramos (Punta, Llano, Valle), y guarda el resultado en `public/datos/precios_luz_hoy.json`.
+- El workflow `.github/workflows/deploy.yml` se ejecuta automáticamente todos los días a las **21:30 CET (20:30 UTC)** y **06:00 CET**, así como en cada `push` a `main`.
 
 ---
 
