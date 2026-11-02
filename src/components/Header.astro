@@ -1,54 +1,117 @@
 ---
-import { Zap, SunMedium, Clock, Info } from "@lucide/astro";
+import { Zap, SunMedium, Clock, Info, Menu } from "@lucide/astro";
 import { withBase } from "../lib/site";
 ---
 
 <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16 sm:h-20">
+    <div class="flex items-center justify-between h-16 sm:h-20 gap-3">
       <!-- Logo e Identidad -->
-      <a href={withBase()} class="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-amber-400 rounded-xl p-1">
-        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 font-black shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform">
-          <Zap size={24} class="fill-current" />
+      <a href="/" class="flex items-center gap-2.5 sm:gap-3 group focus:outline-none focus:ring-2 focus:ring-amber-400 rounded-xl p-1 shrink-0">
+        <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 font-black shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform shrink-0">
+          <Zap size={22} class="fill-current" />
         </div>
         <div>
-          <span class="text-lg sm:text-xl font-extrabold tracking-tight flex items-center gap-1.5">
+          <span class="text-base sm:text-xl font-extrabold tracking-tight flex items-center gap-1.5 leading-tight">
             <span>LUZ</span>
             <span class="text-emerald-400">EXTREMADURA</span>
           </span>
-          <span class="block text-[10px] sm:text-xs font-semibold text-slate-400 tracking-wider uppercase">
+          <span class="block text-[9px] sm:text-xs font-semibold text-slate-400 tracking-wider uppercase">
             Precio PVPC hoy · Badajoz y Cáceres
           </span>
         </div>
       </a>
 
-      <!-- Navegación y Enlaces rápidos -->
-      <nav class="hidden md:flex items-center gap-6 text-sm font-semibold text-slate-300">
-        <a href="#horas-hoy" class="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+      <!-- Navegación Desktop con enlaces absolutos /# para que funcionen desde cualquier página -->
+      <nav aria-label="Navegación principal" class="hidden md:flex items-center gap-5 text-sm font-semibold text-slate-300">
+        <a href="/#horas-hoy" class="hover:text-amber-400 transition-colors flex items-center gap-1.5">
           <Clock size={16} />
           <span>Horas de hoy</span>
         </a>
-        <a href="#calculadora" class="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+        <a href="/#calculadora" class="hover:text-amber-400 transition-colors flex items-center gap-1.5">
           <Zap size={16} />
           <span>Calculadora</span>
         </a>
-        <a href="#extremadura-energia" class="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+        <a href="/#extremadura-energia" class="hover:text-amber-400 transition-colors flex items-center gap-1.5">
           <SunMedium size={16} />
           <span>Extremadura Solar</span>
         </a>
-        <a href="#faqs" class="hover:text-amber-400 transition-colors flex items-center gap-1.5">
+        <a href="/#faqs" class="hover:text-amber-400 transition-colors flex items-center gap-1.5">
           <Info size={16} />
           <span>Dudas frecuentes</span>
         </a>
       </nav>
 
-      <!-- Badge de actualización en vivo -->
-      <div class="flex items-center gap-2">
-        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-700/60">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+      <!-- Badge de actualización en vivo (con tamaño ceñido y whitespace-nowrap para que nunca caiga a 2 líneas) -->
+      <div class="flex items-center gap-2 shrink-0">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] sm:text-xs font-bold bg-emerald-950/80 text-emerald-300 border border-emerald-700/60 whitespace-nowrap">
+          <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400 animate-pulse shrink-0"></span>
           <span>PVPC REE</span>
         </span>
+
+        <!-- Botón Menú Móvil -->
+        <button
+          id="luz-mobile-menu-btn"
+          type="button"
+          class="md:hidden p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors"
+          aria-label="Abrir menú de navegación"
+          aria-expanded="false"
+          aria-controls="luz-mobile-menu"
+        >
+          <Menu size={22} />
+        </button>
       </div>
     </div>
   </div>
+
+  <!-- Menú Móvil desplegable con enlaces absolutos a portada -->
+  <div id="luz-mobile-menu" class="hidden md:hidden border-b border-slate-800 bg-slate-950 px-4 pt-2 pb-4 space-y-1">
+    <a href="/#horas-hoy" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-slate-800 hover:text-amber-400">
+      Horas de hoy (24 horas)
+    </a>
+    <a href="/#calculadora" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-slate-800 hover:text-amber-400">
+      Calculadora de electrodomésticos
+    </a>
+    <a href="/#extremadura-energia" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-slate-800 hover:text-amber-400">
+      Extremadura, gigante solar
+    </a>
+    <a href="/#faqs" class="block px-3 py-2 rounded-lg text-sm font-semibold text-slate-200 hover:bg-slate-800 hover:text-amber-400">
+      Preguntas frecuentes
+    </a>
+  </div>
 </header>
+
+<script>
+  // Control del menú móvil desplegable
+  const btn = document.getElementById("luz-mobile-menu-btn");
+  const menu = document.getElementById("luz-mobile-menu");
+  if (btn && menu) {
+    btn.addEventListener("click", () => {
+      const isHidden = menu.classList.toggle("hidden");
+      btn.setAttribute("aria-expanded", String(!isHidden));
+    });
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        menu.classList.add("hidden");
+        btn.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  // Smooth scroll en la portada al pulsar anclas cuando ya estás en /
+  document.querySelectorAll('a[href^="/#"]').forEach((link) => {
+    link.addEventListener("click", (e) => {
+      if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
+        const hash = link.getAttribute("href")?.replace("/", "");
+        if (hash) {
+          const target = document.querySelector(hash);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: "smooth" });
+            history.pushState(null, "", hash);
+          }
+        }
+      }
+    });
+  });
+</script>
