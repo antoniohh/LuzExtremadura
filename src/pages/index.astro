@@ -7,7 +7,6 @@ import {
   TrendingUp,
   BarChart3,
   SunMedium,
-  Wind,
   ShieldCheck,
   CheckCircle2,
   Calendar,
@@ -48,11 +47,17 @@ function formatFecha(fechaISO: string) {
 
 const fechaHoyLegible = formatFecha(hoy?.fecha || "");
 const fechaMananaLegible = formatFecha(manana?.fecha || "");
+
+// Función auxiliar para formatear en €/kWh a 4 decimales
+function fmtKwh(val: number | undefined) {
+  if (val === undefined || val === null) return "0.0000";
+  return Number(val).toFixed(4);
+}
 ---
 
 <BaseLayout
   title={`Precio de la Luz Hoy en Extremadura (${fechaHoyLegible}) | Hora a Hora PVPC`}
-  description={`Consulta el precio de la luz hoy en Badajoz y Cáceres (${fechaHoyLegible}): precio actual ${horaActualData?.precioCentimos || '0'} c€/kWh, hora más barata (${hoy?.estadisticas?.precioMinimo?.rango} a ${hoy?.estadisticas?.precioMinimo?.centimos} c€) y tramos valle, llano y punta.`}
+  description={`Consulta el precio de la luz hoy en Badajoz y Cáceres (${fechaHoyLegible}): precio actual ${fmtKwh(horaActualData?.precioKwh)} €/kWh, hora más barata (${hoy?.estadisticas?.precioMinimo?.rango} a ${fmtKwh(hoy?.estadisticas?.precioMinimo?.kwh)} €/kWh) y tramos valle, llano y punta.`}
 >
   <!-- Hero Section con Termómetro en Vivo -->
   <section class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-white pt-10 pb-16 sm:pb-24 border-b border-slate-700/80">
@@ -68,7 +73,7 @@ const fechaMananaLegible = formatFecha(manana?.fecha || "");
           Precio de la luz hoy en <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-amber-300">Extremadura</span>
         </h1>
         <p class="mt-3 text-sm sm:text-base text-slate-300">
-          Valores oficiales de Red Eléctrica actualizados para hoy <strong class="text-white font-semibold">{fechaHoyLegible}</strong>. Consulta cuándo poner la lavadora o el aire y ahorra en tu factura.
+          Valores oficiales de Red Eléctrica para hoy <strong class="text-white font-semibold">{fechaHoyLegible}</strong>. Consulta cuándo poner la lavadora o el aire y ahorra en tu factura.
         </p>
       </div>
 
@@ -87,35 +92,36 @@ const fechaMananaLegible = formatFecha(manana?.fecha || "");
               </span>
 
               {horaActualData?.nivel === 'barato' && (
-                <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1">
-                  <CheckCircle2 size={13} />
-                  <span>Hora favorable</span>
+                <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  <span>Hora barata (Verde)</span>
                 </span>
               )}
               {horaActualData?.nivel === 'medio' && (
-                <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">
-                  Precio moderado
+                <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                  <span>Hora media (Amarillo)</span>
                 </span>
               )}
               {horaActualData?.nivel === 'caro' && (
-                <span class="px-3 py-1 rounded-full text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 flex items-center gap-1">
-                  <AlertCircle size={13} />
-                  <span>Hora cara (evitar)</span>
+                <span class="px-3 py-1.5 rounded-full text-xs font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+                  <span>Hora cara (Rojo)</span>
                 </span>
               )}
             </div>
 
-            <!-- Gran Cifra de Precio -->
+            <!-- Gran Cifra de Precio en €/kWh -->
             <div class="flex items-baseline gap-2 my-2">
               <span class="text-5xl sm:text-6xl font-black tracking-tight text-white font-tabular">
-                {horaActualData?.precioCentimos}
+                {fmtKwh(horaActualData?.precioKwh)}
               </span>
               <span class="text-xl sm:text-2xl font-bold text-amber-400">
-                c€ / kWh
+                € / kWh
               </span>
             </div>
             <p class="text-xs text-slate-400 mt-1 font-mono">
-              Equivalente a {horaActualData?.precioKwh} €/kWh ({horaActualData?.precioMwh} €/MWh en mercado mayorista)
+              Precio mayorista de referencia: {horaActualData?.precioMwh} €/MWh
             </p>
           </div>
 
@@ -128,9 +134,9 @@ const fechaMananaLegible = formatFecha(manana?.fecha || "");
               </strong>
             </div>
             <div class="text-right">
-              <span class="text-slate-400 block">Media del día:</span>
+              <span class="text-slate-400 block">Media de hoy:</span>
               <strong class="text-amber-300 font-bold text-sm font-tabular">
-                {hoy?.estadisticas?.precioMedio?.centimos} c€/kWh
+                {fmtKwh(hoy?.estadisticas?.precioMedio?.kwh)} €/kWh
               </strong>
             </div>
           </div>
@@ -139,10 +145,10 @@ const fechaMananaLegible = formatFecha(manana?.fecha || "");
         <!-- Bloque Mínimo y Máximo de Hoy -->
         <div class="lg:col-span-5 flex flex-col gap-4">
           <!-- Más barata -->
-          <div class="flex-1 bg-emerald-950/40 border border-emerald-800/70 rounded-2xl p-5 flex items-center justify-between">
+          <div class="flex-1 bg-emerald-950/50 border-2 border-emerald-500/60 rounded-2xl p-5 flex items-center justify-between shadow-sm">
             <div class="flex items-center gap-3.5">
-              <div class="w-12 h-12 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 flex items-center justify-center shrink-0">
-                <TrendingDown size={24} />
+              <div class="w-12 h-12 rounded-xl bg-emerald-500 text-slate-950 flex items-center justify-center shrink-0 font-black shadow-md">
+                <TrendingDown size={26} stroke-width={2.5} />
               </div>
               <div>
                 <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-400 block">
@@ -154,18 +160,18 @@ const fechaMananaLegible = formatFecha(manana?.fecha || "");
               </div>
             </div>
             <div class="text-right">
-              <span class="text-2xl font-black text-emerald-300 font-tabular">
-                {hoy?.estadisticas?.precioMinimo?.centimos}
+              <span class="text-2xl sm:text-3xl font-black text-emerald-300 font-tabular">
+                {fmtKwh(hoy?.estadisticas?.precioMinimo?.kwh)}
               </span>
-              <span class="text-xs text-emerald-400/80 block">c€/kWh</span>
+              <span class="text-xs text-emerald-400/90 block font-semibold">€/kWh</span>
             </div>
           </div>
 
           <!-- Más cara -->
-          <div class="flex-1 bg-rose-950/40 border border-rose-800/70 rounded-2xl p-5 flex items-center justify-between">
+          <div class="flex-1 bg-rose-950/50 border-2 border-rose-500/60 rounded-2xl p-5 flex items-center justify-between shadow-sm">
             <div class="flex items-center gap-3.5">
-              <div class="w-12 h-12 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-400 flex items-center justify-center shrink-0">
-                <TrendingUp size={24} />
+              <div class="w-12 h-12 rounded-xl bg-rose-500 text-white flex items-center justify-center shrink-0 font-black shadow-md">
+                <TrendingUp size={26} stroke-width={2.5} />
               </div>
               <div>
                 <span class="text-[11px] font-bold uppercase tracking-wider text-rose-400 block">
@@ -177,10 +183,10 @@ const fechaMananaLegible = formatFecha(manana?.fecha || "");
               </div>
             </div>
             <div class="text-right">
-              <span class="text-2xl font-black text-rose-300 font-tabular">
-                {hoy?.estadisticas?.precioMaximo?.centimos}
+              <span class="text-2xl sm:text-3xl font-black text-rose-300 font-tabular">
+                {fmtKwh(hoy?.estadisticas?.precioMaximo?.kwh)}
               </span>
-              <span class="text-xs text-rose-400/80 block">c€/kWh</span>
+              <span class="text-xs text-rose-400/90 block font-semibold">€/kWh</span>
             </div>
           </div>
 
@@ -220,68 +226,89 @@ const fechaMananaLegible = formatFecha(manana?.fecha || "");
           Precio de la luz hora a hora hoy ({fechaHoyLegible})
         </h2>
         <p class="text-slate-600 text-xs sm:text-sm mt-1">
-          Verde: horas más económicas · Amarillo: tramo medio · Rojo: horas de mayor demanda y coste
+          Semáforo energético para saber de un vistazo cuándo conviene encender aparatos.
         </p>
       </div>
 
-      <!-- Leyenda de colores -->
-      <div class="flex items-center gap-3 text-xs font-semibold">
-        <span class="inline-flex items-center gap-1.5 text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-          <span>Favorable (&lt; {((hoy?.estadisticas?.precioMinimo?.centimos || 0) + 5).toFixed(1)} c€)</span>
+      <!-- Leyenda visual de semáforo con contraste fuerte -->
+      <div class="flex flex-wrap items-center gap-2.5 text-xs font-bold">
+        <span class="inline-flex items-center gap-1.5 text-emerald-900 bg-emerald-100 px-3 py-1.5 rounded-lg border-2 border-emerald-400 shadow-xs">
+          <span class="w-3 h-3 rounded-full bg-emerald-500 border border-emerald-700"></span>
+          <span>Verde (Hora barata)</span>
         </span>
-        <span class="inline-flex items-center gap-1.5 text-rose-700 bg-rose-50 px-2.5 py-1 rounded-md border border-rose-200">
-          <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
-          <span>Evitar</span>
+        <span class="inline-flex items-center gap-1.5 text-amber-950 bg-amber-100 px-3 py-1.5 rounded-lg border-2 border-amber-400 shadow-xs">
+          <span class="w-3 h-3 rounded-full bg-amber-500 border border-amber-700"></span>
+          <span>Amarillo (Medio)</span>
+        </span>
+        <span class="inline-flex items-center gap-1.5 text-rose-950 bg-rose-100 px-3 py-1.5 rounded-lg border-2 border-rose-400 shadow-xs">
+          <span class="w-3 h-3 rounded-full bg-rose-500 border border-rose-700"></span>
+          <span>Rojo (Hora cara)</span>
         </span>
       </div>
     </div>
 
     <!-- Tabla / Rejilla interactiva de las 24 Horas -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
+    <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3.5">
       {hoy?.horas?.map((h: any) => {
         const esHoraActual = h.hora === horaActualInt;
-        let badgeColor = "bg-white border-slate-200 text-slate-800 hover:border-slate-300";
-        let dotColor = "bg-amber-400";
-        let textColor = "text-slate-900";
+
+        // Estilos claramente contrastados para cada nivel del semáforo
+        let containerClass = "bg-amber-50/90 border-2 border-amber-300 text-amber-950 hover:border-amber-500";
+        let tagClass = "bg-amber-200/90 text-amber-900 border border-amber-400";
+        let priceClass = "text-amber-950";
+        let dotColor = "bg-amber-500";
+        let labelNivel = "Medio";
 
         if (h.nivel === "barato") {
-          badgeColor = "bg-emerald-50/60 border-emerald-200/80 hover:border-emerald-400";
-          dotColor = "bg-emerald-500";
-          textColor = "text-emerald-900";
+          containerClass = "bg-emerald-50 border-2 border-emerald-400 text-emerald-950 hover:border-emerald-600 shadow-xs";
+          tagClass = "bg-emerald-200 text-emerald-950 border border-emerald-400 font-extrabold";
+          priceClass = "text-emerald-900";
+          dotColor = "bg-emerald-600";
+          labelNivel = "Barato";
         } else if (h.nivel === "caro") {
-          badgeColor = "bg-rose-50/60 border-rose-200/80 hover:border-rose-400";
-          dotColor = "bg-rose-500";
-          textColor = "text-rose-900";
+          containerClass = "bg-rose-50 border-2 border-rose-400 text-rose-950 hover:border-rose-600 shadow-xs";
+          tagClass = "bg-rose-200 text-rose-950 border border-rose-400 font-extrabold";
+          priceClass = "text-rose-900";
+          dotColor = "bg-rose-600";
+          labelNivel = "Caro";
         }
 
         return (
           <div
-            class={`relative rounded-2xl p-4 border transition-all text-center flex flex-col justify-between ${badgeColor} ${
-              esHoraActual ? "ring-2 ring-amber-500 shadow-md scale-[1.02]" : "shadow-xs"
+            class={`relative rounded-2xl p-4 transition-all text-center flex flex-col justify-between ${containerClass} ${
+              esHoraActual ? "ring-4 ring-slate-900 shadow-lg scale-[1.03] z-10" : ""
             }`}
           >
             {esHoraActual && (
-              <span class="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-amber-500 text-slate-950 text-[9px] font-black uppercase px-2 py-0.5 rounded-full tracking-wider shadow-xs">
-                Ahora
+              <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-slate-950 text-amber-300 text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full tracking-wider shadow-md border border-amber-400">
+                ★ Ahora
               </span>
             )}
 
+            <!-- Encabezado con franja horaria y badge de color -->
             <div>
-              <span class="font-mono text-xs font-bold text-slate-600 block">
-                {h.rango} h
-              </span>
-              <div class="mt-2">
-                <span class={`text-xl sm:text-2xl font-black font-tabular tracking-tight ${textColor}`}>
-                  {h.precioCentimos}
+              <div class="flex items-center justify-between gap-1 mb-2">
+                <span class="font-mono text-xs font-black text-slate-800">
+                  {h.rango} h
                 </span>
-                <span class="text-[10px] text-slate-600 block font-semibold">c€/kWh</span>
+                <span class={`text-[9px] uppercase px-1.5 py-0.5 rounded-md ${tagClass}`}>
+                  {labelNivel}
+                </span>
+              </div>
+
+              <!-- Cifra en €/kWh -->
+              <div class="my-1.5">
+                <span class={`text-xl sm:text-2xl font-black font-tabular tracking-tight ${priceClass}`}>
+                  {fmtKwh(h.precioKwh)}
+                </span>
+                <span class="text-[10px] text-slate-600 block font-bold mt-0.5">€/kWh</span>
               </div>
             </div>
 
-            <div class="mt-3 pt-2 border-t border-slate-200/60 flex items-center justify-between text-[10px] font-semibold text-slate-600 uppercase">
-              <span class="flex items-center gap-1">
-                <span class={`w-1.5 h-1.5 rounded-full ${dotColor}`}></span>
+            <!-- Pie de tarjeta con tramo regulado -->
+            <div class="mt-3 pt-2 border-t border-slate-300/80 flex items-center justify-between text-[10px] font-bold text-slate-700 uppercase">
+              <span class="flex items-center gap-1.5">
+                <span class={`w-2 h-2 rounded-full ${dotColor}`}></span>
                 <span>{h.tramo}</span>
               </span>
             </div>
@@ -309,30 +336,56 @@ const fechaMananaLegible = formatFecha(manana?.fecha || "");
             </p>
           </div>
 
-          <div class="flex items-center gap-4 text-xs">
-            <span class="font-bold text-slate-700">
-              Mín: <strong class="text-emerald-700 font-tabular">{manana.estadisticas.precioMinimo.centimos} c€</strong> ({manana.estadisticas.precioMinimo.rango} h)
+          <div class="flex items-center gap-4 text-xs font-bold">
+            <span class="text-slate-800 bg-emerald-100 border border-emerald-300 px-3 py-1.5 rounded-lg">
+              Mín: <strong class="text-emerald-900 font-tabular">{fmtKwh(manana.estadisticas.precioMinimo.kwh)} €/kWh</strong> ({manana.estadisticas.precioMinimo.rango} h)
             </span>
-            <span class="font-bold text-slate-700">
-              Máx: <strong class="text-rose-700 font-tabular">{manana.estadisticas.precioMaximo.centimos} c€</strong> ({manana.estadisticas.precioMaximo.rango} h)
+            <span class="text-slate-800 bg-rose-100 border border-rose-300 px-3 py-1.5 rounded-lg">
+              Máx: <strong class="text-rose-900 font-tabular">{fmtKwh(manana.estadisticas.precioMaximo.kwh)} €/kWh</strong> ({manana.estadisticas.precioMaximo.rango} h)
             </span>
           </div>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3">
+        <div class="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3.5">
           {manana.horas?.map((h: any) => {
-            let badge = "bg-white border-slate-200 text-slate-800";
-            if (h.nivel === "barato") badge = "bg-emerald-50/70 border-emerald-300 text-emerald-900";
-            if (h.nivel === "caro") badge = "bg-rose-50/70 border-rose-300 text-rose-900";
+            let containerClass = "bg-amber-50/90 border-2 border-amber-300 text-amber-950";
+            let tagClass = "bg-amber-200/90 text-amber-900 border border-amber-400";
+            let priceClass = "text-amber-950";
+            let dotColor = "bg-amber-500";
+            let labelNivel = "Medio";
+
+            if (h.nivel === "barato") {
+              containerClass = "bg-emerald-50 border-2 border-emerald-400 text-emerald-950";
+              tagClass = "bg-emerald-200 text-emerald-950 border border-emerald-400 font-extrabold";
+              priceClass = "text-emerald-900";
+              dotColor = "bg-emerald-600";
+              labelNivel = "Barato";
+            } else if (h.nivel === "caro") {
+              containerClass = "bg-rose-50 border-2 border-rose-400 text-rose-950";
+              tagClass = "bg-rose-200 text-rose-950 border border-rose-400 font-extrabold";
+              priceClass = "text-rose-900";
+              dotColor = "bg-rose-600";
+              labelNivel = "Caro";
+            }
 
             return (
-              <div class={`rounded-2xl p-4 border text-center flex flex-col justify-between ${badge}`}>
-                <span class="font-mono text-xs font-bold text-slate-600 block">{h.rango} h</span>
-                <div class="my-2">
-                  <span class="text-xl font-black font-tabular tracking-tight">{h.precioCentimos}</span>
-                  <span class="text-[10px] text-slate-600 block font-semibold">c€/kWh</span>
+              <div class={`rounded-2xl p-4 text-center flex flex-col justify-between ${containerClass}`}>
+                <div class="flex items-center justify-between gap-1 mb-2">
+                  <span class="font-mono text-xs font-black text-slate-800">{h.rango} h</span>
+                  <span class={`text-[9px] uppercase px-1.5 py-0.5 rounded-md ${tagClass}`}>{labelNivel}</span>
                 </div>
-                <span class="text-[10px] font-semibold text-slate-600 uppercase tracking-wider">{h.tramo}</span>
+                <div class="my-1.5">
+                  <span class={`text-xl sm:text-2xl font-black font-tabular tracking-tight ${priceClass}`}>
+                    {fmtKwh(h.precioKwh)}
+                  </span>
+                  <span class="text-[10px] text-slate-600 block font-bold mt-0.5">€/kWh</span>
+                </div>
+                <div class="mt-3 pt-2 border-t border-slate-300/80 flex items-center justify-between text-[10px] font-bold text-slate-700 uppercase">
+                  <span class="flex items-center gap-1.5">
+                    <span class={`w-2 h-2 rounded-full ${dotColor}`}></span>
+                    <span>{h.tramo}</span>
+                  </span>
+                </div>
               </div>
             );
           })}
@@ -352,13 +405,13 @@ const fechaMananaLegible = formatFecha(manana?.fecha || "");
         ¿Cuánto cuesta poner cada aparato en tu casa hoy?
       </h2>
       <p class="mt-3 text-slate-600 text-sm sm:text-base leading-relaxed">
-        Calculamos el coste real por ciclo o por hora con los precios de hoy para los hábitos de climatización y electrodomésticos más comunes en Badajoz y Cáceres.
+        Calculamos el coste real por ciclo o por hora con los precios de hoy para los aparatos más habituales en Badajoz y Cáceres.
       </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <!-- 1. Aire Acondicionado (Verano Extremeño) -->
-      <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow">
+      <div class="bg-white border-2 border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow">
         <div class="w-12 h-12 rounded-2xl bg-sky-100 text-sky-700 flex items-center justify-center mb-4">
           <Snowflake size={24} />
         </div>
@@ -379,13 +432,13 @@ const fechaMananaLegible = formatFecha(manana?.fecha || "");
             </strong>
           </div>
           <p class="text-[11px] text-slate-500 italic mt-2">
-            *Diferencia de hasta {(0.8).toFixed(2)} € por tarde según tramo.
+            *Diferencia notable según tramo horario.
           </p>
         </div>
       </div>
 
       <!-- 2. Termo Eléctrico (Pueblos sin gas natural) -->
-      <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow">
+      <div class="bg-white border-2 border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow">
         <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center mb-4">
           <Flame size={24} />
         </div>
@@ -394,7 +447,7 @@ const fechaMananaLegible = formatFecha(manana?.fecha || "");
         
         <div class="space-y-3 pt-4 border-t border-slate-100 text-xs">
           <div class="flex justify-between items-center">
-            <span class="text-slate-600">Programado de noche/valle:</span>
+            <span class="text-slate-600">Programado en hora barata:</span>
             <strong class="text-emerald-700 font-bold font-tabular text-sm">
               {(((hoy?.estadisticas?.precioMinimo?.kwh || 0.10) * 2.5)).toFixed(2)} €
             </strong>
@@ -412,7 +465,7 @@ const fechaMananaLegible = formatFecha(manana?.fecha || "");
       </div>
 
       <!-- 3. Lavadora (Ciclo Completo) -->
-      <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow">
+      <div class="bg-white border-2 border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow">
         <div class="w-12 h-12 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center mb-4">
           <Tv size={24} />
         </div>
@@ -439,7 +492,7 @@ const fechaMananaLegible = formatFecha(manana?.fecha || "");
       </div>
 
       <!-- 4. Vehículo Eléctrico / Híbrido Enchufable -->
-      <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow">
+      <div class="bg-white border-2 border-slate-200 rounded-3xl p-6 shadow-sm hover:shadow-md transition-shadow">
         <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center mb-4">
           <Car size={24} />
         </div>
