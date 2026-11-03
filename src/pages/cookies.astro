@@ -44,9 +44,26 @@ import { withBase } from "../lib/site";
       </section>
 
       <section>
-        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">2. Google Consent Mode v2</h2>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">2. Funcionamiento de Google Consent Mode v2</h2>
         <p>
-          Cumplimos rigurosamente con el Reglamento General de Protección de Datos (RGPD) y las directrices de la Agencia Española de Protección de Datos (AEPD). Por defecto, para todos los visitantes procedentes de España y el Espacio Económico Europeo, todas las señales analíticas nacen estrictamente bloqueadas (<code>denied</code>) hasta que interactúes con el banner y decidas si deseas colaborar con la estadística anónima.
+          Cumplimos rigurosamente con el Reglamento General de Protección de Datos (RGPD) y las directrices de la Agencia Española de Protección de Datos (AEPD), implementando la especificación técnica <strong>Google Consent Mode v2</strong>:
+        </p>
+        <ul class="list-disc pl-5 mt-3 space-y-2 text-sm">
+          <li>
+            <strong>Visitantes del Espacio Económico Europeo (España y la UE), Reino Unido y Suiza:</strong> Todas las señales de consentimiento (<code>analytics_storage</code>, <code>ad_storage</code>, <code>ad_user_data</code> y <code>ad_personalization</code>) nacen <strong>estrictamente denegadas (<code>denied</code>)</strong> por defecto en la cabecera.
+          </li>
+          <li>
+            <strong>Si rechazas o no interactúas con el banner:</strong> No se almacena ninguna cookie en tu navegador ni se crea perfil de usuario. Google Analytics 4 opera únicamente mediante pings agregados sin cookies.
+          </li>
+          <li>
+            <strong>Si pulsas «Aceptar todas»:</strong> Se habilita la medición analítica con cookies (<code>_ga</code> y <code>_ga_HEKMQY6G5E</code>). Las señales de Consent Mode v2 se transmiten a Google como <code>granted</code> para certificar el consentimiento sin que en ningún momento se utilicen tus datos para anuncios personalizados ni remarketing comercial.
+          </li>
+          <li>
+            <strong>Visitantes internacionales (fuera del EEE):</strong> El consentimiento nace concedido por defecto de acuerdo con la regulación de sus regiones.
+          </li>
+        </ul>
+        <p class="mt-3 text-xs text-slate-500">
+          Tu preferencia se almacena en <code>localStorage</code> (<code>luz_extremadura_cookie_consent</code>) exclusivamente en tu dispositivo.
         </p>
       </section>
 

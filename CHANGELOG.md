@@ -2,6 +2,28 @@
 
 Todas las versiones relevantes de **Luz Extremadura**. El proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 
+## [1.1.0] — 2026-11-03
+
+Nueva versión que introduce el prompt nativo de instalación PWA en Chrome móvil, sincronización completa de Google Consent Mode v2 delimitado por región y actualización de la política de privacidad y cookies.
+
+### Añadido
+
+- **Prompt e Instalación PWA en Chrome Móvil ([`InstallPrompt.astro`](src/components/InstallPrompt.astro))**:
+  - Banner estilizado flotante inferior que detecta el evento nativo `beforeinstallprompt` en dispositivos móviles Chrome/Chromium.
+  - Diseño responsivo en paleta oscura `slate-900/95` con desenfoque de fondo, icono corporativo de 192px y botón de acción en acento ambarino (`bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold`).
+  - Persistencia de descarte en `sessionStorage` para no resultar invasivo en la misma sesión y detección automática de modo `standalone` para evitar mostrar el banner si la aplicación ya está instalada.
+  - Registro de Service Worker (`/sw.js`) trasladado al `<head>` para una inicialización temprana y ordenada.
+
+### Modificado y Mejorado
+
+- **Google Consent Mode v2 Delimitado por Región ([`BaseLayout.astro`](src/layouts/BaseLayout.astro))**:
+  - Restricción estricta de consentimiento inicial (`denied` en `analytics_storage`, `ad_storage`, `ad_user_data`, `ad_personalization`) delimitada a los 30 territorios del EEE, Reino Unido y Suiza.
+  - Habilitación por defecto para visitantes internacionales fuera del EEE conforme a las especificaciones de Google Analytics 4, evitando la advertencia de tasa de consentimiento del 0 %.
+  - Sincronización inmediata de decisión guardada en `localStorage` antes de `gtag('config')`.
+- **Aviso y Política de Cookies ([`CookieBanner.astro`](src/components/CookieBanner.astro), [`cookies.astro`](src/pages/cookies.astro))**:
+  - Texto del banner ajustado para aclarar que solo se guardan cookies y recopilan métricas con permiso expreso, sin anuncios personalizados.
+  - Sección técnica dedicada en la página de política explicando el funcionamiento de Consent Mode v2, la navegación anónima sin cookies en caso de rechazo y el almacenamiento local de preferencias.
+
 ## [1.0.3] — 2026-11-03
 
 Versión centrada en la experiencia de usuario móvil, dinamización en tiempo real del tramo horario, compatibilidad completa como Progressive Web App (PWA) en Google Chrome y ampliación del intervalo de actualización automática.
