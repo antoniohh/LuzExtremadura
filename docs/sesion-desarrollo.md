@@ -40,5 +40,19 @@ El proyecto nace con el propósito de trasladar el modelo de éxito, rendimiento
 
 ### 2.5. Ciclo de Releases y Control de Distribución
 - Flujo de empaquetado y publicación automática mediante `.github/workflows/release.yml` en etiquetas `v*`.
-- Consolidación de paquetes locales precompilados y sumas SHA-256 en la carpeta `release/` (`v1.0.0`, `v1.0.1`, `v1.0.2` y `v1.0.3`).
+- Consolidación de paquetes locales precompilados y sumas SHA-256 en la carpeta `release/` (`v1.0.0`, `v1.0.1`, `v1.0.2`, `v1.0.3`, `v1.1.0` y `v1.1.1`).
 - Licencia formal MIT y directrices operativas documentadas en `AGENTS.md`.
+
+---
+
+## 3. Registro de Versiones Recientes
+
+### 3.1. Versión 1.1.0 (2026-11-03)
+- Incorporación del banner responsivo nativo de instalación PWA en Chrome móvil (`InstallPrompt.astro`).
+- Configuración de Google Consent Mode v2 delimitado por región (bloqueo estricto por defecto en el EEE).
+- Actualización de la política de privacidad y cookies (`/cookies/`).
+
+### 3.2. Versión 1.1.1 (2026-11-05)
+- Limpieza y reencuadre completo del activo corporativo Open Graph (`public/assets/og-image.png`).
+- Eliminación de franjas negras laterales (pillarbox) y ajuste limpio y proporcional a la relación estándar 1200 × 630 px.
+- Optimización de metadatos sociales para previsualizaciones en plataformas de mensajería y redes sociales.

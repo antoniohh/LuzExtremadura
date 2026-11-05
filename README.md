@@ -1,6 +1,6 @@
 # Luz Extremadura
 
-[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.0.3-047857?style=for-the-badge)](CHANGELOG.md)
+[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.1.1-047857?style=for-the-badge)](CHANGELOG.md)
 [![Astro](https://img.shields.io/badge/Astro-7.4.2-BC52EE?style=for-the-badge&logo=astro&logoColor=white)](https://astro.build)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.3.3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -151,16 +151,18 @@ Si necesitas cambiar el dominio en el futuro, actualiza `src/lib/site.ts`, `astr
 
 ## 📦 Control de Versiones
 
-Versión actual: **1.0.3** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
+Versión actual: **1.1.1** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
 
 | Versión | Fecha | Cambios principales |
 |---|---|---|
-| **1.0.3** | 2026-11-03 | Soporte PWA en Google Chrome (Service Worker y manifest), dinamización en tiempo real del tramo «AHORA», eliminación total del scroll horizontal en móvil y cron a las 21:30 CET |
+| **1.1.1** | 2026-11-05 | Optimización y limpieza de la imagen Open Graph (`og-image.png`), retirando bordes negros laterales y ajustándola limpiamente a 1200×630px |
+| 1.1.0 | 2026-11-03 | Banner de instalación nativa PWA en Chrome móvil, arquitectura Google Consent Mode v2 delimitada por región y actualización de cookies |
+| 1.0.3 | 2026-11-03 | Soporte PWA en Google Chrome (Service Worker y manifest), dinamización en tiempo real del tramo «AHORA», eliminación total del scroll horizontal en móvil y cron a las 21:30 CET |
 | 1.0.2 | 2026-11-02 | Consolidación del directorio `release/` (v1.0.0, v1.0.1 y v1.0.2), workflow automático de releases `.github/workflows/release.yml`, licencia formal MIT, `.nvmrc` y `AGENTS.md` |
 | 1.0.1 | 2026-11-02 | Navegación global multiruta (`/#`), menú móvil desplegable, unificación tipográfica responsiva de encabezados `<h2>` y protección de badge `PVPC REE` en móvil |
 | 1.0.0 | 2026-11-02 | Lanzamiento inicial en `luz.antoniohorrillo.com`: precios diarios y de mañana desde Red Eléctrica (e·sios archive 70), semáforo 24h, tramos valle/llano/punta, calculadora de consumo extremeño, dossier solar y Consent Mode v2 |
 
-El workflow `.github/workflows/release.yml` compila el sitio y adjunta automáticamente `luz-extremadura-v1.0.3.zip` al publicar una etiqueta `v*` en GitHub. Además, los paquetes precompilados locales se encuentran disponibles en la carpeta `release/`.
+El workflow `.github/workflows/release.yml` compila el sitio y adjunta automáticamente `luz-extremadura-v1.1.1.zip` al publicar una etiqueta `v*` en GitHub. Además, los paquetes precompilados locales se encuentran disponibles en la carpeta `release/`.
 
 ---
 

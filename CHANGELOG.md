@@ -2,6 +2,17 @@
 
 Todas las versiones relevantes de **Luz Extremadura**. El proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 
+## [1.1.1] — 2026-11-05
+
+Versión de mantenimiento estético y optimización de metadatos sociales que corrige y limpia la imagen corporativa Open Graph.
+
+### Modificado y Mejorado
+
+- **Optimización y Limpieza de Imagen Social Open Graph ([`public/assets/og-image.png`](public/assets/og-image.png))**:
+  - Eliminación completa de los bordes negros laterales (pillarbox) presentes en los márgenes exteriores.
+  - Reencuadre y escalado proporcional nítido a la resolución estándar exacta de 1200 × 630 px recomendada para previsualizaciones en redes sociales (WhatsApp, Telegram, X / Twitter, Facebook y LinkedIn).
+  - Integración tonal limpia con la paleta oscura corporativa del proyecto sin distorsión de aspecto en tipografías, logotipos o métricas.
+
 ## [1.1.0] — 2026-11-03
 
 Nueva versión que introduce el prompt nativo de instalación PWA en Chrome móvil, sincronización completa de Google Consent Mode v2 delimitado por región y actualización de la política de privacidad y cookies.
