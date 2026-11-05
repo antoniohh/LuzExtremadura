@@ -34,13 +34,13 @@ El proyecto nace con el propósito de trasladar el modelo de éxito, rendimiento
 - Etiqueta de Google Analytics 4: **`G-HEKMQY6G5E`** con anonimización de IP activa.
 
 ### 2.4. Automatización con GitHub Actions
-- Cron diario a las **21:30 CET** (20:30 UTC en invierno) para capturar los precios del día siguiente recién emitidos por REE.
-- Cron diario de respaldo a las **06:00 CET** (05:00 UTC en invierno).
+- Cron diario a las **14:51 UTC** (15:51 CET en invierno) para capturar los precios del día siguiente, compensando el retardo de colas (~4h 54m) para desplegar sobre las **20:45 CET**.
+- Cron diario de respaldo y refresco matinal a las **00:24 UTC** (01:24 CET en invierno).
 - Despliegue automático en GitHub Pages bajo el dominio personalizado `luz.antoniohorrillo.com`.
 
 ### 2.5. Ciclo de Releases y Control de Distribución
 - Flujo de empaquetado y publicación automática mediante `.github/workflows/release.yml` en etiquetas `v*`.
-- Consolidación de paquetes locales precompilados y sumas SHA-256 en la carpeta `release/` (`v1.0.0`, `v1.0.1`, `v1.0.2`, `v1.0.3`, `v1.1.0` y `v1.1.1`).
+- Consolidación de paquetes locales precompilados y sumas SHA-256 en la carpeta `release/` (`v1.0.0`, `v1.0.1`, `v1.0.2`, `v1.0.3`, `v1.1.0`, `v1.1.1` y `v1.1.2`).
 - Licencia formal MIT y directrices operativas documentadas en `AGENTS.md`.
 
 ---
@@ -56,3 +56,8 @@ El proyecto nace con el propósito de trasladar el modelo de éxito, rendimiento
 - Limpieza y reencuadre completo del activo corporativo Open Graph (`public/assets/og-image.png`).
 - Eliminación de franjas negras laterales (pillarbox) y ajuste limpio y proporcional a la relación estándar 1200 × 630 px.
 - Optimización de metadatos sociales para previsualizaciones en plataformas de mensajería y redes sociales.
+
+### 3.3. Versión 1.1.2 (2026-11-05)
+- Recalibración del cron de GitHub Actions de previsión del día siguiente a `14:51 UTC` (`51 14 * * *`).
+- Compensación del retardo medido en las colas de GitHub Actions (~4 h 54 min) para asegurar la publicación efectiva de la previsión de precios a las 20:45 CET (8:45 PM).
+- Sincronización del paquete de distribución local y notas de versión `v1.1.2`.
