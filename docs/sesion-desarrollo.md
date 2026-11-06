@@ -34,13 +34,13 @@ El proyecto nace con el propósito de trasladar el modelo de éxito, rendimiento
 - Etiqueta de Google Analytics 4: **`G-HEKMQY6G5E`** con anonimización de IP activa.
 
 ### 2.4. Automatización con GitHub Actions
-- Cron diario a las **14:51 UTC** (15:51 CET en invierno) para capturar los precios del día siguiente, compensando el retardo de colas (~4h 54m) para desplegar sobre las **20:45 CET**.
+- Cron diario a las **15:51 UTC** (16:51 CET en invierno) para capturar los precios del día siguiente, compensando el retardo de colas (~4h 54m) para desplegar sobre las **21:45 CET**.
 - Cron diario de respaldo y refresco matinal a las **00:24 UTC** (01:24 CET en invierno).
 - Despliegue automático en GitHub Pages bajo el dominio personalizado `luz.antoniohorrillo.com`.
 
 ### 2.5. Ciclo de Releases y Control de Distribución
 - Flujo de empaquetado y publicación automática mediante `.github/workflows/release.yml` en etiquetas `v*`.
-- Consolidación de paquetes locales precompilados y sumas SHA-256 en la carpeta `release/` (`v1.0.0`, `v1.0.1`, `v1.0.2`, `v1.0.3`, `v1.1.0`, `v1.1.1` y `v1.1.2`).
+- Consolidación de paquetes locales precompilados y sumas SHA-256 en la carpeta `release/` (`v1.0.0`, `v1.0.1`, `v1.0.2`, `v1.0.3`, `v1.1.0`, `v1.1.1`, `v1.1.2` y `v1.1.3`).
 - Licencia formal MIT y directrices operativas documentadas en `AGENTS.md`.
 
 ---
@@ -61,3 +61,8 @@ El proyecto nace con el propósito de trasladar el modelo de éxito, rendimiento
 - Recalibración del cron de GitHub Actions de previsión del día siguiente a `14:51 UTC` (`51 14 * * *`).
 - Compensación del retardo medido en las colas de GitHub Actions (~4 h 54 min) para asegurar la publicación efectiva de la previsión de precios a las 20:45 CET (8:45 PM).
 - Sincronización del paquete de distribución local y notas de versión `v1.1.2`.
+
+### 3.4. Versión 1.1.3 (2026-11-06)
+- Retraso de una hora en el cron de GitHub Actions de previsión del día siguiente a `15:51 UTC` (`51 15 * * *`).
+- Ajuste del tiempo de despliegue efectivo a las 21:45 CET tras compensar la latencia de colas.
+- Sincronización del paquete de distribución local y notas de versión `v1.1.3`.

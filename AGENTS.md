@@ -36,7 +36,7 @@ Este documento define las reglas operativas, de arquitectura y de publicación d
 
 - Los datos diarios y de mañana provienen del archivo oficial `archive 70` de Red Eléctrica de España (REE / e·sios: `https://api.esios.ree.es/archives/70/download_json?locale=es`).
 - `scripts/actualizar_precios_luz.mjs` (`npm run actualizar:hoy`) descarga los precios horarios del PVPC (término de facturación `PCB`), calcula estadísticas horarias (mínimo, máximo, media), categoriza semáforos (Barata, Media, Cara) y tramos (Punta, Llano, Valle), y guarda el resultado en `public/datos/precios_luz_hoy.json`.
-- El workflow `.github/workflows/deploy.yml` se ejecuta automáticamente todos los días a las **14:51 UTC (15:51 CET)** (para compensar el retardo de colas y publicar sobre las **20:45 CET** la previsión de mañana) y a las **00:24 UTC (01:24 CET)** como refresco de seguridad, así como en cada `push` a `main`.
+- El workflow `.github/workflows/deploy.yml` se ejecuta automáticamente todos los días a las **15:51 UTC (16:51 CET)** (para compensar el retardo de colas y publicar sobre las **21:45 CET** la previsión de mañana) y a las **00:24 UTC (01:24 CET)** como refresco de seguridad, así como en cada `push` a `main`.
 
 ---
 

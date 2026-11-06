@@ -2,8 +2,8 @@ name: Build y Despliegue en GitHub Pages
 
 on:
   schedule:
-    # Previsión de precios de mañana: 14:51 UTC (15:51 CET invierno / 16:51 CEST verano) para compensar el retardo de colas (~4h 54m) y ejecutarse sobre las 20:45 PM
-    - cron: '51 14 * * *'
+    # Previsión de precios de mañana: 15:51 UTC (16:51 CET invierno / 17:51 CEST verano) para compensar el retardo de colas (~4h 54m) y ejecutarse sobre las 21:45 PM
+    - cron: '51 15 * * *'
     # Refresco matinal: 00:24 UTC (01:24 CET invierno / 02:24 CEST verano) para compensar el retardo de colas y estar listo sobre las 07:30 - 08:30 AM
     - cron: '24 0 * * *'
   push:

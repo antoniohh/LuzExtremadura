@@ -1,6 +1,6 @@
 # Luz Extremadura
 
-[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.1.2-047857?style=for-the-badge)](CHANGELOG.md)
+[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.1.3-047857?style=for-the-badge)](CHANGELOG.md)
 [![Astro](https://img.shields.io/badge/Astro-7.4.2-BC52EE?style=for-the-badge&logo=astro&logoColor=white)](https://astro.build)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.3.3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -19,7 +19,7 @@ Aplicación web estática (SPA) para la consulta diaria y en tiempo real del **p
 
 1. **Termómetro en Vivo (Hora Actual) y Curva Horaria 24h:**
    - Captura diaria de los precios horarios oficiales desde el archivo de **Red Eléctrica de España (REE / e·sios archive 70)**.
-   - Compilación y publicación automática mediante GitHub Actions (`.github/workflows/deploy.yml`) a las **14:51 UTC** (15:51 CET) para compensar el retardo de colas y desplegar sobre las **20:45 CET** los precios de mañana recién emitidos por REE, con refresco de seguridad diario a las **00:24 UTC** (01:24 CET).
+   - Compilación y publicación automática mediante GitHub Actions (`.github/workflows/deploy.yml`) a las **15:51 UTC** (16:51 CET) para compensar el retardo de colas y desplegar sobre las **21:45 CET** los precios de mañana recién emitidos por REE, con refresco de seguridad diario a las **00:24 UTC** (01:24 CET).
    - Semáforo energético de 3 colores con alto contraste: **Barata** (Verde), **Media** (Amarillo) y **Cara** (Rojo).
    - Tramos regulados oficiales (**Valle**, **Llano** y **Punta**) identificados hora a hora con precios en **€/kWh**.
 2. **Precios para Mañana (Anticipación Diaria):**
@@ -143,7 +143,7 @@ El repositorio está configurado para desplegarse automáticamente bajo el domin
 1. Sube los cambios a la rama `main`.
 2. En GitHub, entra en **Settings → Pages** y en **Build and deployment** selecciona **GitHub Actions**.
 3. Configura un registro DNS `CNAME` para `luz.antoniohorrillo.com` apuntando a `antoniohh.github.io`.
-4. El workflow `.github/workflows/deploy.yml` se ejecuta automáticamente en cada `push` a `main` y todos los días a las **14:51 UTC (15:51 CET)** para compensar el retardo de colas y publicar sobre las **20:45 CET** los precios de mañana recién emitidos por REE, más una ejecución de respaldo a las **00:24 UTC (01:24 CET)**, publicando `dist/` con el archivo `CNAME` incluido.
+4. El workflow `.github/workflows/deploy.yml` se ejecuta automáticamente en cada `push` a `main` y todos los días a las **15:51 UTC (16:51 CET)** para compensar el retardo de colas y publicar sobre las **21:45 CET** los precios de mañana recién emitidos por REE, más una ejecución de respaldo a las **00:24 UTC (01:24 CET)**, publicando `dist/` con el archivo `CNAME` incluido.
 
 Si necesitas cambiar el dominio en el futuro, actualiza `src/lib/site.ts`, `astro.config.mjs`, `public/CNAME`, `public/robots.txt` y `public/sitemap.xml`.
 
@@ -151,11 +151,12 @@ Si necesitas cambiar el dominio en el futuro, actualiza `src/lib/site.ts`, `astr
 
 ## 📦 Control de Versiones
 
-Versión actual: **1.1.2** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
+Versión actual: **1.1.3** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
 
 | Versión | Fecha | Cambios principales |
 |---|---|---|
-| **1.1.2** | 2026-11-05 | Recalibración del cron de GitHub Actions a las 14:51 UTC (15:51 CET) para compensar el retardo de colas y desplegar la previsión horaria a las 20:45 CET |
+| **1.1.3** | 2026-11-06 | Retraso de una hora en el cron de GitHub Actions a las 15:51 UTC (16:51 CET) para la publicación de la previsión horaria del día siguiente |
+| 1.1.2 | 2026-11-05 | Recalibración del cron de GitHub Actions a las 14:51 UTC (15:51 CET) para compensar el retardo de colas y desplegar la previsión horaria a las 20:45 CET |
 | 1.1.1 | 2026-11-05 | Optimización y limpieza de la imagen Open Graph (`og-image.png`), retirando bordes negros laterales y ajustándola limpiamente a 1200×630px |
 | 1.1.0 | 2026-11-03 | Banner de instalación nativa PWA en Chrome móvil, arquitectura Google Consent Mode v2 delimitada por región y actualización de cookies |
 | 1.0.3 | 2026-11-03 | Soporte PWA en Google Chrome (Service Worker y manifest), dinamización en tiempo real del tramo «AHORA», eliminación total del scroll horizontal en móvil y cron a las 21:30 CET |
@@ -163,7 +164,7 @@ Versión actual: **1.1.2** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
 | 1.0.1 | 2026-11-02 | Navegación global multiruta (`/#`), menú móvil desplegable, unificación tipográfica responsiva de encabezados `<h2>` y protección de badge `PVPC REE` en móvil |
 | 1.0.0 | 2026-11-02 | Lanzamiento inicial en `luz.antoniohorrillo.com`: precios diarios y de mañana desde Red Eléctrica (e·sios archive 70), semáforo 24h, tramos valle/llano/punta, calculadora de consumo extremeño, dossier solar y Consent Mode v2 |
 
-El workflow `.github/workflows/release.yml` compila el sitio y adjunta automáticamente `luz-extremadura-v1.1.2.zip` al publicar una etiqueta `v*` en GitHub. Además, los paquetes precompilados locales se encuentran disponibles en la carpeta `release/`.
+El workflow `.github/workflows/release.yml` compila el sitio y adjunta automáticamente `luz-extremadura-v1.1.3.zip` al publicar una etiqueta `v*` en GitHub. Además, los paquetes precompilados locales se encuentran disponibles en la carpeta `release/`.
 
 ---
 

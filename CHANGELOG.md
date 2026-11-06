@@ -2,6 +2,17 @@
 
 Todas las versiones relevantes de **Luz Extremadura**. El proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 
+## [1.1.3] — 2026-11-06
+
+Versión de ajuste en la automatización CI/CD que retrasa una hora el cron de GitHub Actions para la obtención y publicación de la previsión de precios del día siguiente.
+
+### Modificado y Mejorado
+
+- **Ajuste del Cron de Previsión en GitHub Actions ([`.github/workflows/deploy.yml`](.github/workflows/deploy.yml))**:
+  - Retraso de una hora en la tarea programada de obtención de precios del día siguiente, pasando de las 14:51 UTC a las **15:51 UTC** (**16:51 CET** en invierno / **17:51 CEST** en verano).
+  - Adaptación del margen de ejecución frente al retardo de colas en runners de GitHub Actions, situando la publicación efectiva en producción alrededor de las **21:45 CET** (9:45 PM).
+  - Se mantiene intacto el refresco de seguridad diario a las **00:24 UTC** (**01:24 CET**).
+
 ## [1.1.2] — 2026-11-05
 
 Versión de infraestructura y automatización CI/CD que recalibra el cron de GitHub Actions para la previsión de precios del día siguiente, compensando el retardo real de colas registrado en la plataforma.
