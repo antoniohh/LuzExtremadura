@@ -40,7 +40,7 @@ El proyecto nace con el propósito de trasladar el modelo de éxito, rendimiento
 
 ### 2.5. Ciclo de Releases y Control de Distribución
 - Flujo de empaquetado y publicación automática mediante `.github/workflows/release.yml` en etiquetas `v*`.
-- Consolidación de paquetes locales precompilados y sumas SHA-256 en la carpeta `release/` (`v1.0.0`, `v1.0.1`, `v1.0.2`, `v1.0.3`, `v1.1.0`, `v1.1.1`, `v1.1.2` y `v1.1.3`).
+- Consolidación de paquetes locales precompilados y sumas SHA-256 en la carpeta `release/` (`v1.0.0`, `v1.0.1`, `v1.0.2`, `v1.0.3`, `v1.1.0`, `v1.1.1`, `v1.1.2`, `v1.1.3` y `v1.1.4`).
 - Licencia formal MIT y directrices operativas documentadas en `AGENTS.md`.
 
 ---
@@ -66,3 +66,10 @@ El proyecto nace con el propósito de trasladar el modelo de éxito, rendimiento
 - Retraso de una hora en el cron de GitHub Actions de previsión del día siguiente a `15:51 UTC` (`51 15 * * *`).
 - Ajuste del tiempo de despliegue efectivo a las 21:45 CET tras compensar la latencia de colas.
 - Sincronización del paquete de distribución local y notas de versión `v1.1.3`.
+
+### 3.5. Versión 1.1.4 (2026-11-08)
+- Desacoplamiento de fechas estáticas en las etiquetas `<title>` y `<meta name="description">` en `src/pages/index.astro`.
+- Resolución de pérdida de CTR en Google SERP provocada por snippets desfasados guardados en caché por Googlebot.
+- Saneamiento y coherencia de tarjetas sociales Open Graph y Twitter Cards sin variables temporales caducables.
+- Automatización de la señal de frescura de contenido mediante actualización diaria de `<lastmod>` en `public/sitemap.xml` vía `scripts/actualizar_precios_luz.mjs`.
+- Sincronización del paquete de distribución local y notas de versión `v1.1.4`.

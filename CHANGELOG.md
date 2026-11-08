@@ -2,6 +2,22 @@
 
 Todas las versiones relevantes de **Luz Extremadura**. El proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 
+## [1.1.4] — 2026-11-08
+
+Versión de optimización SEO y metadatos sociales que desvincula fechas fijas de las etiquetas `<title>` y `<meta name="description">` para evitar desactualizaciones en las SERPs de Google, sincroniza las tarjetas Open Graph y dinamiza el `<lastmod>` del sitemap.
+
+### Corregido y Optimizado
+
+- **Desacoplamiento de Fechas Fijas en Metadatos SEO ([`src/pages/index.astro`](src/pages/index.astro))**:
+  - Eliminación de la inyección de fecha fija `(${fechaHoyLegible})` y precios volátiles en `<title>` y `<meta name="description">`.
+  - Adopción de un título atemporal de alta relevancia: `Precio de la Luz Hoy en Extremadura (Badajoz y Cáceres) | Horas y PVPC`.
+  - Redacción de una meta-descripción orientada a intención de búsqueda y maximización de CTR sin riesgo de quedar obsoleta entre ciclos de rastreo de Googlebot.
+  - La fecha viva del día (`{fechaHoyLegible}`) se mantiene prominente en el `<h1>`, subtítulo y módulos interactivos dentro de la aplicación para el usuario final.
+- **Sincronización Limpia de Open Graph y Twitter Cards ([`src/layouts/BaseLayout.astro`](src/layouts/BaseLayout.astro))**:
+  - Las etiquetas `og:title`, `twitter:title`, `og:description` y `twitter:description` quedan limpias de fechas o datos caducados al heredar los nuevos valores consolidados.
+- **Automatización de `<lastmod>` en Sitemap ([`scripts/actualizar_precios_luz.mjs`](scripts/actualizar_precios_luz.mjs), [`public/sitemap.xml`](public/sitemap.xml))**:
+  - Inclusión de actualización programada de la etiqueta `<lastmod>` con la fecha del día en curso en cada ejecución de la GitHub Action (dos veces al día), ofreciendo una señal activa de frescura de contenido a los rastreadores de motores de búsqueda.
+
 ## [1.1.3] — 2026-11-06
 
 Versión de ajuste en la automatización CI/CD que retrasa una hora el cron de GitHub Actions para la obtención y publicación de la previsión de precios del día siguiente.

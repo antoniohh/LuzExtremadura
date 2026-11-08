@@ -54,8 +54,8 @@ function fmtKwh(val: number | undefined) {
 ---
 
 <BaseLayout
-  title={`Precio de la Luz Hoy en Extremadura (${fechaHoyLegible}) | Hora a Hora PVPC`}
-  description={`Consulta el precio de la luz hoy en Badajoz y Cáceres (${fechaHoyLegible}): precio actual ${fmtKwh(horaActualData?.precioKwh)} €/kWh, hora más barata (${hoy?.estadisticas?.precioMinimo?.rango} a ${fmtKwh(hoy?.estadisticas?.precioMinimo?.kwh)} €/kWh) y tramos valle, llano y punta.`}
+  title="Precio de la Luz Hoy en Extremadura (Badajoz y Cáceres) | Horas y PVPC"
+  description="Consulta el precio de la luz hoy en Extremadura (Badajoz y Cáceres) hora a hora. Descubre la hora más barata del día, tramos valle, llano y punta, y ahorra con la tarifa regulada PVPC."
 >
   <!-- Hero Section con Termómetro en Vivo -->
   <section id="seccion-hero" data-fecha={hoy?.fecha} class="bg-gradient-to-b from-slate-900 via-slate-900 to-slate-800 text-white pt-10 pb-16 sm:pb-24 border-b border-slate-700/80 overflow-hidden">

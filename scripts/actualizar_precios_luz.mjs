@@ -16,6 +16,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, "..");
 const OUTPUT_FILE = path.join(ROOT_DIR, "public", "datos", "precios_luz_hoy.json");
+const SITEMAP_FILE = path.join(ROOT_DIR, "public", "sitemap.xml");
 
 /**
  * Obtiene la fecha en formato YYYY-MM-DD para la zona horaria de España (Europe/Madrid)
@@ -169,6 +170,30 @@ async function main() {
 
   await fs.mkdir(path.dirname(OUTPUT_FILE), { recursive: true });
   await fs.writeFile(OUTPUT_FILE, JSON.stringify(payload, null, 2), "utf8");
+
+  // Actualizar lastmod en sitemap.xml para avisar a los motores de búsqueda de nuevo contenido diario
+  try {
+    const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://luz.antoniohorrillo.com/</loc>
+    <lastmod>${fechaHoy}</lastmod>
+    <changefreq>hourly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://luz.antoniohorrillo.com/cookies/</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>
+`;
+    await fs.writeFile(SITEMAP_FILE, sitemapXml, "utf8");
+    console.log(`🗺️  Sitemap actualizado con fecha: ${fechaHoy}`);
+  } catch (errSitemap) {
+    console.warn("⚠️  No se pudo actualizar el sitemap:", errSitemap.message);
+  }
 
   console.log(`✅ Archivo guardado con éxito en: ${OUTPUT_FILE}`);
   if (datosHoy) {
