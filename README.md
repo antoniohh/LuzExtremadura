@@ -1,6 +1,6 @@
 # Luz Extremadura
 
-[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.1.4-047857?style=for-the-badge)](CHANGELOG.md)
+[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.2.0-047857?style=for-the-badge)](CHANGELOG.md)
 [![Astro](https://img.shields.io/badge/Astro-7.4.2-BC52EE?style=for-the-badge&logo=astro&logoColor=white)](https://astro.build)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.3.3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -36,6 +36,9 @@ Aplicación web estática (SPA) para la consulta diaria y en tiempo real del **p
    - Marcado estructurado Schema.org (`WebSite`, `WebPage`, `Dataset`, `FAQPage` y `BreadcrumbList`).
    - Activos vectoriales y Open Graph (`favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, `logo.svg`, `og-image.png`, `robots.txt`, `sitemap.xml`, `site.webmanifest` y `CNAME`).
    - Cumplimiento estricto de privacidad con **Google Consent Mode v2** (bloqueo analítico previo por defecto para RGPD), banner y modal de configuración (`CookieBanner.astro`) y página de [Política de Cookies](/cookies/) (`src/pages/cookies.astro`) con Google Analytics 4 (`G-HEKMQY6G5E`).
+6. **Ecosistema y Red de Proyectos Abiertos:**
+   - Barra superior unificada (`NetworkBar.astro`) 100% responsiva con acceso directo y navegación táctil fluida entre herramientas hermanas: *Luz Extremadura*, *Combustible Extremadura*, *Embalses Extremadura* y *GlucoLuna*.
+   - Módulo enlazado en pie de página con *anchor texts* semánticos optimizados para SEO y transmisión de autoridad (*link equity*).
 
 ---
 

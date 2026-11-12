@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import Header from "../components/Header.astro";
+import NetworkBar from "../components/NetworkBar.astro";
 import Footer from "../components/Footer.astro";
 import CookieBanner from "../components/CookieBanner.astro";
 import InstallPrompt from "../components/InstallPrompt.astro";
@@ -251,6 +252,7 @@ const jsonLd = {
   </head>
 
   <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col font-sans overflow-x-hidden max-w-full">
+    <NetworkBar currentProject="luz" />
     <Header />
     <main class="flex-1 w-full max-w-full overflow-x-hidden">
       <slot />

@@ -2,6 +2,22 @@
 
 Todas las versiones relevantes de **Luz Extremadura**. El proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 
+## [1.2.0] — 2026-11-12
+
+Versión de interconexión del ecosistema digital que incorpora la barra de navegación transversal 100% responsiva (`NetworkBar.astro`) y un módulo SEO de red en el pie de página (`Footer.astro`), enlazando los proyectos de datos abiertos y utilidades de Antonio Horrillo (*Luz*, *Combustible*, *Embalses* y *GlucoLuna*).
+
+### Añadido y Mejorado
+
+- **Barra de Navegación de Red Responsive ([`src/components/NetworkBar.astro`](src/components/NetworkBar.astro), [`src/layouts/BaseLayout.astro`](src/layouts/BaseLayout.astro))**:
+  - Mini topbar de 36px de alto sobre el encabezado con diseño oscuro `bg-slate-950` y borde inferior sutil.
+  - Indicador de proyecto actual con píldora activa (`bg-amber-400/15 text-amber-300 border-amber-400/30`) y badge «Actual» en resoluciones de escritorio.
+  - Comportamiento móvil optimizado: fila única con scroll horizontal táctil y sin barra de desplazamiento (`scrollbar-width: none`), títulos cortos y diana táctil cómoda que no incrementa la altura de la página.
+  - Enlace corporativo a `https://antoniohorrillo.com/` con indicador visual dinámico.
+  - Exclusión de impresión (`print:hidden`).
+- **Módulo de Enlazado de Red en Pie de Página ([`src/components/Footer.astro`](src/components/Footer.astro))**:
+  - Reestructuración del grid a 4 columnas responsivas (`grid-cols-1 sm:grid-cols-2 lg:grid-cols-4`).
+  - Incorporación de la columna «Red de Proyectos» con enlaces limpios `dofollow` y textos de ancla orientados a SEO hacia *Combustible Extremadura*, *Embalses de Extremadura*, *GlucoLuna* y el portafolio personal.
+
 ## [1.1.4] — 2026-11-08
 
 Versión de optimización SEO y metadatos sociales que desvincula fechas fijas de las etiquetas `<title>` y `<meta name="description">` para evitar desactualizaciones en las SERPs de Google, sincroniza las tarjetas Open Graph y dinamiza el `<lastmod>` del sitemap.
