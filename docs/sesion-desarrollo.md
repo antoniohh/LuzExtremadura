@@ -73,3 +73,9 @@ El proyecto nace con el propósito de trasladar el modelo de éxito, rendimiento
 - Saneamiento y coherencia de tarjetas sociales Open Graph y Twitter Cards sin variables temporales caducables.
 - Automatización de la señal de frescura de contenido mediante actualización diaria de `<lastmod>` en `public/sitemap.xml` vía `scripts/actualizar_precios_luz.mjs`.
 - Sincronización del paquete de distribución local y notas de versión `v1.1.4`.
+
+### 3.6. Versión 1.2.0 (2026-11-12)
+- Incorporación de la barra superior transversal `NetworkBar.astro` 100% responsiva y módulo de enlazado SEO en `Footer.astro` para interconectar *Luz*, *Combustible*, *Embalses* y *GlucoLuna*.
+
+### 3.7. Versión 1.2.1 (2026-11-13)
+- Renovación completa de la identidad visual y activos de marca con Nano Banana y trazado vectorial de alta precisión (`Logo.astro`, `favicon.svg`, `logo.svg`, `logo.png`, `icon-512.png`, `icon-192.png`, `apple-touch-icon.png`, `favicon.ico` y `og-image.png` de 1200×630 px).

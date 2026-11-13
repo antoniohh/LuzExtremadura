@@ -1,6 +1,6 @@
 ---
 import { Zap, SunMedium, Clock, Info, Menu } from "@lucide/astro";
-import { withBase } from "../lib/site";
+import Logo from "./Logo.astro";
 ---
 
 <header class="sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800 text-white">
@@ -8,10 +8,7 @@ import { withBase } from "../lib/site";
     <div class="flex items-center justify-between h-16 sm:h-20 gap-2 sm:gap-3 min-w-0">
       <!-- Logo e Identidad -->
       <a href="/" class="flex items-center gap-2 sm:gap-3 group focus:outline-none focus:ring-2 focus:ring-amber-400 rounded-xl p-1 min-w-0">
-        <div class="w-8 h-8 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-slate-950 font-black shadow-md shadow-amber-500/20 group-hover:scale-105 transition-transform shrink-0">
-          <Zap size={20} class="fill-current sm:hidden" />
-          <Zap size={22} class="fill-current hidden sm:block" />
-        </div>
+        <Logo class="w-9 h-9 sm:w-11 sm:h-11 shrink-0 group-hover:scale-105 transition-transform" />
         <div class="min-w-0">
           <span class="text-sm sm:text-xl font-extrabold tracking-tight flex items-center gap-1.5 leading-tight truncate">
             <span>LUZ</span>

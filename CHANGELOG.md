@@ -2,6 +2,21 @@
 
 Todas las versiones relevantes de **Luz Extremadura**. El proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 
+## [1.2.1] — 2026-11-13
+
+Renovación integral de la identidad visual, isotipo vectorial, familia de iconos PWA/móvil y tarjeta social Open Graph generados con Nano Banana y trazado vectorial de alta precisión, alineando el diseño con el ecosistema de observatorios de datos (*Combustible Extremadura* y *Embalses de Extremadura*).
+
+### Añadido y Mejorado
+
+- **Nuevo Isotipo Vectorial e Identidad de Marca ([`src/components/Logo.astro`](src/components/Logo.astro), [`public/favicon.svg`](public/favicon.svg), [`public/assets/favicon.svg`](public/assets/favicon.svg), [`public/assets/logo.svg`](public/assets/logo.svg) y [`public/assets/logo.png`](public/assets/logo.png))**:
+  - Rediseño completo del icono SVG en contenedor *squircle* con degradado radial oscuro (`#14293a` → `#030711`), reborde luminoso bicolor esmeralda y ámbar, arcos concéntricos de energía esmeralda, ondas de pulso horario PVPC y rayo eléctrico volumétrico dorado con faceta biselada y brillo especular.
+  - Creación del componente reutilizable `Logo.astro` con identificadores únicos por instancia e integración directa en [`src/components/Header.astro`](src/components/Header.astro) y [`src/components/Footer.astro`](src/components/Footer.astro).
+- **Familia de Iconos de Alta Resolución y PWA ([`public/assets/`](public/assets/) y [`public/favicon.ico`](public/favicon.ico))**:
+  - Nuevos iconos `icon-512.png` (`512×512` px), `icon-192.png` (`192×192` px), `apple-touch-icon.png` (`180×180` px) y `favicon.ico` multirresolución (`16×16`, `32×32`, `48×48` px) con recorte transparente sobre la silueta *squircle*.
+  - Enlace explícito a `favicon.ico` en [`src/layouts/BaseLayout.astro`](src/layouts/BaseLayout.astro).
+- **Nueva Tarjeta Social Open Graph (`1200×630` px) ([`public/assets/og-image.png`](public/assets/og-image.png))**:
+  - Creatividad social con estética oscura de observatorio de datos, tarjeta 3D con el mapa energético de Extremadura (Badajoz y Cáceres), nodos luminosos, gráfico horario de 24 horas en colores de semáforo PVPC y distintivo oficial REE.
+
 ## [1.2.0] — 2026-11-12
 
 Versión de interconexión del ecosistema digital que incorpora la barra de navegación transversal 100% responsiva (`NetworkBar.astro`) y un módulo SEO de red en el pie de página (`Footer.astro`), enlazando los proyectos de datos abiertos y utilidades de Antonio Horrillo (*Luz*, *Combustible*, *Embalses* y *GlucoLuna*).

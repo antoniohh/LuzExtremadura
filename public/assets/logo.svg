@@ -1,36 +1,64 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100" fill="none" role="img" aria-label="Luz Extremadura">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 288 64" fill="none" role="img" aria-label="Luz Extremadura">
   <defs>
-    <radialGradient id="logoBgGlow" cx="50%" cy="48%" r="58%">
-      <stop offset="0%" stop-color="#1e293b" />
-      <stop offset="65%" stop-color="#0f172a" />
-      <stop offset="100%" stop-color="#020617" />
+    <radialGradient id="logoLuzBgGlow" cx="50%" cy="44%" r="62%">
+      <stop offset="0%" stop-color="#14293a" />
+      <stop offset="55%" stop-color="#091423" />
+      <stop offset="100%" stop-color="#030711" />
     </radialGradient>
-    <linearGradient id="logoBoltGrad" x1="28" y1="20" x2="66" y2="80" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#fde047" />
-      <stop offset="50%" stop-color="#eab308" />
-      <stop offset="100%" stop-color="#ca8a04" />
+    <linearGradient id="logoLuzBorderGrad" x1="4" y1="32" x2="60" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.92" />
+      <stop offset="48%" stop-color="#6ee7b7" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.9" />
+    </linearGradient>
+    <linearGradient id="logoLuzArcGrad" x1="12" y1="16" x2="52" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6ee7b7" />
+      <stop offset="50%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" stop-opacity="0.65" />
+    </linearGradient>
+    <linearGradient id="logoLuzBoltMain" x1="26" y1="10" x2="36" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fef9c3" />
+      <stop offset="28%" stop-color="#fde047" />
+      <stop offset="65%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+    <linearGradient id="logoLuzBoltEdge" x1="22" y1="10" x2="40" y2="55" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="55%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+    <linearGradient id="logoLuzBoltShine" x1="28" y1="11" x2="25" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.78" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.0" />
+    </linearGradient>
+    <linearGradient id="logoLuzWaveAmber" x1="30" y1="40" x2="54" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="45%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#fde047" stop-opacity="0.2" />
+    </linearGradient>
+    <linearGradient id="logoLuzWaveGreen" x1="10" y1="40" x2="38" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.2" />
+      <stop offset="40%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#10b981" />
     </linearGradient>
   </defs>
 
-  <!-- Isotipo Rayo en caja 64x64 con margen de seguridad -->
-  <g transform="translate(15, 18)">
-    <rect width="64" height="64" rx="16" fill="url(#logoBgGlow)" />
-    <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="15.25" stroke="#eab308" stroke-opacity="0.4" stroke-width="1.5" />
-    <!-- Rayo electrico centrado -->
-    <path
-      d="M36 10L18 36H33L29 54L48 27H33L36 10Z"
-      fill="url(#logoBoltGrad)"
-      stroke="#ca8a04"
-      stroke-width="1.5"
-      stroke-linejoin="round"
-      stroke-linecap="round"
-    />
-    <!-- Detalle verde Extremadura -->
-    <circle cx="29" cy="54" r="3" fill="#047857" />
+  <!-- Icon Mark -->
+  <g transform="translate(2, 2) scale(0.9375)">
+    <rect width="64" height="64" rx="14.5" fill="url(#logoLuzBgGlow)" />
+    <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="13.75" stroke="url(#logoLuzBorderGrad)" stroke-width="1.5" />
+    <path d="M27.5 12.2A20.2 20.2 0 0 0 22.8 50.2" stroke="url(#logoLuzArcGrad)" stroke-width="2.2" stroke-linecap="round" />
+    <path d="M39.5 13.4A20.2 20.2 0 0 1 32.5 52.2" stroke="url(#logoLuzArcGrad)" stroke-width="1.8" stroke-linecap="round" />
+    <path d="M26.5 15.2A17.2 17.2 0 0 0 23.5 47.2" stroke="#10b981" stroke-opacity="0.38" stroke-width="1.1" stroke-linecap="round" />
+    <path d="M38.2 16.2A17.2 17.2 0 0 1 33.2 49.2" stroke="#10b981" stroke-opacity="0.38" stroke-width="1.1" stroke-linecap="round" />
+    <path d="M9.5 40.8H16.5L18.8 38.2L21.2 44.5L23.8 34.5L26.2 42.5L28.5 39.5" stroke="url(#logoLuzWaveGreen)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M31.5 44.8L34.2 38.5L36.8 42.2L39.8 34.2L42.5 44.5L45.2 38.2L47.5 40.8H54.5" stroke="url(#logoLuzWaveAmber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M30.8 10.2H39.8L33.4 27.2H43.6L25.4 55.2L30.4 33.8H21.8L30.8 10.2Z" fill="url(#logoLuzBoltMain)" stroke="url(#logoLuzBoltEdge)" stroke-width="1.3" stroke-linejoin="round" />
+    <path d="M31.6 11.8H37.8L31.8 27.6H27.2L23.8 32.2H31.8L27.5 50.2L41.2 28.8H32.2L31.6 11.8Z" fill="#d97706" fill-opacity="0.24" />
+    <path d="M31.5 11.5H36.8L29.8 28.5L24.2 31.8L31.5 11.5Z" fill="url(#logoLuzBoltShine)" />
   </g>
 
-  <!-- Texto con 150px de margen derecho de seguridad (el texto termina en x=375 aprox) -->
-  <text x="96" y="50" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="900" fill="#0f172a" letter-spacing="-0.5">Luz</text>
-  <text x="150" y="50" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="900" fill="#047857" letter-spacing="0.5">EXTREMADURA</text>
-  <text x="97" y="74" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#64748b" letter-spacing="1.5">PRECIO PVPC HOY · BADAJOZ Y CÁCERES</text>
+  <!-- Wordmark -->
+  <text x="74" y="31" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="21" font-weight="800" fill="#0f172a" letter-spacing="-0.5">Luz</text>
+  <text x="74" y="50" font-family="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="800" fill="#059669" letter-spacing="1.8">EXTREMADURA</text>
+  <circle cx="208" cy="45" r="3.2" fill="#f59e0b" />
 </svg>

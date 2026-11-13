@@ -1,5 +1,6 @@
 ---
-import { Zap, Heart, Shield, RefreshCw } from "@lucide/astro";
+import { Heart, Shield, RefreshCw } from "@lucide/astro";
+import Logo from "./Logo.astro";
 import { withBase, AUTHOR_NAME, AUTHOR_URL } from "../lib/site";
 
 const year = new Date().getFullYear();
@@ -11,9 +12,7 @@ const year = new Date().getFullYear();
       <!-- Columna 1: Info e Identidad -->
       <div>
         <div class="flex items-center gap-2.5 text-white font-extrabold text-base mb-3">
-          <div class="w-7 h-7 rounded-lg bg-amber-400 text-slate-950 flex items-center justify-center">
-            <Zap size={16} class="fill-current" />
-          </div>
+          <Logo class="w-8 h-8 shrink-0" />
           <span>LUZ <span class="text-emerald-400">EXTREMADURA</span></span>
         </div>
         <p class="leading-relaxed text-slate-400 text-xs sm:text-sm">

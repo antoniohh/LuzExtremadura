@@ -1,6 +1,6 @@
 # Luz Extremadura
 
-[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.2.0-047857?style=for-the-badge)](CHANGELOG.md)
+[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.2.1-047857?style=for-the-badge)](CHANGELOG.md)
 [![Astro](https://img.shields.io/badge/Astro-7.4.2-BC52EE?style=for-the-badge&logo=astro&logoColor=white)](https://astro.build)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.3.3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -154,11 +154,13 @@ Si necesitas cambiar el dominio en el futuro, actualiza `src/lib/site.ts`, `astr
 
 ## 📦 Control de Versiones
 
-Versión actual: **1.1.4** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
+Versión actual: **1.2.1** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
 
 | Versión | Fecha | Cambios principales |
-|---|---|---|
-| **1.1.4** | 2026-11-08 | Desacoplamiento de fechas fijas en `<title>` y `<meta description>`, prevención de desfase en SERPs de Google, tarjetas Open Graph perennes y automatización de `<lastmod>` en el sitemap |
+|---|---|---|---|
+| **1.2.1** | 2026-11-13 | Renovación integral de recursos gráficos, isotipo vectorial SVG (`Logo.astro`, `favicon.svg`, `logo.svg`), familia de iconos PWA/móvil de alta resolución (`icon-512.png`, `icon-192.png`, `apple-touch-icon.png`, `favicon.ico`) y nueva tarjeta social Open Graph (`og-image.png`) estilo observatorio de datos |
+| **1.2.0** | 2026-11-12 | Barra de navegación de red responsive (`NetworkBar.astro`) y módulo de enlazado SEO entre proyectos en el pie de página (`Footer.astro`) |
+| 1.1.4 | 2026-11-08 | Desacoplamiento de fechas fijas en `<title>` y `<meta description>`, prevención de desfase en SERPs de Google, tarjetas Open Graph perennes y automatización de `<lastmod>` en el sitemap |
 | 1.1.3 | 2026-11-06 | Retraso de una hora en el cron de GitHub Actions a las 15:51 UTC (16:51 CET) para la publicación de la previsión horaria del día siguiente |
 | 1.1.2 | 2026-11-05 | Recalibración del cron de GitHub Actions a las 14:51 UTC (15:51 CET) para compensar el retardo de colas y desplegar la previsión horaria a las 20:45 CET |
 | 1.1.1 | 2026-11-05 | Optimización y limpieza de la imagen Open Graph (`og-image.png`), retirando bordes negros laterales y ajustándola limpiamente a 1200×630px |
