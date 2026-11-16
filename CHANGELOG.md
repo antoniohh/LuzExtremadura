@@ -2,6 +2,23 @@
 
 Todas las versiones relevantes de **Luz Extremadura**. El proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 
+## [1.3.0] — 2026-11-16
+
+Migración al dominio propio oficial **`https://luzextremadura.es`** e incorporación del bloque legal, de privacidad y de contacto completo (**LSSI-CE**, **RGPD**, **LOPDGDD**, **Guía de Cookies de la AEPD** y señales de confianza **Google E-E-A-T**).
+
+### Añadido y Mejorado
+
+- **Migración al Dominio Oficial `https://luzextremadura.es` ([`public/CNAME`](public/CNAME), [`astro.config.mjs`](astro.config.mjs), [`src/lib/site.ts`](src/lib/site.ts), [`src/components/NetworkBar.astro`](src/components/NetworkBar.astro), [`public/robots.txt`](public/robots.txt), [`public/sitemap.xml`](public/sitemap.xml) y [`scripts/actualizar_precios_luz.mjs`](scripts/actualizar_precios_luz.mjs))**:
+  - Actualización canónica del sitio a `https://luzextremadura.es` (`luzextremadura.es`), sincronizando URLs canónicas, metadatos Open Graph, Twitter Cards y el grafo estructurado Schema.org (`WebSite`, `WebPage`, `Dataset`, `FAQPage`, `BreadcrumbList`).
+  - Generación automatizada del `sitemap.xml` con las 5 rutas públicas bajo `https://luzextremadura.es/` y cabeceras `User-Agent` hacia e·sios actualizadas.
+  - Caché del Service Worker (`public/sw.js`) elevada a `luz-extremadura-v2` con precarga de las páginas legales.
+- **Nuevas Páginas Legales y de Contacto ([`src/pages/aviso-legal.astro`](src/pages/aviso-legal.astro), [`src/pages/privacidad.astro`](src/pages/privacidad.astro), [`src/pages/cookies.astro`](src/pages/cookies.astro) y [`src/pages/contacto.astro`](src/pages/contacto.astro))**:
+  - **Aviso Legal (`/aviso-legal/`):** Identificación completa del titular conforme al art. 10 LSSI-CE (`info@antoniohorrillo.com`, `antoniohorrillo.com`), condiciones de uso, origen público de los datos (Red Eléctrica / e·sios `archive 70`), carácter orientativo y licencia MIT.
+  - **Política de Privacidad (`/privacidad/`):** Cumplimiento del RGPD y LOPDGDD bajo el principio de privacidad desde el diseño, detalle de encargados del tratamiento, conservación y ejercicio de derechos con acceso directo al configurador de consentimiento.
+  - **Política de Cookies (`/cookies/`):** Tabla técnica detallada de almacenamiento local (`localStorage` / `sessionStorage`) y cookies opcionales de GA4, explicación de **Google Consent Mode v2** y botón interactivo de gestión.
+  - **Contacto y Soporte (`/contacto/`):** Atención directa (`info@antoniohorrillo.com` y `antoniohorrillo.com`), canal de soporte técnico en GitHub Issues y orientación al consumidor con enlaces a CNMC, INCOEX y REE.
+  - **Navegación transversal ([`src/components/Footer.astro`](src/components/Footer.astro) y [`src/components/CookieBanner.astro`](src/components/CookieBanner.astro)):** Enlaces en el pie de página, en el banner de cookies y barra de navegación rápida entre las 4 páginas.
+
 ## [1.2.1] — 2026-11-13
 
 Renovación integral de la identidad visual, isotipo vectorial, familia de iconos PWA/móvil y tarjeta social Open Graph generados con Nano Banana y trazado vectorial de alta precisión, alineando el diseño con el ecosistema de observatorios de datos (*Combustible Extremadura* y *Embalses de Extremadura*).

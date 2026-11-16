@@ -1,0 +1,196 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Scale, ArrowLeft, ExternalLink } from "@lucide/astro";
+import { withBase, SITE, SITE_DOMAIN, AUTHOR_NAME, AUTHOR_URL, AUTHOR_EMAIL } from "../lib/site";
+---
+
+<BaseLayout
+  title="Aviso Legal y Condiciones de Uso | Luz Extremadura"
+  description="Información legal, titularidad, condiciones generales de uso, propiedad intelectual y exención de responsabilidad del portal Luz Extremadura (luzextremadura.es)."
+  canonicalPath="aviso-legal/"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+      <a
+        href={withBase()}
+        class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-600 hover:text-amber-600 transition-colors"
+      >
+        <ArrowLeft size={16} />
+        <span>Volver a la portada</span>
+      </a>
+
+      <!-- Navegación rápida entre páginas legales -->
+      <nav aria-label="Documentación legal" class="flex flex-wrap items-center gap-2 text-xs font-semibold">
+        <span class="px-3 py-1.5 rounded-lg bg-slate-900 text-amber-400">
+          Aviso legal
+        </span>
+        <a
+          href={withBase("privacidad/")}
+          class="px-3 py-1.5 rounded-lg bg-slate-200/80 text-slate-700 hover:bg-slate-300 transition-colors"
+        >
+          Política de privacidad
+        </a>
+        <a
+          href={withBase("cookies/")}
+          class="px-3 py-1.5 rounded-lg bg-slate-200/80 text-slate-700 hover:bg-slate-300 transition-colors"
+        >
+          Política de cookies
+        </a>
+        <a
+          href={withBase("contacto/")}
+          class="px-3 py-1.5 rounded-lg bg-slate-200/80 text-slate-700 hover:bg-slate-300 transition-colors"
+        >
+          Contacto
+        </a>
+      </nav>
+    </div>
+
+    <header class="mb-10 pb-6 border-b border-slate-200">
+      <div class="flex items-center gap-2.5 text-amber-600 font-bold text-sm uppercase tracking-wider mb-2">
+        <Scale size={20} />
+        <span>Información Legal · LSSI-CE</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        Aviso Legal y Condiciones de Uso
+      </h1>
+      <p class="mt-3 text-base sm:text-lg text-slate-600">
+        Condiciones generales de acceso, utilización y transparencia informativa del portal <strong>{SITE_DOMAIN}</strong>.
+      </p>
+    </header>
+
+    <div class="space-y-8 text-slate-700 text-sm sm:text-base leading-relaxed">
+      <section class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-xs">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          1. Datos identificativos del titular
+        </h2>
+        <p>
+          En cumplimiento del deber de información recogido en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se hacen constar los datos identificativos del responsable de este sitio web:
+        </p>
+        <ul class="list-disc pl-5 mt-3 space-y-1.5 text-sm sm:text-base">
+          <li><strong>Denominación del portal:</strong> Luz Extremadura</li>
+          <li><strong>Dominio oficial:</strong> <a href={SITE} class="font-semibold text-amber-700 hover:underline">{SITE}</a></li>
+          <li><strong>Titular y desarrollador:</strong> {AUTHOR_NAME}</li>
+          <li>
+            <strong>Correo electrónico de contacto:</strong>{" "}
+            <a href={`mailto:${AUTHOR_EMAIL}`} class="font-semibold text-amber-700 hover:underline">
+              {AUTHOR_EMAIL}
+            </a>
+          </li>
+          <li>
+            <strong>Sitio web de contacto y portafolio profesional:</strong>{" "}
+            <a href={AUTHOR_URL} target="_blank" rel="noopener noreferrer" class="font-semibold text-amber-700 hover:underline inline-flex items-center gap-1">
+              <span>antoniohorrillo.com</span>
+              <ExternalLink size={13} />
+            </a>
+          </li>
+          <li>
+            <strong>Repositorio oficial y canal técnico:</strong>{" "}
+            <a href="https://github.com/antoniohh/LuzExtremadura" target="_blank" rel="noopener noreferrer" class="font-semibold text-amber-700 hover:underline inline-flex items-center gap-1">
+              <span>github.com/antoniohh/LuzExtremadura</span>
+              <ExternalLink size={13} />
+            </a>
+          </li>
+          <li><strong>Finalidad del sitio:</strong> Portal ciudadano e informativo sin ánimo de lucro ni actividad comercial directa para la consulta del precio regulado de la electricidad (PVPC 2.0TD) en Extremadura.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          2. Objeto y ámbito de aplicación
+        </h2>
+        <p>
+          El presente Aviso Legal regula el acceso, navegación y uso del sitio web <strong>{SITE_DOMAIN}</strong> (en adelante, «el Portal»). El acceso y utilización del Portal atribuye la condición de persona usuaria e implica la aceptación plena y sin reservas de todas las disposiciones incluidas en este documento en el momento mismo en que se accede.
+        </p>
+        <p class="mt-2">
+          <strong>Luz Extremadura</strong> es una herramienta digital abierta diseñada para facilitar a los hogares, autónomos y consumidores de las provincias de Badajoz y Cáceres la consulta clara, accesible y sin publicidad intrusiva de los precios horarios de la tarifa eléctrica regulada (PVPC 2.0TD), así como calculadoras orientativas de consumo doméstico.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          3. Condiciones de acceso y uso
+        </h2>
+        <p>
+          El acceso al Portal tiene carácter libre y gratuito, y no exige suscripción ni registro previo. La persona usuaria se compromete a hacer un uso adecuado, lícito y diligente de los contenidos y herramientas ofrecidas, absteniéndose de:
+        </p>
+        <ul class="list-disc pl-5 mt-2 space-y-1">
+          <li>Utilizar el Portal o sus datos con fines ilícitos, fraudulentos o lesivos de los derechos e intereses de terceros.</li>
+          <li>Realizar acciones que puedan dañar, inutilizar, sobrecargar o deteriorar la infraestructura técnica del sitio web.</li>
+          <li>Suplantar la identidad del Portal o presentar las estimaciones del mismo como documentos contractuales emitidos por compañías comercializadoras o por el operador del sistema.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          4. Origen de los datos y limitación de responsabilidad
+        </h2>
+        <p>
+          Los precios horarios del Precio Voluntario para el Pequeño Consumidor (PVPC, peaje 2.0TD) mostrados en <strong>Luz Extremadura</strong> se obtienen de forma automatizada a partir de los catálogos públicos de datos abiertos de <strong>Red Eléctrica de España (REE / Sistema de Información del Operador del Sistema e·sios, archivo oficial 70)</strong>.
+        </p>
+        <p class="mt-2">
+          A pesar de que se aplican controles técnicos para asegurar que la información mostrada sea fiel y esté actualizada diariamente, el titular del Portal advierte expresamente que:
+        </p>
+        <ul class="list-disc pl-5 mt-2 space-y-1.5">
+          <li>
+            <strong>Carácter meramente informativo y orientativo:</strong> Los datos, gráficos, semáforos horarios y resultados de la calculadora de consumo se ofrecen a título estrictamente orientativo y divulgativo. No constituyen asesoramiento energético, financiero ni jurídico, ni tienen carácter vinculante frente a las compañías comercializadoras de referencia.
+          </li>
+          <li>
+            <strong>Independencia institucional:</strong> <strong>Luz Extremadura</strong> es un proyecto independiente y no mantiene vinculación societaria, patrocinio ni representación oficial con Red Eléctrica de España (Redeia), la CNMC ni ninguna empresa comercializadora o distribuidora eléctrica.
+          </li>
+          <li>
+            <strong>Disponibilidad del servicio:</strong> El titular no garantiza la inexistencia de interrupciones o demoras puntuales derivadas de retrasos en la publicación de datos por parte de la fuente oficial (e·sios), caídas de red o tareas de mantenimiento en la plataforma de alojamiento.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          5. Propiedad intelectual, industrial y licencia de código abierto
+        </h2>
+        <p>
+          El código fuente del proyecto se publica bajo la <strong>Licencia MIT</strong> en su repositorio oficial de GitHub, permitiendo su consulta, auditoría y reutilización conforme a los términos de dicha licencia (manteniendo el aviso de copyright y atribución a <strong>{AUTHOR_NAME}</strong>).
+        </p>
+        <p class="mt-2">
+          Los datos brutos de precios eléctricos pertenecen al catálogo de información pública del operador del sistema (Red Eléctrica de España / e·sios) y su reutilización se realiza al amparo de la normativa sobre reutilización de la información del sector público, citando expresamente la fuente original.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          6. Enlaces externos
+        </h2>
+        <p>
+          El Portal puede incluir enlaces hacia otros sitios web propios de la red de proyectos abiertos de {AUTHOR_NAME} (como <em>Combustible Extremadura</em>, <em>Embalses Extremadura</em> o <em>GlucoLuna</em>) o hacia fuentes institucionales externas. Respecto a los sitios de terceros ajenos al titular, no se ejerce control alguno sobre sus contenidos ni políticas, por lo que no se asume responsabilidad sobre los mismos.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          7. Protección de datos y cookies
+        </h2>
+        <p>
+          El tratamiento de la información técnica de navegación y el uso de cookies analíticas sujetas a consentimiento se rigen por lo dispuesto en nuestra{" "}
+          <a href={withBase("privacidad/")} class="font-bold text-amber-700 hover:underline">
+            Política de Privacidad
+          </a>{" "}
+          y en nuestra{" "}
+          <a href={withBase("cookies/")} class="font-bold text-amber-700 hover:underline">
+            Política de Cookies
+          </a>.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          8. Legislación aplicable y jurisdicción
+        </h2>
+        <p>
+          Las presentes condiciones se rigen íntegramente por la legislación española. Para la resolución de cualquier controversia o conflicto que pudiera derivarse del acceso o uso del Portal, las partes se someten a los Juzgados y Tribunales competentes conforme a la normativa procesal y de consumidores vigente en España.
+        </p>
+        <p class="mt-4 text-xs text-slate-500">
+          Última actualización de este Aviso Legal: noviembre de 2026.
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

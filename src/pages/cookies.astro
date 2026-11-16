@@ -1,76 +1,162 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { Zap, Shield, ArrowLeft } from "@lucide/astro";
-import { withBase } from "../lib/site";
+import { Zap, Cookie, ArrowLeft } from "@lucide/astro";
+import { withBase, SITE_DOMAIN } from "../lib/site";
 ---
 
 <BaseLayout
-  title="Política de Cookies y Privacidad | Luz Extremadura"
-  description="Información detallada sobre el uso de cookies analíticas, almacenamiento local y privacidad en Luz Extremadura."
+  title="Política de Cookies | Luz Extremadura"
+  description="Información detallada sobre el uso de cookies analíticas, almacenamiento local y Google Consent Mode v2 en Luz Extremadura (luzextremadura.es)."
   canonicalPath="cookies/"
 >
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-    <a href={withBase()} class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-600 hover:text-amber-600 mb-8 transition-colors">
-      <ArrowLeft size={16} />
-      <span>Volver a la portada</span>
-    </a>
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+      <a
+        href={withBase()}
+        class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-600 hover:text-amber-600 transition-colors"
+      >
+        <ArrowLeft size={16} />
+        <span>Volver a la portada</span>
+      </a>
+
+      <!-- Navegación rápida entre páginas legales -->
+      <nav aria-label="Documentación legal" class="flex flex-wrap items-center gap-2 text-xs font-semibold">
+        <a
+          href={withBase("aviso-legal/")}
+          class="px-3 py-1.5 rounded-lg bg-slate-200/80 text-slate-700 hover:bg-slate-300 transition-colors"
+        >
+          Aviso legal
+        </a>
+        <a
+          href={withBase("privacidad/")}
+          class="px-3 py-1.5 rounded-lg bg-slate-200/80 text-slate-700 hover:bg-slate-300 transition-colors"
+        >
+          Política de privacidad
+        </a>
+        <span class="px-3 py-1.5 rounded-lg bg-slate-900 text-amber-400">
+          Política de cookies
+        </span>
+        <a
+          href={withBase("contacto/")}
+          class="px-3 py-1.5 rounded-lg bg-slate-200/80 text-slate-700 hover:bg-slate-300 transition-colors"
+        >
+          Contacto
+        </a>
+      </nav>
+    </div>
 
     <header class="mb-10 pb-6 border-b border-slate-200">
-      <div class="flex items-center gap-3 text-amber-600 font-bold text-sm uppercase tracking-wider mb-2">
-        <Shield size={20} />
-        <span>Transparencia y Privacidad</span>
+      <div class="flex items-center gap-2.5 text-amber-600 font-bold text-sm uppercase tracking-wider mb-2">
+        <Cookie size={20} />
+        <span>Transparencia · Guía de Cookies AEPD</span>
       </div>
       <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-        Política de Cookies y Privacidad
+        Política de Cookies
       </h1>
       <p class="mt-3 text-base sm:text-lg text-slate-600">
-        En Luz Extremadura apostamos por una experiencia limpia: sin publicidad, sin perfiles comerciales y con control total sobre tus datos.
+        En <strong>Luz Extremadura ({SITE_DOMAIN})</strong> apostamos por una experiencia limpia: sin publicidad, sin seguimiento comercial y con control total sobre tus preferencias.
       </p>
     </header>
 
     <div class="prose prose-slate max-w-none text-slate-700 space-y-8 text-sm sm:text-base leading-relaxed">
       <section>
-        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">1. ¿Qué son las cookies y qué utilizamos?</h2>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          1. ¿Qué son las cookies y qué tecnologías utilizamos?
+        </h2>
         <p>
-          Las cookies son pequeños ficheros de texto que los sitios web almacenan en tu dispositivo para recordar tus preferencias o recopilar información estadística.
+          Las cookies y tecnologías similares (como el almacenamiento local <code>localStorage</code> del navegador) son pequeños ficheros o registros que los sitios web guardan en tu dispositivo para recordar tus preferencias técnicas o recopilar información estadística de uso.
         </p>
         <p class="mt-2">
-          En <strong>Luz Extremadura</strong> no utilizamos cookies publicitarias, cookies de seguimiento entre sitios ni vendemos tus datos a terceros. Únicamente empleamos:
+          En <strong>Luz Extremadura</strong> no utilizamos cookies publicitarias, cookies de seguimiento entre sitios ni vendemos datos a terceros. Únicamente empleamos:
         </p>
-        <ul class="list-disc pl-5 mt-2 space-y-1">
-          <li><strong>Cookies técnicas necesarias:</strong> Almacenan en tu navegador si has aceptado o rechazado la medición analítica para no volver a preguntarte en cada visita.</li>
-          <li><strong>Cookies analíticas opcionales (Google Analytics 4):</strong> Nos permiten conocer de forma anónima y agregada qué horas se consultan con mayor frecuencia o qué calculadoras resultan más útiles para optimizar el servicio.</li>
+        <ul class="list-disc pl-5 mt-2 space-y-1.5">
+          <li>
+            <strong>Almacenamiento técnico necesario:</strong> Guarda en tu navegador si has aceptado o rechazado la medición analítica para no mostrarte el banner en cada visita, así como el estado de cierre del aviso de instalación PWA.
+          </li>
+          <li>
+            <strong>Cookies analíticas opcionales (Google Analytics 4):</strong> Solo si nos das tu consentimiento expreso, nos permiten conocer de forma anónima y agregada qué horas se consultan con mayor frecuencia o qué calculadoras resultan más útiles para mejorar el servicio.
+          </li>
         </ul>
       </section>
 
       <section>
-        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">2. Funcionamiento de Google Consent Mode v2</h2>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          2. Detalle de cookies y almacenamiento utilizado en {SITE_DOMAIN}
+        </h2>
+        <div class="overflow-x-auto border border-slate-200 rounded-xl bg-white shadow-xs mt-3">
+          <table class="w-full text-left border-collapse text-xs sm:text-sm">
+            <thead>
+              <tr class="bg-slate-900 text-white">
+                <th class="py-3 px-4 font-bold">Nombre</th>
+                <th class="py-3 px-4 font-bold">Proveedor</th>
+                <th class="py-3 px-4 font-bold">Tipo / Categoría</th>
+                <th class="py-3 px-4 font-bold">Duración</th>
+                <th class="py-3 px-4 font-bold">Finalidad</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200">
+              <tr>
+                <td class="py-3 px-4 font-mono font-semibold text-slate-900">luz_extremadura_cookie_consent</td>
+                <td class="py-3 px-4">Propia ({SITE_DOMAIN})</td>
+                <td class="py-3 px-4">Técnica (<code>localStorage</code>)</td>
+                <td class="py-3 px-4">Persistente</td>
+                <td class="py-3 px-4">Almacena el estado de consentimiento del usuario (<code>granted</code> o <code>denied</code>).</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-mono font-semibold text-slate-900">luz_pwa_prompt_dismissed</td>
+                <td class="py-3 px-4">Propia ({SITE_DOMAIN})</td>
+                <td class="py-3 px-4">Técnica (<code>sessionStorage</code>)</td>
+                <td class="py-3 px-4">Sesión</td>
+                <td class="py-3 px-4">Recuerda si el usuario ha cerrado el aviso de instalación de la app durante la sesión.</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-mono font-semibold text-slate-900">_ga</td>
+                <td class="py-3 px-4">Google Analytics 4</td>
+                <td class="py-3 px-4">Analítica (Opcional)</td>
+                <td class="py-3 px-4">2 años</td>
+                <td class="py-3 px-4">Distingue visitas únicas de forma estadística y anónima (solo si se acepta).</td>
+              </tr>
+              <tr>
+                <td class="py-3 px-4 font-mono font-semibold text-slate-900">_ga_HEKMQY6G5E</td>
+                <td class="py-3 px-4">Google Analytics 4</td>
+                <td class="py-3 px-4">Analítica (Opcional)</td>
+                <td class="py-3 px-4">2 años</td>
+                <td class="py-3 px-4">Mantiene el estado de la sesión estadística en GA4 (solo si se acepta).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          3. Funcionamiento de Google Consent Mode v2
+        </h2>
         <p>
-          Cumplimos rigurosamente con el Reglamento General de Protección de Datos (RGPD) y las directrices de la Agencia Española de Protección de Datos (AEPD), implementando la especificación técnica <strong>Google Consent Mode v2</strong>:
+          Cumplimos rigurosamente con el Reglamento General de Protección de Datos (RGPD), la LSSI-CE y la Guía sobre el uso de las cookies de la Agencia Española de Protección de Datos (AEPD), implementando la especificación técnica <strong>Google Consent Mode v2</strong>:
         </p>
         <ul class="list-disc pl-5 mt-3 space-y-2 text-sm">
           <li>
-            <strong>Visitantes del Espacio Económico Europeo (España y la UE), Reino Unido y Suiza:</strong> Todas las señales de consentimiento (<code>analytics_storage</code>, <code>ad_storage</code>, <code>ad_user_data</code> y <code>ad_personalization</code>) nacen <strong>estrictamente denegadas (<code>denied</code>)</strong> por defecto en la cabecera.
+            <strong>Visitantes del Espacio Económico Europeo (España y la UE), Reino Unido y Suiza:</strong> Todas las señales de consentimiento (<code>analytics_storage</code>, <code>ad_storage</code>, <code>ad_user_data</code> y <code>ad_personalization</code>) nacen <strong>estrictamente denegadas (<code>denied</code>)</strong> por defecto en la cabecera antes de ejecutar cualquier script.
           </li>
           <li>
-            <strong>Si rechazas o no interactúas con el banner:</strong> No se almacena ninguna cookie en tu navegador ni se crea perfil de usuario. Google Analytics 4 opera únicamente mediante pings agregados sin cookies.
+            <strong>Si rechazas o no interactúas con el banner:</strong> No se almacena ninguna cookie analítica en tu navegador ni se crea perfil de usuario. Google Analytics 4 opera únicamente mediante pings técnicos agregados sin cookies.
           </li>
           <li>
-            <strong>Si pulsas «Aceptar todas»:</strong> Se habilita la medición analítica con cookies (<code>_ga</code> y <code>_ga_HEKMQY6G5E</code>). Las señales de Consent Mode v2 se transmiten a Google como <code>granted</code> para certificar el consentimiento sin que en ningún momento se utilicen tus datos para anuncios personalizados ni remarketing comercial.
+            <strong>Si pulsas «Aceptar todas» o activas las cookies analíticas:</strong> Se habilita la medición estadística con cookies (<code>_ga</code> y <code>_ga_HEKMQY6G5E</code>) con IP anonimizada, sin que en ningún momento se utilicen tus datos para anuncios personalizados ni remarketing comercial.
           </li>
           <li>
-            <strong>Visitantes internacionales (fuera del EEE):</strong> El consentimiento nace concedido por defecto de acuerdo con la regulación de sus regiones.
+            <strong>Visitantes internacionales (fuera del EEE):</strong> El consentimiento se aplica de acuerdo con la regulación de sus respectivas jurisdicciones.
           </li>
         </ul>
-        <p class="mt-3 text-xs text-slate-500">
-          Tu preferencia se almacena en <code>localStorage</code> (<code>luz_extremadura_cookie_consent</code>) exclusivamente en tu dispositivo.
-        </p>
       </section>
 
       <section>
-        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">3. Modificar o retirar tu consentimiento</h2>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          4. Modificar o retirar tu consentimiento
+        </h2>
         <p>
-          Puedes cambiar de opinión en cualquier momento pulsando el siguiente botón:
+          Puedes revisar, cambiar o revocar tu consentimiento en cualquier momento y con efecto inmediato pulsando el siguiente botón:
         </p>
         <div class="mt-4">
           <button
@@ -82,6 +168,19 @@ import { withBase } from "../lib/site";
             <span>Configurar preferencias de cookies</span>
           </button>
         </div>
+        <p class="mt-4 text-sm">
+          Adicionalmente, puedes eliminar o bloquear las cookies directamente desde los ajustes de tu navegador web (Chrome, Firefox, Safari, Edge o Brave). Para más información sobre el tratamiento de datos y tus derechos, consulta nuestra{" "}
+          <a href={withBase("privacidad/")} class="font-bold text-amber-700 hover:underline">
+            Política de Privacidad
+          </a>{" "}
+          y nuestro{" "}
+          <a href={withBase("aviso-legal/")} class="font-bold text-amber-700 hover:underline">
+            Aviso Legal
+          </a>.
+        </p>
+        <p class="mt-4 text-xs text-slate-500">
+          Última actualización de esta Política de Cookies: noviembre de 2026.
+        </p>
       </section>
     </div>
   </div>

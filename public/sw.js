@@ -1,8 +1,11 @@
 // Service Worker para Luz Extremadura (PWA y caché offline de activos esenciales)
-const CACHE_NAME = "luz-extremadura-v1";
+const CACHE_NAME = "luz-extremadura-v2";
 const STATIC_ASSETS = [
   "/",
+  "/aviso-legal/",
+  "/privacidad/",
   "/cookies/",
+  "/contacto/",
   "/site.webmanifest",
   "/assets/logo.svg",
   "/assets/favicon.svg",

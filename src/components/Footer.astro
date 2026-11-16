@@ -96,23 +96,41 @@ const year = new Date().getFullYear();
         </ul>
       </div>
 
-      <!-- Columna 4: Transparencia y Privacidad -->
+      <!-- Columna 4: Información Legal y Privacidad -->
       <div>
         <p class="font-bold text-white text-sm uppercase tracking-wider mb-3">
-          Privacidad y Transparencia
+          Información Legal y Privacidad
         </p>
         <p class="text-xs leading-relaxed text-slate-400 mb-3">
           Sin registros, sin muros de pago y sin publicidad intrusiva. Solo analítica anónima si das tu consentimiento expreso.
         </p>
-        <div class="flex flex-wrap gap-2 text-xs">
-          <a href={withBase("cookies/")} class="text-slate-300 hover:text-amber-400 underline">
-            Política de cookies
-          </a>
-          <span>·</span>
-          <button type="button" data-cookie-open-modal class="text-slate-300 hover:text-amber-400 underline cursor-pointer">
-            Preferencias de cookies
-          </button>
-        </div>
+        <ul class="space-y-2 text-xs sm:text-sm">
+          <li>
+            <a href={withBase("aviso-legal/")} class="text-slate-300 hover:text-amber-400 transition-colors">
+              Aviso legal y condiciones de uso
+            </a>
+          </li>
+          <li>
+            <a href={withBase("privacidad/")} class="text-slate-300 hover:text-amber-400 transition-colors">
+              Política de privacidad (RGPD)
+            </a>
+          </li>
+          <li>
+            <a href={withBase("cookies/")} class="text-slate-300 hover:text-amber-400 transition-colors">
+              Política de cookies
+            </a>
+          </li>
+          <li>
+            <a href={withBase("contacto/")} class="text-slate-300 hover:text-amber-400 transition-colors">
+              Contacto y soporte
+            </a>
+          </li>
+          <li>
+            <button type="button" data-cookie-open-modal class="text-slate-300 hover:text-amber-400 underline cursor-pointer">
+              Configurar preferencias de cookies
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
 

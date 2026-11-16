@@ -1,17 +1,17 @@
 # Luz Extremadura
 
-[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.2.1-047857?style=for-the-badge)](CHANGELOG.md)
+[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.3.0-047857?style=for-the-badge)](CHANGELOG.md)
 [![Astro](https://img.shields.io/badge/Astro-7.4.2-BC52EE?style=for-the-badge&logo=astro&logoColor=white)](https://astro.build)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.3.3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![Licencia MIT](https://img.shields.io/badge/Licencia-MIT-green?style=for-the-badge)](LICENSE)
-[![Deploy](https://img.shields.io/badge/Deploy-GitHub_Pages-0f172a?style=for-the-badge&logo=github&logoColor=white)](https://luz.antoniohorrillo.com/)
+[![Deploy](https://img.shields.io/badge/Deploy-GitHub_Pages-0f172a?style=for-the-badge&logo=github&logoColor=white)](https://luzextremadura.es/)
 
 Aplicación web estática (SPA) para la consulta diaria y en tiempo real del **precio de la luz regulado en Extremadura (Tarifa PVPC 2.0TD)** en las provincias de Badajoz y Cáceres, con semáforo energético por horas, avance de mañana y calculadora de ahorro.
 
-- **Sitio web en producción:** [https://luz.antoniohorrillo.com](https://luz.antoniohorrillo.com)
+- **Sitio web en producción:** [https://luzextremadura.es](https://luzextremadura.es)
 - **Repositorio:** [https://github.com/antoniohh/LuzExtremadura](https://github.com/antoniohh/LuzExtremadura)
-- **Autor:** Antonio Horrillo ([antoniohorrillo.com](https://antoniohorrillo.com))
+- **Autor:** Antonio Horrillo ([antoniohorrillo.com](https://antoniohorrillo.com) · [info@antoniohorrillo.com](mailto:info@antoniohorrillo.com))
 
 ---
 
@@ -32,10 +32,10 @@ Aplicación web estática (SPA) para la consulta diaria y en tiempo real del **p
      - **Vehículo Eléctrico:** Coste para 100 km en carga nocturna doméstica vs. combustible tradicional.
 4. **Dossier «Extremadura, potencia limpia»:**
    - Contexto editorial y técnico sobre la generación fotovoltaica, hidroeléctrica y nuclear en la región, su balance exportador (+400% respecto a la demanda) y el funcionamiento marginalista peninsular.
-5. **SEO Técnico y Privacidad (RGPD / AEPD):**
+5. **SEO Técnico, Textos Legales (LSSI-CE) y Privacidad (RGPD / AEPD):**
    - Marcado estructurado Schema.org (`WebSite`, `WebPage`, `Dataset`, `FAQPage` y `BreadcrumbList`).
    - Activos vectoriales y Open Graph (`favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, `logo.svg`, `og-image.png`, `robots.txt`, `sitemap.xml`, `site.webmanifest` y `CNAME`).
-   - Cumplimiento estricto de privacidad con **Google Consent Mode v2** (bloqueo analítico previo por defecto para RGPD), banner y modal de configuración (`CookieBanner.astro`) y página de [Política de Cookies](/cookies/) (`src/pages/cookies.astro`) con Google Analytics 4 (`G-HEKMQY6G5E`).
+   - Cumplimiento estricto de normativa legal y privacidad con **Google Consent Mode v2** (bloqueo analítico previo por defecto para RGPD), banner y modal de configuración (`CookieBanner.astro`) y páginas de [Aviso Legal](/aviso-legal/) (`src/pages/aviso-legal.astro`), [Política de Privacidad](/privacidad/) (`src/pages/privacidad.astro`), [Política de Cookies](/cookies/) (`src/pages/cookies.astro`) y [Contacto y Soporte](/contacto/) (`src/pages/contacto.astro`) con Google Analytics 4 (`G-HEKMQY6G5E`).
 6. **Ecosistema y Red de Proyectos Abiertos:**
    - Barra superior unificada (`NetworkBar.astro`) 100% responsiva con acceso directo y navegación táctil fluida entre herramientas hermanas: *Luz Extremadura*, *Combustible Extremadura*, *Embalses Extremadura* y *GlucoLuna*.
    - Módulo enlazado en pie de página con *anchor texts* semánticos optimizados para SEO y transmisión de autoridad (*link equity*).
@@ -88,7 +88,7 @@ LuzExtremadura/
 │   ├── datos/
 │   │   └── precios_luz_hoy.json                   # Precios del día y de mañana de REE (archive 70)
 │   ├── .nojekyll
-│   ├── CNAME                                      # Dominio personalizado: luz.antoniohorrillo.com
+│   ├── CNAME                                      # Dominio personalizado: luzextremadura.es
 │   ├── favicon.ico
 │   ├── robots.txt
 │   ├── site.webmanifest                           # PWA Webmanifest
@@ -121,8 +121,11 @@ LuzExtremadura/
 │   ├── lib/
 │   │   └── site.ts                                # Constantes canónicas y dominio
 │   ├── pages/
-│   │   ├── cookies.astro                          # Página de Política de Cookies y Privacidad (/cookies/)
-│   │   └── index.astro                            # SPA principal
+│   │   ├── aviso-legal.astro                      # Página de Aviso Legal y Condiciones (/aviso-legal/)
+│   │   ├── contacto.astro                         # Página de Contacto y Soporte (/contacto/)
+│   │   ├── cookies.astro                          # Página de Política de Cookies (/cookies/)
+│   │   ├── index.astro                            # SPA principal
+│   │   └── privacidad.astro                       # Página de Política de Privacidad RGPD (/privacidad/)
 │   └── styles/
 │       ├── base.css
 │       └── global.css
@@ -139,13 +142,13 @@ LuzExtremadura/
 
 ---
 
-## 🌐 Despliegue en GitHub Pages (`luz.antoniohorrillo.com`)
+## 🌐 Despliegue en GitHub Pages (`luzextremadura.es`)
 
-El repositorio está configurado para desplegarse automáticamente bajo el dominio personalizado `https://luz.antoniohorrillo.com/`:
+El repositorio está configurado para desplegarse automáticamente bajo el dominio propio `https://luzextremadura.es/`:
 
 1. Sube los cambios a la rama `main`.
 2. En GitHub, entra en **Settings → Pages** y en **Build and deployment** selecciona **GitHub Actions**.
-3. Configura un registro DNS `CNAME` para `luz.antoniohorrillo.com` apuntando a `antoniohh.github.io`.
+3. Configura los registros DNS de `luzextremadura.es` (`A`/`AAAA` en la raíz `@` apuntando a las IPs de GitHub Pages y `CNAME` para `www` apuntando a `antoniohh.github.io`).
 4. El workflow `.github/workflows/deploy.yml` se ejecuta automáticamente en cada `push` a `main` y todos los días a las **15:51 UTC (16:51 CET)** para compensar el retardo de colas y publicar sobre las **21:45 CET** los precios de mañana recién emitidos por REE, más una ejecución de respaldo a las **00:24 UTC (01:24 CET)**, publicando `dist/` con el archivo `CNAME` incluido.
 
 Si necesitas cambiar el dominio en el futuro, actualiza `src/lib/site.ts`, `astro.config.mjs`, `public/CNAME`, `public/robots.txt` y `public/sitemap.xml`.
@@ -154,10 +157,11 @@ Si necesitas cambiar el dominio en el futuro, actualiza `src/lib/site.ts`, `astr
 
 ## 📦 Control de Versiones
 
-Versión actual: **1.2.1** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
+Versión actual: **1.3.0** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
 
 | Versión | Fecha | Cambios principales |
 |---|---|---|---|
+| **1.3.0** | 2026-11-16 | Migración al dominio propio `https://luzextremadura.es`, creación del bloque legal y de contacto completo (`/aviso-legal/`, `/privacidad/`, `/cookies/`, `/contacto/` con correo `info@antoniohorrillo.com`), actualización de sitemap y Service Worker `v2` |
 | **1.2.1** | 2026-11-13 | Renovación integral de recursos gráficos, isotipo vectorial SVG (`Logo.astro`, `favicon.svg`, `logo.svg`), familia de iconos PWA/móvil de alta resolución (`icon-512.png`, `icon-192.png`, `apple-touch-icon.png`, `favicon.ico`) y nueva tarjeta social Open Graph (`og-image.png`) estilo observatorio de datos |
 | **1.2.0** | 2026-11-12 | Barra de navegación de red responsive (`NetworkBar.astro`) y módulo de enlazado SEO entre proyectos en el pie de página (`Footer.astro`) |
 | 1.1.4 | 2026-11-08 | Desacoplamiento de fechas fijas en `<title>` y `<meta description>`, prevención de desfase en SERPs de Google, tarjetas Open Graph perennes y automatización de `<lastmod>` en el sitemap |
@@ -170,7 +174,7 @@ Versión actual: **1.2.1** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
 | 1.0.1 | 2026-11-02 | Navegación global multiruta (`/#`), menú móvil desplegable, unificación tipográfica responsiva de encabezados `<h2>` y protección de badge `PVPC REE` en móvil |
 | 1.0.0 | 2026-11-02 | Lanzamiento inicial en `luz.antoniohorrillo.com`: precios diarios y de mañana desde Red Eléctrica (e·sios archive 70), semáforo 24h, tramos valle/llano/punta, calculadora de consumo extremeño, dossier solar y Consent Mode v2 |
 
-El workflow `.github/workflows/release.yml` compila el sitio y adjunta automáticamente `luz-extremadura-v1.1.4.zip` al publicar una etiqueta `v*` en GitHub. Además, los paquetes precompilados locales se encuentran disponibles en la carpeta `release/`.
+El workflow `.github/workflows/release.yml` compila el sitio y adjunta automáticamente `luz-extremadura-v1.3.0.zip` al publicar una etiqueta `v*` en GitHub. Además, los paquetes precompilados locales se encuentran disponibles en la carpeta `release/`.
 
 ---
 

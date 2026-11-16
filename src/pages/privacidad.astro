@@ -1,0 +1,184 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { Shield, ArrowLeft, ExternalLink, Zap } from "@lucide/astro";
+import { withBase, SITE, SITE_DOMAIN, AUTHOR_NAME, AUTHOR_URL, AUTHOR_EMAIL } from "../lib/site";
+---
+
+<BaseLayout
+  title="Política de Privacidad y Protección de Datos | Luz Extremadura"
+  description="Política de privacidad y protección de datos personales (RGPD y LOPDGDD) de Luz Extremadura (luzextremadura.es). Navegación limpia sin registros ni cesión comercial de datos."
+  canonicalPath="privacidad/"
+>
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+      <a
+        href={withBase()}
+        class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-slate-600 hover:text-amber-600 transition-colors"
+      >
+        <ArrowLeft size={16} />
+        <span>Volver a la portada</span>
+      </a>
+
+      <!-- Navegación rápida entre páginas legales -->
+      <nav aria-label="Documentación legal" class="flex flex-wrap items-center gap-2 text-xs font-semibold">
+        <a
+          href={withBase("aviso-legal/")}
+          class="px-3 py-1.5 rounded-lg bg-slate-200/80 text-slate-700 hover:bg-slate-300 transition-colors"
+        >
+          Aviso legal
+        </a>
+        <span class="px-3 py-1.5 rounded-lg bg-slate-900 text-amber-400">
+          Política de privacidad
+        </span>
+        <a
+          href={withBase("cookies/")}
+          class="px-3 py-1.5 rounded-lg bg-slate-200/80 text-slate-700 hover:bg-slate-300 transition-colors"
+        >
+          Política de cookies
+        </a>
+        <a
+          href={withBase("contacto/")}
+          class="px-3 py-1.5 rounded-lg bg-slate-200/80 text-slate-700 hover:bg-slate-300 transition-colors"
+        >
+          Contacto
+        </a>
+      </nav>
+    </div>
+
+    <header class="mb-10 pb-6 border-b border-slate-200">
+      <div class="flex items-center gap-2.5 text-amber-600 font-bold text-sm uppercase tracking-wider mb-2">
+        <Shield size={20} />
+        <span>Protección de Datos · RGPD y LOPDGDD</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+        Política de Privacidad
+      </h1>
+      <p class="mt-3 text-base sm:text-lg text-slate-600">
+        En <strong>Luz Extremadura ({SITE_DOMAIN})</strong> aplicamos el principio de privacidad desde el diseño: no solicitamos registros, no captamos datos personales identificativos ni elaboramos perfiles comerciales.
+      </p>
+    </header>
+
+    <div class="space-y-8 text-slate-700 text-sm sm:text-base leading-relaxed">
+      <section class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-xs">
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          1. Responsable del tratamiento
+        </h2>
+        <p>
+          De conformidad con el Reglamento (UE) 2016/679 General de Protección de Datos (RGPD) y la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD), se informa de los datos del responsable del sitio web:
+        </p>
+        <ul class="list-disc pl-5 mt-3 space-y-1.5">
+          <li><strong>Responsable:</strong> {AUTHOR_NAME}</li>
+          <li><strong>Portal web:</strong> <a href={SITE} class="font-semibold text-amber-700 hover:underline">{SITE}</a></li>
+          <li>
+            <strong>Correo electrónico de contacto:</strong>{" "}
+            <a href={`mailto:${AUTHOR_EMAIL}`} class="font-semibold text-amber-700 hover:underline">
+              {AUTHOR_EMAIL}
+            </a>
+          </li>
+          <li>
+            <strong>Sitio web oficial y vías de contacto del responsable:</strong>{" "}
+            <a href={AUTHOR_URL} target="_blank" rel="noopener noreferrer" class="font-semibold text-amber-700 hover:underline inline-flex items-center gap-1">
+              <span>antoniohorrillo.com</span>
+              <ExternalLink size={13} />
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          2. ¿Qué datos tratamos y con qué finalidad?
+        </h2>
+        <p>
+          <strong>Luz Extremadura</strong> es una aplicación web estática de consulta pública. No dispone de cuentas de usuario, formularios de suscripción, comentarios ni pasarelas de pago. Durante el uso del portal únicamente intervienen los siguientes elementos técnicos:
+        </p>
+        <ul class="list-disc pl-5 mt-3 space-y-2.5">
+          <li>
+            <strong>Datos técnicos de conexión (servidores de alojamiento estático):</strong> Al acceder a <code>{SITE_DOMAIN}</code>, tu navegador establece conexión con la red de distribución estática (GitHub Pages), que procesa de forma automatizada la dirección IP y cabeceras HTTP estrictamente para servir el contenido web y prevenir ataques de denegación de servicio o accesos maliciosos.
+          </li>
+          <li>
+            <strong>Almacenamiento local en tu dispositivo (<code>localStorage</code> / <code>sessionStorage</code>):</strong> La web guarda localmente en tu propio navegador tu preferencia sobre el aviso de cookies (clave <code>luz_extremadura_cookie_consent</code>) y si has cerrado el aviso de instalación de la aplicación web progresiva (<code>luz_pwa_prompt_dismissed</code>). Estos valores permanecen en tu dispositivo y no se transmiten a ningún servidor propio.
+          </li>
+          <li>
+            <strong>Analítica estadística agregada y anónima (opcional):</strong> Solo si otorgas tu consentimiento expreso mediante el banner o el panel de preferencias, se utiliza <strong>Google Analytics 4</strong> con anonimización de IP (<code>anonymize_ip: true</code>) y <strong>Google Consent Mode v2</strong> con el único propósito de medir de forma estadística qué secciones y tramos horarios resultan más útiles.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          3. Base jurídica del tratamiento
+        </h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>
+            <strong>Interés legítimo y necesidad técnica (Art. 6.1.f RGPD):</strong> Para la entrega segura de las páginas estáticas, el funcionamiento de la calculadora en el navegador y el recuerdo técnico de tu decisión sobre privacidad.
+          </li>
+          <li>
+            <strong>Consentimiento expreso de la persona usuaria (Art. 6.1.a RGPD):</strong> Para la activación de cookies analíticas opcionales de Google Analytics 4. En el Espacio Económico Europeo (incluida España), el estado inicial nace denegado por defecto (<code>denied</code>) y solo se activa tras una acción afirmativa («Aceptar todas» o activación manual en el configurador).
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          4. Destinatarios y encargados del tratamiento
+        </h2>
+        <p>
+          No vendemos, alquilamos ni cedemos datos a terceros con fines comerciales o publicitarios. Los únicos proveedores tecnológicos que intervienen en la infraestructura del portal son:
+        </p>
+        <ul class="list-disc pl-5 mt-2 space-y-2">
+          <li>
+            <strong>GitHub, Inc. (infraestructura de alojamiento GitHub Pages):</strong> Encargado de servir los archivos estáticos de la web de forma segura mediante HTTPS.
+          </li>
+          <li>
+            <strong>Google Ireland Limited / Google LLC (Google Analytics 4):</strong> Únicamente en caso de que aceptes las cookies analíticas. Las eventuales transferencias internacionales de datos a EE. UU. están amparadas por el Marco de Privacidad de Datos UE-EE. UU. (<em>EU-U.S. Data Privacy Framework</em>) y las cláusulas contractuales tipo aprobadas por la Comisión Europea.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          5. Plazo de conservación
+        </h2>
+        <p>
+          No almacenamos bases de datos de usuarios. La preferencia de consentimiento guardada en <code>localStorage</code> permanece en tu navegador hasta que decidas borrar los datos de navegación o cambiar tu elección. Los datos estadísticos agregados en Google Analytics 4 (en caso de consentimiento) se conservan durante el periodo mínimo estándar configurado en la plataforma (máximo 14 meses).
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl sm:text-2xl font-bold text-slate-900 mb-3">
+          6. Derechos de las personas usuarias
+        </h2>
+        <p>
+          Cualquier persona tiene derecho a obtener confirmación sobre si se están tratando datos que le conciernan, así como a ejercer los derechos de <strong>acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad</strong>, además de <strong>retirar su consentimiento</strong> en cualquier momento sin que ello afecte a la licitud del tratamiento previo.
+        </p>
+        <p class="mt-2">
+          Puedes retirar o modificar tu consentimiento de cookies de manera instantánea desde el botón habilitado a continuación o en el pie de página, así como contactar con el titular en{" "}
+          <a href={`mailto:${AUTHOR_EMAIL}`} class="font-semibold text-amber-700 hover:underline">
+            {AUTHOR_EMAIL}
+          </a>{" "}
+          o a través de{" "}
+          <a href={AUTHOR_URL} target="_blank" rel="noopener noreferrer" class="font-semibold text-amber-700 hover:underline">
+            antoniohorrillo.com
+          </a>. Asimismo, tienes derecho a presentar una reclamación ante la <strong>Agencia Española de Protección de Datos (AEPD)</strong> en{" "}
+          <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer" class="font-semibold text-amber-700 hover:underline">
+            www.aepd.es
+          </a>.
+        </p>
+        <div class="mt-5">
+          <button
+            type="button"
+            data-cookie-open-modal
+            class="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-400 font-bold text-sm inline-flex items-center gap-2 cursor-pointer transition-colors shadow-sm"
+          >
+            <Zap size={16} />
+            <span>Gestionar mi consentimiento de privacidad y cookies</span>
+          </button>
+        </div>
+        <p class="mt-5 text-xs text-slate-500">
+          Última actualización de esta Política de Privacidad: noviembre de 2026.
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

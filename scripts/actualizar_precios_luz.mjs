@@ -41,7 +41,7 @@ async function descargarPVPC(fechaISO) {
   try {
     const res = await fetch(url, {
       headers: {
-        "User-Agent": "LuzExtremadura/1.0 (+https://luz.antoniohorrillo.com)",
+        "User-Agent": "LuzExtremadura/1.0 (+https://luzextremadura.es)",
         Accept: "application/json",
       },
     });
@@ -176,16 +176,34 @@ async function main() {
     const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://luz.antoniohorrillo.com/</loc>
+    <loc>https://luzextremadura.es/</loc>
     <lastmod>${fechaHoy}</lastmod>
     <changefreq>hourly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://luz.antoniohorrillo.com/cookies/</loc>
-    <lastmod>2026-11-02</lastmod>
+    <loc>https://luzextremadura.es/aviso-legal/</loc>
+    <lastmod>2026-11-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://luzextremadura.es/privacidad/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://luzextremadura.es/cookies/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://luzextremadura.es/contacto/</loc>
+    <lastmod>2026-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>
 `;

@@ -25,7 +25,7 @@ Este documento define las reglas operativas, de arquitectura y de publicación d
 ## 2. Identidad y Configuración del Proyecto
 
 - **Nombre:** Luz Extremadura (`luz-extremadura`)
-- **Dominio de producción:** `https://luz.antoniohorrillo.com` (configurado en `public/CNAME`, `astro.config.mjs` y `src/lib/site.ts`)
+- **Dominio de producción:** `https://luzextremadura.es` (configurado en `public/CNAME`, `astro.config.mjs` y `src/lib/site.ts`)
 - **Repositorio:** `https://github.com/antoniohh/LuzExtremadura`
 - **Autor:** Antonio Horrillo (`https://antoniohorrillo.com`)
 - **Stack:** Astro 7 (`output: "static"`, `trailingSlash: "always"`), Tailwind CSS v4 (`@tailwindcss/vite`), `@lucide/astro` y TypeScript estricto sobre Node.js `>= 22.23.4` (`.nvmrc`).
@@ -43,7 +43,7 @@ Este documento define las reglas operativas, de arquitectura y de publicación d
 ## 4. Estándares de Interfaz, Accesibilidad y Privacidad
 
 - **Contraste y legibilidad:** Cumplir siempre ratios WCAG AA/AAA, especialmente en cabeceras oscuras (`bg-slate-900` / `bg-slate-950`) y tablas numéricas (`font-variant-numeric: tabular-nums`).
-- **Privacidad (RGPD / AEPD):** Mantener Google Consent Mode v2 con `analytics_storage: 'denied'` por defecto en `src/layouts/BaseLayout.astro`, gestión mediante `src/components/CookieBanner.astro` y detalle completo en `src/pages/cookies.astro`.
+- **Privacidad y Textos Legales (LSSI-CE / RGPD / AEPD):** Mantener Google Consent Mode v2 con `analytics_storage: 'denied'` por defecto en `src/layouts/BaseLayout.astro`, gestión mediante `src/components/CookieBanner.astro` y páginas legales y de contacto completas en `src/pages/aviso-legal.astro`, `src/pages/privacidad.astro`, `src/pages/cookies.astro` y `src/pages/contacto.astro`.
 
 ---
 

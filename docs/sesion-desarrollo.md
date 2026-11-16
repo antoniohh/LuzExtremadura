@@ -79,3 +79,8 @@ El proyecto nace con el propósito de trasladar el modelo de éxito, rendimiento
 
 ### 3.7. Versión 1.2.1 (2026-11-13)
 - Renovación completa de la identidad visual y activos de marca con Nano Banana y trazado vectorial de alta precisión (`Logo.astro`, `favicon.svg`, `logo.svg`, `logo.png`, `icon-512.png`, `icon-192.png`, `apple-touch-icon.png`, `favicon.ico` y `og-image.png` de 1200×630 px).
+
+### 3.8. Versión 1.3.0 (2026-11-16) — Dominio Propio `luzextremadura.es` y Bloque Legal
+- Migración de configuración canónica al dominio propio `https://luzextremadura.es` (`public/CNAME`, `astro.config.mjs`, `src/lib/site.ts`, `NetworkBar.astro`, `robots.txt`, `sitemap.xml` y `scripts/actualizar_precios_luz.mjs`).
+- Creación e integración del bloque legal y de contacto completo: `/aviso-legal/`, `/privacidad/`, `/cookies/` y `/contacto/` con correo oficial `info@antoniohorrillo.com`.
+- Documentación detallada en [`docs/migracion-dominio-y-paginas-legales.md`](migracion-dominio-y-paginas-legales.md).

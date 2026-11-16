@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://luz.antoniohorrillo.com/sitemap.xml
+Sitemap: https://luzextremadura.es/sitemap.xml

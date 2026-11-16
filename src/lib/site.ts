@@ -1,4 +1,5 @@
-export const SITE = "https://luz.antoniohorrillo.com";
+export const SITE = "https://luzextremadura.es";
+export const SITE_DOMAIN = "luzextremadura.es";
 export const SITE_NAME = "Luz Extremadura";
 export const SITE_SHORT_NAME = "LuzExtremadura";
 export const SITE_DESCRIPTION =
@@ -20,6 +21,7 @@ export const SITE_KEYWORDS = [
 
 export const AUTHOR_NAME = "Antonio Horrillo";
 export const AUTHOR_URL = "https://antoniohorrillo.com";
+export const AUTHOR_EMAIL = "info@antoniohorrillo.com";
 
 export function absoluteUrl(path: string = ""): string {
   const cleanPath = path.startsWith("/") ? path.slice(1) : path;
