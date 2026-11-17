@@ -1,6 +1,6 @@
 # Luz Extremadura
 
-[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.3.0-047857?style=for-the-badge)](CHANGELOG.md)
+[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.3.1-047857?style=for-the-badge)](CHANGELOG.md)
 [![Astro](https://img.shields.io/badge/Astro-7.4.2-BC52EE?style=for-the-badge&logo=astro&logoColor=white)](https://astro.build)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.3.3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -37,7 +37,7 @@ Aplicación web estática (SPA) para la consulta diaria y en tiempo real del **p
    - Activos vectoriales y Open Graph (`favicon.svg`, `favicon.ico`, `apple-touch-icon.png`, `logo.svg`, `og-image.png`, `robots.txt`, `sitemap.xml`, `site.webmanifest` y `CNAME`).
    - Cumplimiento estricto de normativa legal y privacidad con **Google Consent Mode v2** (bloqueo analítico previo por defecto para RGPD), banner y modal de configuración (`CookieBanner.astro`) y páginas de [Aviso Legal](/aviso-legal/) (`src/pages/aviso-legal.astro`), [Política de Privacidad](/privacidad/) (`src/pages/privacidad.astro`), [Política de Cookies](/cookies/) (`src/pages/cookies.astro`) y [Contacto y Soporte](/contacto/) (`src/pages/contacto.astro`) con Google Analytics 4 (`G-HEKMQY6G5E`).
 6. **Ecosistema y Red de Proyectos Abiertos:**
-   - Barra superior unificada (`NetworkBar.astro`) 100% responsiva con acceso directo y navegación táctil fluida entre herramientas hermanas: *Luz Extremadura*, *Combustible Extremadura*, *Embalses Extremadura* y *GlucoLuna*.
+   - Barra superior unificada (`NetworkBar.astro`) 100% responsiva con acceso directo y navegación táctil fluida entre herramientas hermanas: *Luz Extremadura*, *Gasolineras Extremadura*, *Embalses Extremadura* y *GlucoLuna*.
    - Módulo enlazado en pie de página con *anchor texts* semánticos optimizados para SEO y transmisión de autoridad (*link equity*).
 
 ---
@@ -157,10 +157,11 @@ Si necesitas cambiar el dominio en el futuro, actualiza `src/lib/site.ts`, `astr
 
 ## 📦 Control de Versiones
 
-Versión actual: **1.3.0** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
+Versión actual: **1.3.1** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
 
 | Versión | Fecha | Cambios principales |
 |---|---|---|---|
+| **1.3.1** | 2026-11-17 | Actualización del dominio oficial y denominación de *Gasolineras Extremadura* (`https://gasolinerasextremadura.es/`) en la barra de navegación de red (`NetworkBar.astro`), pie de página (`Footer.astro`) y Aviso Legal |
 | **1.3.0** | 2026-11-16 | Migración al dominio propio `https://luzextremadura.es`, creación del bloque legal y de contacto completo (`/aviso-legal/`, `/privacidad/`, `/cookies/`, `/contacto/` con correo `info@antoniohorrillo.com`), actualización de sitemap y Service Worker `v2` |
 | **1.2.1** | 2026-11-13 | Renovación integral de recursos gráficos, isotipo vectorial SVG (`Logo.astro`, `favicon.svg`, `logo.svg`), familia de iconos PWA/móvil de alta resolución (`icon-512.png`, `icon-192.png`, `apple-touch-icon.png`, `favicon.ico`) y nueva tarjeta social Open Graph (`og-image.png`) estilo observatorio de datos |
 | **1.2.0** | 2026-11-12 | Barra de navegación de red responsive (`NetworkBar.astro`) y módulo de enlazado SEO entre proyectos en el pie de página (`Footer.astro`) |
@@ -174,7 +175,7 @@ Versión actual: **1.3.0** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
 | 1.0.1 | 2026-11-02 | Navegación global multiruta (`/#`), menú móvil desplegable, unificación tipográfica responsiva de encabezados `<h2>` y protección de badge `PVPC REE` en móvil |
 | 1.0.0 | 2026-11-02 | Lanzamiento inicial en `luz.antoniohorrillo.com`: precios diarios y de mañana desde Red Eléctrica (e·sios archive 70), semáforo 24h, tramos valle/llano/punta, calculadora de consumo extremeño, dossier solar y Consent Mode v2 |
 
-El workflow `.github/workflows/release.yml` compila el sitio y adjunta automáticamente `luz-extremadura-v1.3.0.zip` al publicar una etiqueta `v*` en GitHub. Además, los paquetes precompilados locales se encuentran disponibles en la carpeta `release/`.
+El workflow `.github/workflows/release.yml` compila el sitio y adjunta automáticamente `luz-extremadura-v1.3.1.zip` al publicar una etiqueta `v*` en GitHub. Además, los paquetes precompilados locales se encuentran disponibles en la carpeta `release/`.
 
 ---
 

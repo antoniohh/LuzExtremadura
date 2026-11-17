@@ -49,5 +49,5 @@ Este documento define las reglas operativas, de arquitectura y de publicación d
 
 ## 5. Ecosistema de Red y Enlazado Inter-Dominio
 
-- **Componente `NetworkBar.astro`:** Barra superior unificada de 36px que enlaza los proyectos del ecosistema (*Luz*, *Combustible*, *Embalses*, *GlucoLuna* y `antoniohorrillo.com`). Debe mantenerse 100% responsiva (scroll horizontal táctil en viewport móvil sin alterar la altura del viewport ni provocar desbordamientos horizontales).
+- **Componente `NetworkBar.astro`:** Barra superior unificada de 36px que enlaza los proyectos del ecosistema (*Luz*, *Gasolineras*, *Embalses*, *GlucoLuna* y `antoniohorrillo.com`). Debe mantenerse 100% responsiva (scroll horizontal táctil en viewport móvil sin alterar la altura del viewport ni provocar desbordamientos horizontales).
 - **Enlazado en `Footer.astro`:** Columna dedicada a la Red de Proyectos con enlaces semánticos y textos de ancla descriptivos (*anchor text* SEO) para la transmisión limpia de autoridad de dominio (*link equity*).

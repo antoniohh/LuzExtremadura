@@ -2,6 +2,16 @@
 
 Todas las versiones relevantes de **Luz Extremadura**. El proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 
+## [1.3.1] — 2026-11-17
+
+Sincronización del nuevo dominio oficial y denominación de marca del proyecto hermano **Gasolineras Extremadura** (`https://gasolinerasextremadura.es/`) en la barra de navegación de red, el pie de página y el aviso legal.
+
+### Modificado y Mejorado
+
+- **Actualización de Enlaces y Marca de *Gasolineras Extremadura* ([`src/components/NetworkBar.astro`](src/components/NetworkBar.astro), [`src/components/Footer.astro`](src/components/Footer.astro) y [`src/pages/aviso-legal.astro`](src/pages/aviso-legal.astro))**:
+  - Actualización de la URL de destino del proyecto hermano de `https://combustible.antoniohorrillo.com/` al nuevo dominio propio `https://gasolinerasextremadura.es/`.
+  - Alineación del nombre visible a **Gasolineras Extremadura** (y etiqueta compacta `Gasolineras` en vista móvil dentro de `NetworkBar.astro`) para mantener coherencia visual y transmisión directa de autoridad SEO (*link equity*) sin redirecciones intermedias.
+
 ## [1.3.0] — 2026-11-16
 
 Migración al dominio propio oficial **`https://luzextremadura.es`** e incorporación del bloque legal, de privacidad y de contacto completo (**LSSI-CE**, **RGPD**, **LOPDGDD**, **Guía de Cookies de la AEPD** y señales de confianza **Google E-E-A-T**).
