@@ -29,6 +29,7 @@ Se ha actualizado toda la infraestructura del proyecto para operar bajo el domin
     4. `https://luzextremadura.es/cookies/`
     5. `https://luzextremadura.es/contacto/`
 - **`public/sw.js`:** Actualizada la caché del Service Worker a `luz-extremadura-v2` e incorporadas las rutas `/aviso-legal/`, `/privacidad/`, `/cookies/` y `/contacto/` en `STATIC_ASSETS`.
+- **`public/assets/og-image.png`:** Actualizado el rótulo de dominio en la esquina inferior izquierda de la tarjeta social Open Graph (`1200×630 px`) a `luzextremadura.es` (`v1.3.2`).
 - **`package.json`, `AGENTS.md` y `README.md`:** Documentación y metadatos del repositorio sincronizados con `https://luzextremadura.es`.
 
 ---

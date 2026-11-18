@@ -1,6 +1,6 @@
 # Luz Extremadura
 
-[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.3.1-047857?style=for-the-badge)](CHANGELOG.md)
+[![Versión](https://img.shields.io/badge/versi%C3%B3n-1.3.2-047857?style=for-the-badge)](CHANGELOG.md)
 [![Astro](https://img.shields.io/badge/Astro-7.4.2-BC52EE?style=for-the-badge&logo=astro&logoColor=white)](https://astro.build)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.3.3-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
@@ -157,10 +157,11 @@ Si necesitas cambiar el dominio en el futuro, actualiza `src/lib/site.ts`, `astr
 
 ## 📦 Control de Versiones
 
-Versión actual: **1.3.1** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
+Versión actual: **1.3.2** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
 
 | Versión | Fecha | Cambios principales |
 |---|---|---|---|
+| **1.3.2** | 2026-11-18 | Actualización del dominio rotulado en la tarjeta social Open Graph (`public/assets/og-image.png`, `1200×630 px`) a `luzextremadura.es` y puesta al día de documentación y paquete de release |
 | **1.3.1** | 2026-11-17 | Actualización del dominio oficial y denominación de *Gasolineras Extremadura* (`https://gasolinerasextremadura.es/`) en la barra de navegación de red (`NetworkBar.astro`), pie de página (`Footer.astro`) y Aviso Legal |
 | **1.3.0** | 2026-11-16 | Migración al dominio propio `https://luzextremadura.es`, creación del bloque legal y de contacto completo (`/aviso-legal/`, `/privacidad/`, `/cookies/`, `/contacto/` con correo `info@antoniohorrillo.com`), actualización de sitemap y Service Worker `v2` |
 | **1.2.1** | 2026-11-13 | Renovación integral de recursos gráficos, isotipo vectorial SVG (`Logo.astro`, `favicon.svg`, `logo.svg`), familia de iconos PWA/móvil de alta resolución (`icon-512.png`, `icon-192.png`, `apple-touch-icon.png`, `favicon.ico`) y nueva tarjeta social Open Graph (`og-image.png`) estilo observatorio de datos |
@@ -175,7 +176,7 @@ Versión actual: **1.3.1** · [Historial completo en CHANGELOG.md](CHANGELOG.md)
 | 1.0.1 | 2026-11-02 | Navegación global multiruta (`/#`), menú móvil desplegable, unificación tipográfica responsiva de encabezados `<h2>` y protección de badge `PVPC REE` en móvil |
 | 1.0.0 | 2026-11-02 | Lanzamiento inicial en `luz.antoniohorrillo.com`: precios diarios y de mañana desde Red Eléctrica (e·sios archive 70), semáforo 24h, tramos valle/llano/punta, calculadora de consumo extremeño, dossier solar y Consent Mode v2 |
 
-El workflow `.github/workflows/release.yml` compila el sitio y adjunta automáticamente `luz-extremadura-v1.3.1.zip` al publicar una etiqueta `v*` en GitHub. Además, los paquetes precompilados locales se encuentran disponibles en la carpeta `release/`.
+El workflow `.github/workflows/release.yml` compila el sitio y adjunta automáticamente `luz-extremadura-v1.3.2.zip` al publicar una etiqueta `v*` en GitHub. Además, los paquetes precompilados locales se encuentran disponibles en la carpeta `release/`.
 
 ---
 

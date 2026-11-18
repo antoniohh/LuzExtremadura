@@ -2,6 +2,18 @@
 
 Todas las versiones relevantes de **Luz Extremadura**. El proyecto sigue [Versionado Semántico](https://semver.org/lang/es/).
 
+## [1.3.2] — 2026-11-18
+
+Actualización de la tarjeta social Open Graph (`og-image.png`) para mostrar el dominio propio oficial `luzextremadura.es` en las previsualizaciones de redes sociales y mensajería.
+
+### Corregido y Mejorado
+
+- **Actualización del Dominio en Tarjeta Social Open Graph ([`public/assets/og-image.png`](public/assets/og-image.png))**:
+  - Sustitución de la leyenda inferior izquierda con el subdominio antiguo (`luz.antoniohorrillo.com`) por el dominio oficial de producción **`luzextremadura.es`**.
+  - Conservación íntegra de la tipografía corporativa (`Inter`), color (`#bbcedc`), alineación (`x=85px`), textura de fondo y dimensiones estándar (`1200×630` px) para tarjetas Open Graph y Twitter Cards (`summary_large_image`).
+- **Documentación y Directrices ([`AGENTS.md`](AGENTS.md), [`README.md`](README.md) y [`docs/`](docs/))**:
+  - Actualización de la documentación técnica, historial de versiones y reglas de agentes para reflejar la verificación de activos gráficos con el dominio `luzextremadura.es`.
+
 ## [1.3.1] — 2026-11-17
 
 Sincronización del nuevo dominio oficial y denominación de marca del proyecto hermano **Gasolineras Extremadura** (`https://gasolinerasextremadura.es/`) en la barra de navegación de red, el pie de página y el aviso legal.

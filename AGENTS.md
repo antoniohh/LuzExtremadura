@@ -25,7 +25,7 @@ Este documento define las reglas operativas, de arquitectura y de publicación d
 ## 2. Identidad y Configuración del Proyecto
 
 - **Nombre:** Luz Extremadura (`luz-extremadura`)
-- **Dominio de producción:** `https://luzextremadura.es` (configurado en `public/CNAME`, `astro.config.mjs` y `src/lib/site.ts`)
+- **Dominio de producción:** `https://luzextremadura.es` (configurado en `public/CNAME`, `astro.config.mjs`, `src/lib/site.ts` y rotulado visualmente en la tarjeta social Open Graph `public/assets/og-image.png` de `1200×630 px`)
 - **Repositorio:** `https://github.com/antoniohh/LuzExtremadura`
 - **Autor:** Antonio Horrillo (`https://antoniohorrillo.com`)
 - **Stack:** Astro 7 (`output: "static"`, `trailingSlash: "always"`), Tailwind CSS v4 (`@tailwindcss/vite`), `@lucide/astro` y TypeScript estricto sobre Node.js `>= 22.23.4` (`.nvmrc`).

@@ -36,11 +36,11 @@ El proyecto nace con el propósito de trasladar el modelo de éxito, rendimiento
 ### 2.4. Automatización con GitHub Actions
 - Cron diario a las **15:51 UTC** (16:51 CET en invierno) para capturar los precios del día siguiente, compensando el retardo de colas (~4h 54m) para desplegar sobre las **21:45 CET**.
 - Cron diario de respaldo y refresco matinal a las **00:24 UTC** (01:24 CET en invierno).
-- Despliegue automático en GitHub Pages bajo el dominio personalizado `luz.antoniohorrillo.com`.
+- Despliegue automático en GitHub Pages bajo el dominio personalizado `luzextremadura.es`.
 
 ### 2.5. Ciclo de Releases y Control de Distribución
 - Flujo de empaquetado y publicación automática mediante `.github/workflows/release.yml` en etiquetas `v*`.
-- Consolidación de paquetes locales precompilados y sumas SHA-256 en la carpeta `release/` (`v1.0.0`, `v1.0.1`, `v1.0.2`, `v1.0.3`, `v1.1.0`, `v1.1.1`, `v1.1.2`, `v1.1.3` y `v1.1.4`).
+- Consolidación de paquetes locales precompilados y sumas SHA-256 en la carpeta `release/` (`v1.0.0` a `v1.3.2`).
 - Licencia formal MIT y directrices operativas documentadas en `AGENTS.md`.
 
 ---
@@ -87,3 +87,7 @@ El proyecto nace con el propósito de trasladar el modelo de éxito, rendimiento
 
 ### 3.9. Versión 1.3.1 (2026-11-17) — Sincronización del Dominio `gasolinerasextremadura.es`
 - Actualización del enlace y denominación de *Gasolineras Extremadura* (`https://gasolinerasextremadura.es/`) en `src/components/NetworkBar.astro`, `src/components/Footer.astro` y `src/pages/aviso-legal.astro`.
+
+### 3.10. Versión 1.3.2 (2026-11-18) — Actualización del Dominio en Tarjeta Social Open Graph
+- Actualización del dominio rotulado en la creatividad social Open Graph (`public/assets/og-image.png`, `1200×630 px`), sustituyendo `luz.antoniohorrillo.com` por `luzextremadura.es` con tipografía corporativa `Inter` y preservación íntegra del diseño original.
+- Actualización de `AGENTS.md`, `README.md`, `CHANGELOG.md` y artefactos de distribución en `release/`.

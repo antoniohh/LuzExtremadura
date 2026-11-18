@@ -1,249 +1,9 @@
 {
-  "generadoEl": "2026-11-17T21:16:56.327Z",
+  "generadoEl": "2026-11-18T21:28:58.761Z",
   "fuente": "Red Eléctrica de España (REE / e·sios)",
   "hoy": {
-    "fecha": "2026-11-17",
-    "actualizado": "2026-11-17T21:16:55.852Z",
-    "estadisticas": {
-      "precioMinimo": {
-        "kwh": 0.07339,
-        "centimos": 7.34,
-        "hora": 4,
-        "rango": "04-05"
-      },
-      "precioMaximo": {
-        "kwh": 0.27487,
-        "centimos": 27.49,
-        "hora": 18,
-        "rango": "18-19"
-      },
-      "precioMedio": {
-        "kwh": 0.17506,
-        "centimos": 17.51
-      }
-    },
-    "horas": [
-      {
-        "hora": 0,
-        "rango": "00-01",
-        "precioMwh": 167.58,
-        "precioKwh": 0.16758,
-        "precioCentimos": 16.76,
-        "tramo": "valle",
-        "nivel": "medio"
-      },
-      {
-        "hora": 1,
-        "rango": "01-02",
-        "precioMwh": 133.62,
-        "precioKwh": 0.13362,
-        "precioCentimos": 13.36,
-        "tramo": "valle",
-        "nivel": "barato"
-      },
-      {
-        "hora": 2,
-        "rango": "02-03",
-        "precioMwh": 99.23,
-        "precioKwh": 0.09923,
-        "precioCentimos": 9.92,
-        "tramo": "valle",
-        "nivel": "barato"
-      },
-      {
-        "hora": 3,
-        "rango": "03-04",
-        "precioMwh": 76.13,
-        "precioKwh": 0.07613,
-        "precioCentimos": 7.61,
-        "tramo": "valle",
-        "nivel": "barato"
-      },
-      {
-        "hora": 4,
-        "rango": "04-05",
-        "precioMwh": 73.39,
-        "precioKwh": 0.07339,
-        "precioCentimos": 7.34,
-        "tramo": "valle",
-        "nivel": "barato"
-      },
-      {
-        "hora": 5,
-        "rango": "05-06",
-        "precioMwh": 73.79,
-        "precioKwh": 0.07379,
-        "precioCentimos": 7.38,
-        "tramo": "valle",
-        "nivel": "barato"
-      },
-      {
-        "hora": 6,
-        "rango": "06-07",
-        "precioMwh": 97.38,
-        "precioKwh": 0.09738,
-        "precioCentimos": 9.74,
-        "tramo": "valle",
-        "nivel": "barato"
-      },
-      {
-        "hora": 7,
-        "rango": "07-08",
-        "precioMwh": 157.07,
-        "precioKwh": 0.15707,
-        "precioCentimos": 15.71,
-        "tramo": "valle",
-        "nivel": "medio"
-      },
-      {
-        "hora": 8,
-        "rango": "08-09",
-        "precioMwh": 201.02,
-        "precioKwh": 0.20102,
-        "precioCentimos": 20.1,
-        "tramo": "llano",
-        "nivel": "medio"
-      },
-      {
-        "hora": 9,
-        "rango": "09-10",
-        "precioMwh": 188.6,
-        "precioKwh": 0.1886,
-        "precioCentimos": 18.86,
-        "tramo": "llano",
-        "nivel": "medio"
-      },
-      {
-        "hora": 10,
-        "rango": "10-11",
-        "precioMwh": 240.6,
-        "precioKwh": 0.2406,
-        "precioCentimos": 24.06,
-        "tramo": "punta",
-        "nivel": "caro"
-      },
-      {
-        "hora": 11,
-        "rango": "11-12",
-        "precioMwh": 203.87,
-        "precioKwh": 0.20387,
-        "precioCentimos": 20.39,
-        "tramo": "punta",
-        "nivel": "medio"
-      },
-      {
-        "hora": 12,
-        "rango": "12-13",
-        "precioMwh": 199.33,
-        "precioKwh": 0.19933,
-        "precioCentimos": 19.93,
-        "tramo": "punta",
-        "nivel": "medio"
-      },
-      {
-        "hora": 13,
-        "rango": "13-14",
-        "precioMwh": 191.2,
-        "precioKwh": 0.1912,
-        "precioCentimos": 19.12,
-        "tramo": "punta",
-        "nivel": "medio"
-      },
-      {
-        "hora": 14,
-        "rango": "14-15",
-        "precioMwh": 148.48,
-        "precioKwh": 0.14848,
-        "precioCentimos": 14.85,
-        "tramo": "llano",
-        "nivel": "medio"
-      },
-      {
-        "hora": 15,
-        "rango": "15-16",
-        "precioMwh": 165.81,
-        "precioKwh": 0.16581,
-        "precioCentimos": 16.58,
-        "tramo": "llano",
-        "nivel": "medio"
-      },
-      {
-        "hora": 16,
-        "rango": "16-17",
-        "precioMwh": 182.49,
-        "precioKwh": 0.18249,
-        "precioCentimos": 18.25,
-        "tramo": "llano",
-        "nivel": "medio"
-      },
-      {
-        "hora": 17,
-        "rango": "17-18",
-        "precioMwh": 209.65,
-        "precioKwh": 0.20965,
-        "precioCentimos": 20.96,
-        "tramo": "llano",
-        "nivel": "caro"
-      },
-      {
-        "hora": 18,
-        "rango": "18-19",
-        "precioMwh": 274.87,
-        "precioKwh": 0.27487,
-        "precioCentimos": 27.49,
-        "tramo": "punta",
-        "nivel": "caro"
-      },
-      {
-        "hora": 19,
-        "rango": "19-20",
-        "precioMwh": 273.06,
-        "precioKwh": 0.27306,
-        "precioCentimos": 27.31,
-        "tramo": "punta",
-        "nivel": "caro"
-      },
-      {
-        "hora": 20,
-        "rango": "20-21",
-        "precioMwh": 270.25,
-        "precioKwh": 0.27025,
-        "precioCentimos": 27.02,
-        "tramo": "punta",
-        "nivel": "caro"
-      },
-      {
-        "hora": 21,
-        "rango": "21-22",
-        "precioMwh": 273.12,
-        "precioKwh": 0.27312,
-        "precioCentimos": 27.31,
-        "tramo": "punta",
-        "nivel": "caro"
-      },
-      {
-        "hora": 22,
-        "rango": "22-23",
-        "precioMwh": 182.13,
-        "precioKwh": 0.18213,
-        "precioCentimos": 18.21,
-        "tramo": "llano",
-        "nivel": "medio"
-      },
-      {
-        "hora": 23,
-        "rango": "23-24",
-        "precioMwh": 118.82,
-        "precioKwh": 0.11882,
-        "precioCentimos": 11.88,
-        "tramo": "llano",
-        "nivel": "barato"
-      }
-    ]
-  },
-  "manana": {
     "fecha": "2026-11-18",
-    "actualizado": "2026-11-17T21:16:56.327Z",
+    "actualizado": "2026-11-18T21:28:58.282Z",
     "estadisticas": {
       "precioMinimo": {
         "kwh": 0.07395,
@@ -476,6 +236,246 @@
         "precioMwh": 165.08,
         "precioKwh": 0.16508,
         "precioCentimos": 16.51,
+        "tramo": "llano",
+        "nivel": "medio"
+      }
+    ]
+  },
+  "manana": {
+    "fecha": "2026-11-19",
+    "actualizado": "2026-11-18T21:28:58.761Z",
+    "estadisticas": {
+      "precioMinimo": {
+        "kwh": 0.09146,
+        "centimos": 9.15,
+        "hora": 1,
+        "rango": "01-02"
+      },
+      "precioMaximo": {
+        "kwh": 0.32785,
+        "centimos": 32.78,
+        "hora": 20,
+        "rango": "20-21"
+      },
+      "precioMedio": {
+        "kwh": 0.16085,
+        "centimos": 16.08
+      }
+    },
+    "horas": [
+      {
+        "hora": 0,
+        "rango": "00-01",
+        "precioMwh": 92.49,
+        "precioKwh": 0.09249,
+        "precioCentimos": 9.25,
+        "tramo": "valle",
+        "nivel": "barato"
+      },
+      {
+        "hora": 1,
+        "rango": "01-02",
+        "precioMwh": 91.46,
+        "precioKwh": 0.09146,
+        "precioCentimos": 9.15,
+        "tramo": "valle",
+        "nivel": "barato"
+      },
+      {
+        "hora": 2,
+        "rango": "02-03",
+        "precioMwh": 94.32,
+        "precioKwh": 0.09432,
+        "precioCentimos": 9.43,
+        "tramo": "valle",
+        "nivel": "barato"
+      },
+      {
+        "hora": 3,
+        "rango": "03-04",
+        "precioMwh": 93.27,
+        "precioKwh": 0.09327,
+        "precioCentimos": 9.33,
+        "tramo": "valle",
+        "nivel": "barato"
+      },
+      {
+        "hora": 4,
+        "rango": "04-05",
+        "precioMwh": 92.56,
+        "precioKwh": 0.09256,
+        "precioCentimos": 9.26,
+        "tramo": "valle",
+        "nivel": "barato"
+      },
+      {
+        "hora": 5,
+        "rango": "05-06",
+        "precioMwh": 92.25,
+        "precioKwh": 0.09225,
+        "precioCentimos": 9.22,
+        "tramo": "valle",
+        "nivel": "barato"
+      },
+      {
+        "hora": 6,
+        "rango": "06-07",
+        "precioMwh": 93.74,
+        "precioKwh": 0.09374,
+        "precioCentimos": 9.37,
+        "tramo": "valle",
+        "nivel": "barato"
+      },
+      {
+        "hora": 7,
+        "rango": "07-08",
+        "precioMwh": 126.43,
+        "precioKwh": 0.12643,
+        "precioCentimos": 12.64,
+        "tramo": "valle",
+        "nivel": "barato"
+      },
+      {
+        "hora": 8,
+        "rango": "08-09",
+        "precioMwh": 155.5,
+        "precioKwh": 0.1555,
+        "precioCentimos": 15.55,
+        "tramo": "llano",
+        "nivel": "barato"
+      },
+      {
+        "hora": 9,
+        "rango": "09-10",
+        "precioMwh": 108.71,
+        "precioKwh": 0.10871,
+        "precioCentimos": 10.87,
+        "tramo": "llano",
+        "nivel": "barato"
+      },
+      {
+        "hora": 10,
+        "rango": "10-11",
+        "precioMwh": 176.19,
+        "precioKwh": 0.17619,
+        "precioCentimos": 17.62,
+        "tramo": "punta",
+        "nivel": "medio"
+      },
+      {
+        "hora": 11,
+        "rango": "11-12",
+        "precioMwh": 176.79,
+        "precioKwh": 0.17679,
+        "precioCentimos": 17.68,
+        "tramo": "punta",
+        "nivel": "medio"
+      },
+      {
+        "hora": 12,
+        "rango": "12-13",
+        "precioMwh": 176.42,
+        "precioKwh": 0.17642,
+        "precioCentimos": 17.64,
+        "tramo": "punta",
+        "nivel": "medio"
+      },
+      {
+        "hora": 13,
+        "rango": "13-14",
+        "precioMwh": 176.08,
+        "precioKwh": 0.17608,
+        "precioCentimos": 17.61,
+        "tramo": "punta",
+        "nivel": "medio"
+      },
+      {
+        "hora": 14,
+        "rango": "14-15",
+        "precioMwh": 107.44,
+        "precioKwh": 0.10744,
+        "precioCentimos": 10.74,
+        "tramo": "llano",
+        "nivel": "barato"
+      },
+      {
+        "hora": 15,
+        "rango": "15-16",
+        "precioMwh": 106.38,
+        "precioKwh": 0.10638,
+        "precioCentimos": 10.64,
+        "tramo": "llano",
+        "nivel": "barato"
+      },
+      {
+        "hora": 16,
+        "rango": "16-17",
+        "precioMwh": 107.77,
+        "precioKwh": 0.10777,
+        "precioCentimos": 10.78,
+        "tramo": "llano",
+        "nivel": "barato"
+      },
+      {
+        "hora": 17,
+        "rango": "17-18",
+        "precioMwh": 162.35,
+        "precioKwh": 0.16235,
+        "precioCentimos": 16.23,
+        "tramo": "llano",
+        "nivel": "barato"
+      },
+      {
+        "hora": 18,
+        "rango": "18-19",
+        "precioMwh": 301.85,
+        "precioKwh": 0.30185,
+        "precioCentimos": 30.19,
+        "tramo": "punta",
+        "nivel": "caro"
+      },
+      {
+        "hora": 19,
+        "rango": "19-20",
+        "precioMwh": 308.07,
+        "precioKwh": 0.30807,
+        "precioCentimos": 30.81,
+        "tramo": "punta",
+        "nivel": "caro"
+      },
+      {
+        "hora": 20,
+        "rango": "20-21",
+        "precioMwh": 327.85,
+        "precioKwh": 0.32785,
+        "precioCentimos": 32.79,
+        "tramo": "punta",
+        "nivel": "caro"
+      },
+      {
+        "hora": 21,
+        "rango": "21-22",
+        "precioMwh": 304.67,
+        "precioKwh": 0.30467,
+        "precioCentimos": 30.47,
+        "tramo": "punta",
+        "nivel": "caro"
+      },
+      {
+        "hora": 22,
+        "rango": "22-23",
+        "precioMwh": 204.57,
+        "precioKwh": 0.20457,
+        "precioCentimos": 20.46,
+        "tramo": "llano",
+        "nivel": "medio"
+      },
+      {
+        "hora": 23,
+        "rango": "23-24",
+        "precioMwh": 183.2,
+        "precioKwh": 0.1832,
+        "precioCentimos": 18.32,
         "tramo": "llano",
         "nivel": "medio"
       }
